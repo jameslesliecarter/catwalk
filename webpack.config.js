@@ -20,6 +20,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: './public'
+  },
   mode: 'development',
   devtool: 'source-map'
   //resolve:
