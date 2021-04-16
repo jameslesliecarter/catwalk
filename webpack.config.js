@@ -9,8 +9,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
+        //test: /\.jsx$/,
+        exclude: '/node_modules/',
         use: {
           loader: 'babel-loader',
           options: {
@@ -24,6 +24,8 @@ module.exports = {
     contentBase: './public'
   },
   mode: 'development',
-  devtool: 'source-map'
-  //resolve:
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['js', 'jsx']
+  }
 }
