@@ -1,5 +1,8 @@
 import React from "react";
-import Question from './components/Questions.jsx';
+import QuestionList from './components/QuestionList.jsx';
+import Search from './components/Search.jsx';
+import MoreQuestions from './components/MoreQuestions.jsx';
+import AddQuestion from './components/AddQuestion.jsx';
 import sampleData from '../../SampleData.js';
 class QandA extends React.Component {
   constructor(props) {
@@ -11,7 +14,18 @@ class QandA extends React.Component {
   render() {
     return (
       <div>
-        <Question questions={this.state.questions} />
+        <div className="search-bar">
+          <Search />
+        </div>
+        <div className="questions-and-answers">
+          <QuestionList questions={this.state.questions} />
+        </div>
+        <div>
+          <MoreQuestions />
+        </div>
+        <div>
+          <AddQuestion />
+        </div>
       </div>
     )
   }

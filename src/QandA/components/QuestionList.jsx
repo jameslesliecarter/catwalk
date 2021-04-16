@@ -1,17 +1,19 @@
 import React from 'react';
+import Answer from './Answer.jsx';
+
 const Questions = (props) => {
   return (
     <div>
       {props.questions.map((question) => {
         return (
         <div>
-          <div>
+          <div className="question">
             <label>Question: </label>
             {question.question_body}
           </div>
-          <div>
+          <div className="answer">
             <label>Asker: </label>
-            {question.asker_name}
+            <Answer />
           </div>
         </div>
       )})}
