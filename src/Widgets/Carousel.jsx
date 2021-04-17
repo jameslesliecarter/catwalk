@@ -15,7 +15,7 @@ class Carousel extends React.Component {
     var clickedClass = e.target.classList.value;
     if (clickedClass === 'arrow-left' && this.state.currentImg !== 0) {
       this.setState({currentImg: this.state.currentImg - 1});
-    } else if (clickedClass === 'arrow-right' && this.state.currentImg !== this.props.images.length) {
+    } else if (clickedClass === 'arrow-right' && this.state.currentImg < this.props.images.length - 1) {
       this.setState({currentImg: this.state.currentImg + 1});
     }
   }
@@ -24,7 +24,13 @@ class Carousel extends React.Component {
     return (
       <section className="slider">
         <FaArrowAltCircleLeft className="arrow-left" onClick={this.handleClick} />
-        {this.props.images.map((image, index) => <img src={image.image} alt="travel" />)}
+        {this.props.images.map((image, index) => {
+          return (
+            <div className={index === this.state.currentImg ? 'slide active' : 'slide'} key={index}>
+              {index === this.state.currentImg && (<img src={image.image} alt="travel" className="image" />)}
+            </div>
+          )
+        })}
         <FaArrowAltCircleRight className="arrow-right" onClick={this.handleClick} />
       </section>
     )
