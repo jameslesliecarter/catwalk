@@ -1,4 +1,5 @@
 package-lock.json
+server/.apiKey.js
 public/bundle.js
 node_modules
 config.js
