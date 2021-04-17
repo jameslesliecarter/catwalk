@@ -12,11 +12,10 @@ let app = express();
 let port = 9000;
 app.listen(port, function() {
   console.log(`server listening on port ${port}`);
-  console.log(apiKey);
 });
 
 // EVERY REQ
-app.use(express.static('public'));
+app.use(express.static('../public'));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   console.log(`${req.method} request to ${req.originalUrl}`);
