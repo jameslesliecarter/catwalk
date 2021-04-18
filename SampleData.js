@@ -56,8 +56,6 @@ module.exports.products = [
   }
 ];
 
-<<<<<<< HEAD
-=======
 module.exports.sampleQuestions = [
   {
     "product_id": "19089",
@@ -208,4 +206,3 @@ module.exports.sampleAnswers = [
     ]
   }
 ];
->>>>>>> bc3c7b590a6e022ec3d454a5a2e2168096b5fe02
