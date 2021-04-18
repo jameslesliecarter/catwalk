@@ -19,6 +19,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   console.log(`${req.method} request to ${req.originalUrl}`);
+  if (req.body) { console.log('req.body:', req.body); }
   next();
 });
 
@@ -30,58 +31,9 @@ const ax = axios.create({
 });
 
 // Product REQs ============================================================ //
-// GETs
-app.get('/products', function(req, res, next) {
-  // apply req.query to all...
-  // const queryParams = 
-  if (req.query.page) {
-    // default 1
-    res.locals.page = req.query.page;
-    console.log('page', res.locals.page);
-  }
-  if (req.query.count) {
-    // default 5
-    res.locals.page = req.query.page;
-    console.log('count', res.locals.page);
-  }
-  next();
-  //ax.get('/products'
-});
+const products = require('./products.js');
+//app.use('/products', products);
 
-app.get('/products/:product_id', function(req, res) {
-  // apply product_id to all...
-  const product_id = req.params.product_id;
-  console.log(`${ax.defaults.baseURL}/products/${product_id}?${res.locals.page}`);
-  //ax.get(`/products/${product_id}`)
-  //  .then(function (response) {
-  //    console.log(response.data);
-  //  })
-  //  .catch(function (error) {
-  //    console.error(error);
-  //  });
-});
-
-app.get('/products/:product_id/styles', function(req, res) {
-  const product_id = req.params.product_id;
-  ax.get(`/products/${product_id}/styles`)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
-
-app.get('/products/:product_id/related', function(req, res) {
-  const product_id = req.params.product_id;
-  ax.get(`/products/${product_id}/related`)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
 
 // QnA REQs ================================================================ //
 

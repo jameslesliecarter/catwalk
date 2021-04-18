@@ -16,7 +16,7 @@ class Review extends React.Component {
         </div>
         <div className="reviews-ratings__review-list">
         </div>
-      </div>;
+      </div>
     );
   }
 }
