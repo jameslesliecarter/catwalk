@@ -4,7 +4,6 @@
   "description": "Front-End Capstone Project",
   "main": "index.js",
   "scripts": {
-    "start": "./both.sh",
     "build": "webpack -w",
     "serve": "nodemon server/index.js",
     "test": "jest --watch",
