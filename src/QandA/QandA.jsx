@@ -1,6 +1,5 @@
 import React from "react";
 
-<<<<<<< HEAD
 class QandA extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +10,6 @@ class QandA extends React.Component {
   }
 }
 
-=======
 import QuestionList from './components/QuestionList.jsx';
 import Search from './components/Search.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
@@ -49,5 +47,4 @@ class QandA extends React.Component {
     )
   }
 }
->>>>>>> bc3c7b590a6e022ec3d454a5a2e2168096b5fe02
 export default QandA;
