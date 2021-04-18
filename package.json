@@ -18,6 +18,12 @@
     "url": "https://github.com/SYMPL-Systems/catwalk/issues"
   },
   "homepage": "https://github.com/SYMPL-Systems/catwalk#readme",
+   "babel": {
+    "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
