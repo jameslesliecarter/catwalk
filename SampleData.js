@@ -186,5 +186,24 @@ module.exports.sampleQuestions = [
             }
         }
     ]
+  }
+];
+
+module.exports.sampleAnswers = [
+  {
+    "question": "153077",
+    "page": 1,
+    "count": 5,
+    "results": [
+        {
+            "answer_id": 1443997,
+            "body": "How should I know?",
+            "date": "2021-03-11T00:00:00.000Z",
+            "answerer_name": "Me",
+            "helpfulness": 3,
+            "photos": []
+        }
+    ]
+  }
 }
 ];
