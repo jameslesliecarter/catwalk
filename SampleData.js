@@ -205,5 +205,4 @@ module.exports.sampleAnswers = [
         }
     ]
   }
-}
 ];
