@@ -1,15 +1,8 @@
 import React from "react";
 import Overview from "./Overview/Overview.jsx";
-<<<<<<< HEAD
 import Related from "./Related/Related.jsx";
 import QandA from "./QandA/QandA.jsx";
 import Reviews from "./Reviews/Reviews.jsx";
-import ax from 'axios';
-=======
-import QandA from "./QandA/QandA.jsx";
-import Related from "./Related/Related.jsx";
-import Reviews from "./Reviews/Reviews.jsx";
->>>>>>> api_server-mh
 
 class App extends React.Component {
   constructor(props) {
@@ -23,10 +16,10 @@ class App extends React.Component {
         <Overview />
       </div>
       <div>
-        <QandA />
+        <Related />
       </div>
       <div>
-        <Related />
+        <QandA />
       </div>
       <div>
         <Reviews />
