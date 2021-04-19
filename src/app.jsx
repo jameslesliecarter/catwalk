@@ -1,7 +1,7 @@
 import React from "react";
 import Overview from "./Overview/Overview.jsx";
-import QandA from "./QandA/QandA.jsx";
 import Related from "./Related/Related.jsx";
+import QandA from "./QandA/QandA.jsx";
 import Reviews from "./Reviews/Reviews.jsx";
 
 class App extends React.Component {
@@ -13,13 +13,13 @@ class App extends React.Component {
     return (
     <div>
       <div>
-      <Overview />
-      </div>
-      <div>
-        <QandA />
+        <Overview />
       </div>
       <div>
         <Related />
+      </div>
+      <div>
+        <QandA />
       </div>
       <div>
         <Reviews />

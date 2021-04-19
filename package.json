@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack serve",
+    "serve": "nodemon server/index.js",
     "test": "jest --watch",
     "test:coverage": "jest --coverage --colors"
   },
@@ -18,10 +19,10 @@
     "url": "https://github.com/SYMPL-Systems/catwalk/issues"
   },
   "homepage": "https://github.com/SYMPL-Systems/catwalk#readme",
-   "babel": {
+  "babel": {
     "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
+      "@babel/preset-env",
+      "@babel/preset-react"
     ]
   },
   "dependencies": {
@@ -34,6 +35,8 @@
     "enzyme": "3.11.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
