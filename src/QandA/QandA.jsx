@@ -4,7 +4,6 @@ import Search from './components/Search.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
 import AddQuestion from './components/AddQuestion.jsx';
 import Question from './components/Questions.jsx';
-import sampleData from '../../SampleData.js';
 
 
 class QandA extends React.Component {
