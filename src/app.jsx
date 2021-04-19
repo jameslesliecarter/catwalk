@@ -3,7 +3,6 @@ import Overview from "./Overview/Overview.jsx";
 import Related from "./Related/Related.jsx";
 import QandA from "./QandA/QandA.jsx";
 import Reviews from "./Reviews/Reviews.jsx";
-import ax from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,10 +16,10 @@ class App extends React.Component {
         <Overview />
       </div>
       <div>
-        <QandA />
+        <Related />
       </div>
       <div>
-        <Related />
+        <QandA />
       </div>
       <div>
         <Reviews />
