@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # generics
-curl 'http://localhost:9000'
 curl 'http://localhost:9000/'
 curl 'http://localhost:9000/?page=1&count=5'
 curl 'http://localhost:9000/?page=2&count=3'
@@ -12,16 +11,16 @@ if [ "$1" = "products" ]; then
   curl 'http://localhost:9000/products'
   curl 'http://localhost:9000/products?page=2&count=3'
   curl 'http://localhost:9000/products/?page=2&count=3'
-  curl 'http://localhost:9000/products/19002'
-  curl 'http://localhost:9000/products/19002/'
-  curl 'http://localhost:9000/products/19002?page=2&count=3'""
-  curl 'http://localhost:9000/products/19002/?page=2&count=3'
-  curl 'http://localhost:9000/products/19002/styles'
-  curl 'http://localhost:9000/products/19002/styles?page=2&count=3'
-  curl 'http://localhost:9000/products/19002/styles/?page=2&count=3'
-  curl 'http://localhost:9000/products/19002/related'
-  curl 'http://localhost:9000/products/19002/related?page=2&count=3'
-  curl 'http://localhost:9000/products/19002/related/?page=2&count=3'
+  #curl 'http://localhost:9000/products/19002'
+  #curl 'http://localhost:9000/products/19002/'
+  #curl 'http://localhost:9000/products/19002?page=2&count=3'""
+  #curl 'http://localhost:9000/products/19002/?page=2&count=3'
+  #curl 'http://localhost:9000/products/19002/styles'
+  #curl 'http://localhost:9000/products/19002/styles?page=2&count=3'
+  #curl 'http://localhost:9000/products/19002/styles/?page=2&count=3'
+  #curl 'http://localhost:9000/products/19002/related'
+  #curl 'http://localhost:9000/products/19002/related?page=2&count=3'
+  #curl 'http://localhost:9000/products/19002/related/?page=2&count=3'
 fi
 
 if [ "$1" = "reviews" ]; then

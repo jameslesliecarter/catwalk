@@ -15,12 +15,20 @@ app.listen(port, function() {
 });
 
 // EVERY REQ
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   console.log(`${req.method} request to ${req.originalUrl}`);
-  if (req.body) { console.log('req.body:', req.body); }
+  if (Object.keys(req.body).length) { console.log('req.body:', req.body); }
   next();
+});
+
+app.get('/', (req, res, next) => {
+  next();
+});
+
+app.post('/', (req, res, next) => {
+  res.end('cannot POST to root\n');
 });
 
 // setup Axios instance
@@ -32,6 +40,7 @@ const ax = axios.create({
 
 // Product REQs ============================================================ //
 const products = require('./products.js');
+app.use('/products', products);
 //app.use('/products', products);
 
 
