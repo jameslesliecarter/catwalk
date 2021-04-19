@@ -28,7 +28,8 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  res.end('cannot POST to root\n');
+  next();
+  //res.end(`cannot POST to root\n`);
 });
 
 // setup Axios instance
