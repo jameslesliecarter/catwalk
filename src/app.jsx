@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from './Navbar/Navbar.jsx'
 import Overview from "./Overview/Overview.jsx";
 import QandA from "./QandA/QandA.jsx";
 import Related from "./Related/Related.jsx";
@@ -12,18 +13,11 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <div>
+      <Navbar />
       <Overview />
-      </div>
-      <div>
-        <QandA />
-      </div>
-      <div>
-        <Related />
-      </div>
-      <div>
-        <Reviews />
-      </div>
+      <Related />
+      <QandA />
+      <Reviews />
     </div>
     );
   }
