@@ -10,12 +10,10 @@ const apiKey = require('./.apiKey.js');
 // setup Expressjs server instance
 let app = express();
 let port = 9000;
-app.listen(port, function() {
-  console.log(`server listening on port ${port}`);
-});
+app.listen(port, () => { console.log(`server listening on port ${port}`); });
 
 // EVERY REQ
-//app.use(express.static('public'));
+//app.use(express.static('public'));  // to serve the client app
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   console.log(`${req.method} request to ${req.originalUrl}`);
@@ -40,10 +38,7 @@ const ax = axios.create({
 });
 
 // Product REQs ============================================================ //
-const products = require('./products.js');
+const products = require('./routes/products.js');
 app.use('/products', products);
-//app.use('/products', products);
-
 
 // QnA REQs ================================================================ //
-
