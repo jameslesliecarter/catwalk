@@ -8,19 +8,9 @@ class Carousel extends React.Component {
       currentImg: 0
     }
 
-    // this.handleClick = this.handleClick.bind(this);
     this.prevSlide = this.prevSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
   }
-
-  // handleClick(e) {
-  //   var clickedClass = e.target.classList.value;
-  //   if (clickedClass === 'arrow-left' && this.state.currentImg !== 0) {
-  //     this.setState({currentImg: this.state.currentImg - 1});
-  //   } else if (clickedClass === 'arrow-right' && this.state.currentImg < this.props.images.length - 1) {
-  //     this.setState({currentImg: this.state.currentImg + 1});
-  //   }
-  // }
 
   prevSlide() {
     this.setState({currentImg: this.state.currentImg - 1});
