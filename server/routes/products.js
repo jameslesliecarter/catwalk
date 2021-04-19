@@ -6,78 +6,84 @@ let apiKey = require('../.apiKey.js');
 
 // create axios instance
 let ax = axios.create({
-  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe',
+  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products',
   timeout: 1000,
   headers: apiKey,
 });
 
-// router magick
-router
-  .route('/')
-    .get((req, res) => {
-      if (req.query.page || req.query.count) {
-        req.page = req.query.page;
-        req.count = req.query.count;
-        res.send(`page: ${req.query.page}\ncount: ${req.query.count}\n`);
-      }
-      //res.end();
-    });
+// middleware applied to all REQs
+router.use((req, res, next) => {
+  req.page = req.query.page || '';
+  req.count = req.query.count || '';
+  next();
+})
 
-router
-  .route('/:product_id')
-    .get((req, res) => {
-      res.send(``)
+// root ENDpoint route
+router.use('/', (req, res) => {
+  ax.get((`/?page=${req.page}&ocunt=${req.count}`))
+    .then(function (response) {
+      res.send(response.data);
+    })
+    .then(function (response) {
       res.end();
+    })
+    .catch(function (error) {
+      console.error('\n/products/ ax err:\n', error);
+      res.end('error in /:product_id');
     });
-  // apply req.query to all...
-  // const queryParams =
-//  if (req.query.page) {
-//    // default 1
-//    res.locals.page = req.query.page;
-//    console.log('page', res.locals.page);
-//  }
-//  if (req.query.count) {
-//    // default 5
-//    res.locals.page = req.query.page;
-//    console.log('count', res.locals.page);
-//  }
-//  next();
-//  //ax.get('/products'
-//});
-//
-//router.get('/:product_id', function(req, res) {
-//  // apply product_id to all...
-//  const product_id = req.params.product_id;
-//  console.log(`${ax.defaults.baseURL}/products/${product_id}?${res.locals.page}`);
-//  //ax.get(`/products/${product_id}`)
-//  //  .then(function (response) {
-//  //    console.log(response.data);
-//  //  })
-//  //  .catch(function (error) {
-//  //    console.error(error);
-//  //  });
-//});
-//
-//router.get('/:product_id/styles', function(req, res) {
-//  const product_id = req.params.product_id;
-//  ax.get(`/products/${product_id}/styles`)
-//    .then(function (response) {
-//      console.log(response);
-//    })
-//    .catch(function (error) {
-//      console.error(error);
-//    });
-//});
-//
-//router.get('/:product_id/related', function(req, res) {
-//  const product_id = req.params.product_id;
-//  ax.get(`/products/${product_id}/related`)
-//    .then(function (response) {
-//      console.log(response);
-//    })
-//    .catch(function (error) {
-//      console.error(error);
-//    });
-//});
+  });
+
+// middleware applied to all /:product_id URIs
+router.use('/:product_id', (req, res, next) => {
+  req.id = req.params.product_id;
+  next();
+})
+
+// /:product_id ENDpoint, that's why we use .route()
+// and this is where we deal with res
+router.route('/:product_id')
+  .get((req, res) => {
+    ax.get(`/${req.id}/?page=${req.page}&count=${req.count}`)
+      .then(function (response) {
+        res.send(response.data);
+      })
+      .then(function (response) {
+        res.end();
+      })
+      .catch(function (error) {
+        console.error('\n/products/:product_id ax err:\n', error);
+        res.end('error in /products/:product_id');
+      });
+  });
+
+router.route('/:product_id/styles')
+  .get((req, res) => {
+    ax.get(`/${req.id}/styles/?page=${req.page}&count=${req.count}`)
+      .then(function (response) {
+        res.send(response.data);
+      })
+      .then(function (response) {
+        res.end();
+      })
+      .catch(function(error) {
+        console.error('\n/products/:product_id/styles ax err:\n', error);
+        res.end('error in /products/:product_id/styles');
+      });
+  });
+
+router.route('/:product_id/related')
+  .get((req, res) => {
+    ax.get(`/${req.id}/related/?page=${req.page}&count=${req.count}`)
+      .then(function (response) {
+        res.send(response.data);
+      })
+      .then(function (response) {
+        res.end();
+      })
+      .catch(function(error) {
+        console.error('\n/products/:product_id/styles ax err:\n', error);
+        res.end('error in /products/:product_id/styles');
+      });
+  });
 
 module.exports = router;
