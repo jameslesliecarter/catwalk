@@ -14,11 +14,15 @@
   display: flex;
   flex-flow: column nowrap;
 }
-.question-item,
-.answer-header {
+.question-item {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+.answer-header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
 }
 .interaction {
   display: flex;
@@ -48,8 +52,4 @@
   margin: 10px;
   max-width: 25%;
   max-height: 25%;
-}
-
-.answer-area {
-
 }
