@@ -1,4 +1,5 @@
 import React from "react";
+import CardsList from './components/CardsList.jsx'
 
 class Related extends React.Component {
   constructor(props) {
@@ -6,7 +7,11 @@ class Related extends React.Component {
   }
 
   render() {
-    return <div>hi</div>;
+    return (
+      <div>
+        <CardsList />
+      </div>
+    );
   }
 }
 
