@@ -13,10 +13,3 @@ html {
 body {
   box-sizing: border-box;
 }
-
-#app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
