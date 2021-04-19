@@ -1,11 +1,8 @@
 import React from "react";
-
 import QuestionList from './components/QuestionList.jsx';
 import Search from './components/Search.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
 import AddQuestion from './components/AddQuestion.jsx';
-import sampleData from '../../SampleData.js';
-
 import Question from './components/Questions.jsx';
 import sampleData from '../../SampleData.js';
 
