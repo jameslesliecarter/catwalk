@@ -12,7 +12,7 @@ class Overview extends React.Component {
 
   render() {
     return (
-     <div>
+     <div className='overview-widget'>
        <h4>Temp Place header for Overview</h4>
        <ProductInfo products={this.state.products}/>
     </div>
