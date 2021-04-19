@@ -7,7 +7,6 @@ import AddQuestion from './components/AddQuestion.jsx';
 import sampleData from '../../SampleData.js';
 
 import Question from './components/Questions.jsx';
-import sampleData from '../../SampleData.js';
 
 
 class QandA extends React.Component {
