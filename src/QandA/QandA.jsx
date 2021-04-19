@@ -1,9 +1,9 @@
 import React from "react";
-import QuestionList from './components/QuestionList.jsx';
 import Search from './components/Search.jsx';
+import QuestionList from './components/QuestionList.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
 import AddQuestion from './components/AddQuestion.jsx';
-import Question from './components/Questions.jsx';
+
 import sampleData from '../../SampleData.js';
 
 
@@ -16,20 +16,19 @@ class QandA extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className="search-bar">
+      <div className="q-and-a-widget">
+        <div>
           <Search />
         </div>
         <div className="questions-and-answers">
           <QuestionList questions={this.state.questions} />
         </div>
-        <div>
+        <div className="more-questions">
           <MoreQuestions />
         </div>
-        <div>
+        <div className="add-question">
           <AddQuestion />
         </div>
-        <Question questions={this.state.questions} />
       </div>
     )
   }
