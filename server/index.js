@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 //const colors = require('colors'); // for error/warning colors
 
 
@@ -10,6 +11,7 @@ app.listen(port, () => { console.log(`server listening on port ${port}`); });
 
 // EVERY REQ
 app.use(express.json());
+app.use(cors());
 // logger hits first in chain (on all REQs)
 app.use((req, res, next) => {
   console.log(`${req.method} request to ${req.originalUrl}`);
@@ -35,3 +37,5 @@ const products = require('./routes/products.js');
 app.use('/products', products);
 
 // QnA REQs ================================================================ //
+const questions = require('./routes/questions.js');
+app.use('/qa/questions', questions);

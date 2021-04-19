@@ -4,7 +4,7 @@ const Answer = (props) => {
 
   return (
     <div>
-      <div class="answer-text">
+      <div className="answer-text">
         Answer text goes here this is from props
       </div>
       <div>
