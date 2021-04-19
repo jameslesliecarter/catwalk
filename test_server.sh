@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 # generics
-curl 'http://localhost:9000/'
-curl 'http://localhost:9000/?page=1&count=5'
-curl 'http://localhost:9000/?page=2&count=3'
 
 # products
 if [ "$1" = "products" ]; then
