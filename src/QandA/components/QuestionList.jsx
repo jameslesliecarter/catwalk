@@ -1,23 +1,22 @@
 import React from 'react';
+import QuestionItem from './QuestionItem.jsx';
 import Answer from './Answer.jsx';
 
-const Questions = (props) => {
+const QuestionList = (props) => {
   return (
     <div>
       {props.questions.map((question) => {
         return (
         <div>
-          <div className="question">
-            <label>Question: </label>
-            {question.question_body}
+          <div className="question-container container">
+            <QuestionItem question={question}/>
           </div>
-          <div className="answer">
-            <label>Asker: </label>
-            <Answer />
+          <div className="answer-container container">
+            <Answer  question={question}/>
           </div>
         </div>
       )})}
     </div>
-  )
-}
-export default Questions
+  );
+};
+export default QuestionList;
