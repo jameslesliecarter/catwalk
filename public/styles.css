@@ -1,0 +1,55 @@
+.q-and-a-widget {
+  display: flex;
+  flex-flow: column wrap;
+  border: 1px solid red;
+}
+.btn {
+  margin: 0 5px 0 5px;
+  border: 1px solid black;
+}
+.container {
+  margin: 5px;
+}
+.questions-and-answers {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.question-item,
+.answer-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.interaction {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.search-bar {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.search-bar input {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+}
+
+.photo-list {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.photo-list img {
+  margin: 10px;
+  max-width: 25%;
+  max-height: 25%;
+}
+
+.answer-area {
+
+}

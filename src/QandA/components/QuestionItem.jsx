@@ -2,16 +2,20 @@ import React from 'react';
 
 const QuestionItem = (props) => {
   return (
-    <div>
-      <div>
-        Question body goes here
+    <div className="question-item">
+      <div className="question-body">
+        Question Body Goes Here
       </div>
-      <div>
-        Helpful button goes here
-      </div>
-      <div>
-        <a href='#'>Add Answer Link goes here</a>
+      <div className="question-interaction interaction">
+        <div className="helpful-btn btn">
+          Helpful btn
+        </div>
+        <div className="add-answer-btn btn">
+          Add Answer btn
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default QuestionItem;
