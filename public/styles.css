@@ -124,3 +124,11 @@ body {
   max-width: 25%;
   max-height: 25%;
 }
+
+.overview-widget {
+  margin: 40px
+}
+
+.overview-widget-productInfo {
+  text-align: right;
+}
