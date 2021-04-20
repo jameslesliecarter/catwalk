@@ -7,9 +7,12 @@ const Answer = (props) => {
     <div className="answer-area">
       <div className="answer-header">
         <div className="answer-text">
-          Answer text goes here this is from props
+          <span className="answer-icon">A: </span>{props.answer.body}
         </div>
         <div className="answer-interaction interaction">
+        <div className="user-info">
+          by: {props.answer.answerer_name}
+        </div>
           <div className="helpful-btn btn">
             Helpful btn
           </div>
@@ -18,12 +21,9 @@ const Answer = (props) => {
           </div>
         </div>
       </div>
-      <div className="user-info">
-        User information
-      </div>
       <div className="photo-details">
         Photo details go here if they exist
-        <Photos photos={[{image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}, {image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}, {image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}, {image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}, {image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}, {image_url: 'https://www.innovadiscs.com/wp-content/uploads/2015/06/course-target-featured.jpg'}]}/>
+        <Photos photos={[{image_url: 'https://source.unsplash.com/1600x900/?corgi'}, {image_url: 'https://source.unsplash.com/1600x900/?puppy'}, {image_url: 'https://source.unsplash.com/1600x900/?springtime'}, {image_url: 'https://source.unsplash.com/1600x900/?frisbee'}, {image_url: 'https://source.unsplash.com/1600x900/?corgi'}, {image_url: 'https://source.unsplash.com/1600x900/?autumn'}]}/>
       </div>
     </div>
   )
