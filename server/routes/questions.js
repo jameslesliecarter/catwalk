@@ -32,7 +32,16 @@ router.route('/')
       console.error('\n/questions/ ax error:\n', error);
       res.end('error in /:product_id');
     });
-
+  })
+  .post((req, res, next) => {
+    ax.post('/', req.body)
+    .then((response) => {
+      console.log('Question was created: ', response.data === "Created");
+    })
+    .catch((error) => {
+      console.error('POST ERROR TO HEROKU: ', error)
+    });
+    res.end();
   });
 
 
