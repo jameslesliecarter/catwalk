@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-//const colors = require('colors'); // for error/warning colors
-
 
 // SETUP =================================================================== //
 // setup Expressjs server instance
