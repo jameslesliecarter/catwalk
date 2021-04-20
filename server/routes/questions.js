@@ -57,5 +57,19 @@ router.route('/:question_id/answers')
     });
   });
 
+router.route('/:question_id/helpful')
+  .put((req, res, next) => {
+    ax.put(`/${req.body.question_id}/helpful`,
+    req.body)
+    .then((response) => {
+      console.log('We\'ve created a helpful input: ', response.status === 204);
+      res.end();
+    })
+    .catch((error) => {
+      console.error('You weren\'t very helpful, were you: ', error);
+      res.end();
+    });
+  });
+
 
 module.exports = router;
