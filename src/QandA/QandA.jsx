@@ -21,7 +21,7 @@ class QandA extends React.Component {
 
 
   fetchQuestions() {
-    axios.get('qa/questions/?product_id=19089&page=1&count=30')
+    axios.get('qa/questions/?product_id=19093&page=1&count=30')
     .then((data) => {
       this.setState({
         questions: data.data.results

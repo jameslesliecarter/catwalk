@@ -42,3 +42,5 @@ app.use('/reviews', reviews);
 // QnA REQs ================================================================ //
 const questions = require('./routes/questions.js');
 app.use('/qa/questions', questions);
+const answers = require('./routes/answers.js');
+app.use('/qa/answers', answers);

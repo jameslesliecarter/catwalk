@@ -49,8 +49,6 @@ router.route('/:question_id/answers')
   .get((req, res, next) => {
     ax.get(`/${req.params.question_id}/answers/?${req.page}&${req.count}`)
     .then((response) => {
-      //console.log('response: ', response.data.results);
-      console.log('query: ', req.query);
       res.send(response.data.results);
       res.end();
     })
