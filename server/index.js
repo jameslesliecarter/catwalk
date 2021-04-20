@@ -1,6 +1,5 @@
 const express = require('express');
-//const colors = require('colors'); // for error/warning colors
-
+const cors = require('cors');
 
 // SETUP =================================================================== //
 // setup Expressjs server instance
@@ -9,6 +8,7 @@ let port = 9000;
 app.listen(port, () => { console.log(`server listening on port ${port}`); });
 
 // EVERY REQ
+app.use(cors());
 app.use(express.json());
 // logger hits first in chain (on all REQs)
 app.use((req, res, next) => {
