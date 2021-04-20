@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Search from './components/Search.jsx';
 import QuestionList from './components/QuestionList.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
@@ -11,8 +12,27 @@ class QandA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: sampleData.sampleQuestions[0].results
+      questions: [],
+      product_id: ''
     }
+    this.fetchQuestions = this.fetchQuestions.bind(this);
+  }
+
+
+  fetchQuestions() {
+    axios.get('http://localhost:9000/qa/questions/?product_id=19089&page=1&count=5')
+    .then((data) => {
+      this.setState({
+        questions: data.data.results
+      });
+    })
+    .catch((err) => {
+      console.log('QA ERROR: ', err);
+    });
+  }
+
+  componentDidMount() {
+    this.fetchQuestions();
   }
   render() {
     return (

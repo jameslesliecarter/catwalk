@@ -8,6 +8,7 @@ let port = 9000;
 app.listen(port, () => { console.log(`server listening on port ${port}`); });
 
 // EVERY REQ
+app.use(express.static('./public'));
 app.use(cors());
 app.use(express.json());
 // logger hits first in chain (on all REQs)
@@ -35,3 +36,5 @@ const products = require('./routes/products.js');
 app.use('/products', products);
 
 // QnA REQs ================================================================ //
+const questions = require('./routes/questions.js');
+app.use('/qa/questions', questions);
