@@ -15,10 +15,10 @@ let ax = axios.create({
 
 router.get((req, res) => {
   ax.get('/')
-    .then(function (response) => {
+    .then((response) => {
       res.status(response.status).send(response.data);
     })
-    .catch(function (error) => {
+    .catch((error) => {
       console.error('\nerror in /cart ax get:\n', error);
       res.send('error in cart ax get');
     });
@@ -26,14 +26,14 @@ router.get((req, res) => {
 
 router.post((req, res) => {
   ax.post('/', { 'sku_id': req.body.sku_id })
-    .then(function (response) => {
+    .then((response) => {
       res.status(response.status).send(response.statusText);
     })
-    .catch(function (error) => {
+    .catch((error) => {
       console.error('\nerror in /cart ax post:\n', error);
       res.send('error in cart ax post');
     });
 });
 
-*/
+
 module.exports = router;
