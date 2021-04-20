@@ -45,7 +45,6 @@ router.route('/')
       });
   })
 
-
 // /:product_id ENDpoint, that's why we use .route()
 // and this is where we deal with res
 router.route('/meta')
@@ -60,28 +59,35 @@ router.route('/meta')
       });
 })
 
-router.route('/:product_id/styles')
-  .get((req, res) => {
-    ax.get(`/${req.id}/styles`)
+router.param('review_id', (req, res, next) => {
+ req.review_id = req.params.review_id;
+ next()
+})
+
+router.route('/:review_id/helpful')
+  .put((req, res) => {
+    ax.put(`/${req.review_id}/helpful`)
       .then(function (response) {
-        res.send(response.data);
+        res.status(response.status);
+        res.end();
       })
-      .catch(function(error) {
-        console.error('\n/reviews/:product_id/styles ax err:\n', error);
-        res.send('error in /reviews/:product_id/styles');
-      });
+  .catch(function(error) {
+    console.error('\n/reviews/:review_id/helpful ax err:\n');
+    res.send('error in /reviews/:review_id/helpful');
+    });
   });
 
-router.route('/:product_id/related')
-  .get((req, res) => {
-    ax.get(`/${req.id}/related`)
+  router.route('/:review_id/report')
+  .put((req, res) => {
+    ax.put(`/${req.review_id}/helpful`)
       .then(function (response) {
-        res.send(response.data);
+        res.status(response.status);
+        res.end();
       })
-      .catch(function(error) {
-        console.error('\n/reviews/:product_id/styles ax err:\n', error);
-        res.send('error in /reviews/:product_id/styles');
-      });
+  .catch(function(error) {
+    console.error('\n/reviews/:review_id/report ax err:\n');
+    res.send('error in /reviews/:review_id/report');
+    });
   });
 
 module.exports = router;
