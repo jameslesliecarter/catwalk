@@ -6,17 +6,16 @@ import _ from 'underscore';
 const QuestionList = (props) => {
   return (
     <div>
-      {props.questions.map((question) => {
+      {props.questions.map((question, i) => {
         return (
-        <div>
+        <div key={i}>
           <div className="question-container container">
-            <QuestionItem question={question}/>
+            <QuestionItem key={i} question={question}/>
           </div>
           <div className="answer-container container">
-            {_.map(props.question.answers, (answer) => {
-              return (
-              <Answer answer={answer} />
-            )})}
+            {Object.keys(question.answers).map((k,j) => {
+              return <Answer answer={j} key={k} />
+            })}
           </div>
         </div>
       )})}
