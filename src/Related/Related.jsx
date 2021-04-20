@@ -1,5 +1,6 @@
 import React from "react";
-import CardsList from './components/CardsList.jsx'
+import ListCarousel from '../Widgets/ListCarousel.jsx';
+import {images} from '../SampleImages.js';
 
 class Related extends React.Component {
   constructor(props) {
@@ -8,8 +9,11 @@ class Related extends React.Component {
 
   render() {
     return (
-      <div>
-        <CardsList />
+      <div className="related">
+        <h2 className="related-text">RELATED PRODUCTS</h2>
+        {/* <ListCarousel images={images}/> */}
+        <h2 className="outfit-text">YOUR OUTFIT</h2>
+        {/* <ListCarousel images={images}/> */}
       </div>
     );
   }
