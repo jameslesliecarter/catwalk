@@ -35,6 +35,10 @@ app.put('/', (req, res) => {
 const products = require('./routes/products.js');
 app.use('/products', products);
 
+// Reviews REQs ================================================================ //
+const reviews = require('./routes/reviews.js');
+app.use('/reviews', reviews);
+
 // QnA REQs ================================================================ //
 const questions = require('./routes/questions.js');
 app.use('/qa/questions', questions);
