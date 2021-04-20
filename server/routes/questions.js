@@ -37,6 +37,7 @@ router.route('/')
     ax.post('/', req.body)
     .then((response) => {
       console.log('Question was created: ', response.data === "Created");
+      res.end();
     })
     .catch((error) => {
       console.error('POST ERROR TO HEROKU: ', error)
@@ -45,8 +46,21 @@ router.route('/')
   });
 
 router.route('/:question_id/answers')
+  .get((req, res, next) => {
+    ax.get(`/${req.params.question_id}/answers/?${req.page}&${req.count}`)
+    .then((response) => {
+      //console.log('response: ', response.data.results);
+      console.log('query: ', req.query);
+      res.send(response.data.results);
+      res.end();
+    })
+    .catch((error) => {
+      console.error('Answer GET error: ', error);
+      res.end();
+    });
+  })
   .post((req, res, next) => {
-    ax.post(`/${req.body.question_id}/answers`, req.body)
+    ax.post(`/${req.body.question_id}/answers/`, req.body)
     .then((response) => {
       console.log('We\'ve been created, y\'all: ', response.data === 'Created');
       res.end();
@@ -57,10 +71,22 @@ router.route('/:question_id/answers')
     });
   });
 
+router.route('/:question_id/report')
+  .put((req, res, next) => {
+    ax.put(`/${req.body.question_id}/report`)
+    .then((response) => {
+      console.log('We\'ve successfully reported the question ', response.status === 204);
+      res.end();
+    })
+    .catch((error) => {
+      console.error('Issue reporting question: ', error);
+      res.end();
+    });
+  });
+
 router.route('/:question_id/helpful')
   .put((req, res, next) => {
-    ax.put(`/${req.body.question_id}/helpful`,
-    req.body)
+    ax.put(`/${req.body.question_id}/helpful`)
     .then((response) => {
       console.log('We\'ve created a helpful input: ', response.status === 204);
       res.end();
