@@ -11,6 +11,15 @@ class Overview extends React.Component {
     }
   }
 
+  componentDidMount () {
+    axios.get('/')
+     .then((resData) => {
+       this.setState({
+          data: resData.data
+         });
+      });
+    }
+
   render() {
     return (
      <div className='overview-widget'>
