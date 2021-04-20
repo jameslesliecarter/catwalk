@@ -36,6 +36,6 @@ app.use('/products', products);
 
 // Reviews REQs ================================================================ //
 const reviews = require('./routes/reviews.js');
-app.use('/reviews/', reviews);
+app.use('/reviews', reviews);
 
 // QnA REQs ================================================================ //
