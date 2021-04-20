@@ -1,7 +1,6 @@
 import React from 'react';
 import QuestionItem from './QuestionItem.jsx';
 import Answer from './Answer.jsx';
-import _ from 'underscore';
 
 const QuestionList = (props) => {
   return (
@@ -14,7 +13,7 @@ const QuestionList = (props) => {
           </div>
           <div className="answer-container container">
             {Object.keys(question.answers).map((k,j) => {
-              return <Answer answer={j} key={k} />
+              return <Answer answer={question.answers[k]} key={j} />
             })}
           </div>
         </div>

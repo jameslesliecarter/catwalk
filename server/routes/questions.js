@@ -22,17 +22,29 @@ router.use((req, res, next) => {
 })
 
 // root ENDpoint route
-router.use('/', (req, res) => {
-  ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
-  .then(function (response) {
-    res.send(response.data);
-  })
-  .catch(function (error) {
-    console.error('\n/questions/ ax err:\n', error);
-    console.error('code: ', error.code);
-    res.end('error in /:product_id');
+// router.use('/', (req, res) => {
+//   ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
+//   .then(function (response) {
+//     res.send(response.data);
+//   })
+//   .catch(function (error) {
+//     console.error('\n/questions/ ax err:\n', error);
+//     console.error('code: ', error.code);
+//     res.end('error in /:product_id');
+//   });
+// });
+
+router.route('/')
+  .get((req, res, next) => {
+    ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      console.error('\n/questions/ ax error:\n', error);
+      res.end('error in /:product_id');
+    });
   });
-});
 
 
 module.exports = router;

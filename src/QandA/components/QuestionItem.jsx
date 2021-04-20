@@ -4,7 +4,7 @@ const QuestionItem = (props) => {
   return (
     <div className="question-item">
       <div className="question-body">
-        {props.question.question_body}
+        <span className="question-icon">Q: </span>{props.question.question_body}
       </div>
       <div className="question-interaction interaction">
         <div className="helpful-btn btn">
