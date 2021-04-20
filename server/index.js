@@ -10,7 +10,6 @@ app.listen(port, () => { console.log(`server listening on port ${port}`); });
 // EVERY REQ
 app.use(cors());
 app.use(express.json());
-app.use(cors());
 // logger hits first in chain (on all REQs)
 app.use((req, res, next) => {
   console.log(`${req.method} request to ${req.originalUrl}`);
