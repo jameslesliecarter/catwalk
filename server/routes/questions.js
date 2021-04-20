@@ -13,15 +13,17 @@ let ax = axios.create({
 
 // middleware applied to all REQs
 router.use((req, res, next) => {
-  req.page = req.query.page || '';
-  req.count = req.query.count || '';
+  // Ternary operator to use page and count on condition that
+  // they are provided. Otherwise use server default.
+  req.page = req.query.page ? `&page=${req.query.page}` : '';
+  req.count = req.query.count ? `&count=${req.query.count}` : '';
   req.product_id = req.query.product_id || null;
   next();
 })
 
 // root ENDpoint route
 router.use('/', (req, res) => {
-  ax.get(`/?page=${req.page}&count=${req.count}&product_id=${req.product_id}`)
+  ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
   .then(function (response) {
     res.send(response.data);
   })

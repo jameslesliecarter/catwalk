@@ -23,7 +23,9 @@ class QandA extends React.Component {
   fetchQuestions() {
     axios.get('http://localhost:9000/qa/questions/?product_id=19089&page=1&count=5')
     .then((data) => {
-      console.log(data);
+      this.setState({
+        questions: data.data.results
+      });
     })
     .catch((err) => {
       console.log('QA ERROR: ', err);
