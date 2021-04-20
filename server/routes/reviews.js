@@ -12,9 +12,8 @@ let ax = axios.create({
 });
 
 // middleware applied to all /:product_id URIs
-router.get((req, res, next) => {
-  if (!req.query.product_id) { res.end('product_id must be included'); }
-  req.id = req.query.product_id;
+router.use((req, res, next) => {
+  req.id = req.query.product_id
   next();
 })
 
@@ -29,22 +28,21 @@ router.route('/')
         res.send(response.data);
       })
       .catch(function (error) {
-        console.error('\n/reviews/ ax err:\n', error);
+        console.error('\n/reviews/ ax err:\n');
         res.send('error in /:product_id');
       });
   })
   .post((req, res) => {
-    const {product_id, rating, summary, body, recommend, name, email, photos, characteristics} = req.body;
-    if (!product_id || !characteristics || !rating || !recommend || !body) {
-      res.end('need more info');
-    }
     ax.post('/', req.body)
-      .then((response) => {
-        console.log(response)
-      }, (error) => {
-        console.log('this is the err');
+      .then(function (response) {
+        console.log('Did we get this response?', response.data)
+        // res.send(response.data);
         res.end()
       })
+      .catch(function(error) {
+        console.log('line 43 ax err', error.isAxiosError)
+        res.end();
+      });
   })
 
 
