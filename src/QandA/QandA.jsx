@@ -15,7 +15,6 @@ class QandA extends React.Component {
       questions: sampleData.sampleQuestions[0].results,
       product_id: ''
     }
-
     this.fetchQuestions = this.fetchQuestions.bind(this);
   }
 
