@@ -4,7 +4,7 @@
   "description": "Front-End Capstone Project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack serve",
+    "build": "webpack --config webpack.config.js",
     "serve": "nodemon server/index.js",
     "test": "jest --watch",
     "test:coverage": "jest --coverage --colors"

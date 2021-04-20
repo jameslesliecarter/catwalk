@@ -5,14 +5,16 @@ import Answer from './Answer.jsx';
 const QuestionList = (props) => {
   return (
     <div>
-      {props.questions.map((question) => {
+      {props.questions.map((question, i) => {
         return (
-        <div>
+        <div key={i}>
           <div className="question-container container">
-            <QuestionItem question={question}/>
+            <QuestionItem key={i} question={question}/>
           </div>
           <div className="answer-container container">
-            <Answer  question={question}/>
+            {Object.keys(question.answers).map((k,j) => {
+              return <Answer answer={question.answers[k]} key={j} />
+            })}
           </div>
         </div>
       )})}

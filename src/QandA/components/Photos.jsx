@@ -4,9 +4,9 @@ const Photos = (props) => {
   if (props.photos.length > 0) {
     return (
       <div className="photo-list">
-        {props.photos.map((photo) => {
+        {props.photos.map((photo, i) => {
           return (
-            <img src={`${photo.image_url}`} />
+            <img key={i} src={`${photo.image_url}`} />
             )
         })}
       </div>
