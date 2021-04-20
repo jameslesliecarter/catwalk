@@ -20,10 +20,10 @@ router.use((req, res, next) => {
 // root ENDpoint route
 router.route('/')
   .get((req, res) => {
-    req.page = req.query.page || 1;
-    req.count = req.query.count || 5;
+    req.page = req.query.page ? `&page=${req.query.page}` : '';
+    req.count = req.query.count ? `&count=${req.query.count}` : '';
     req.sort = req.query.sort || 'helpful';
-    ax.get((`/?page=${req.page}&count=${req.count}&sort=${req.sort}&product_id=${req.id}`))
+    ax.get((`${req.page} ${req.count}&sort=${req.sort}&product_id=${req.id}`))
       .then(function (response) {
         res.send(response.data);
       })
