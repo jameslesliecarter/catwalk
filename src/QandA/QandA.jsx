@@ -12,7 +12,7 @@ class QandA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: sampleData.sampleQuestions[0].results,
+      questions: [],
       product_id: ''
     }
     this.fetchQuestions = this.fetchQuestions.bind(this);
