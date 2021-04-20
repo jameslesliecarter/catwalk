@@ -32,15 +32,15 @@ class QandA extends React.Component {
     });
   }
 
-  postQuestion() {
+  postQuestion(name, email, body, product_id) {
     axios.post('/qa/questions', {
-      name: "JUM",
-      email: "JUM@CARROT.BIZ",
-      body: "YES YES AND MORE YES",
-      product_id: 19089
+      name: name,
+      email: email,
+      body: body,
+      product_id: product_id
     })
     .then((response) => {
-      console.log('Body movin and groovin ');
+      console.log('hey it works')
     })
     .catch((response) => {
       console.log('Not so moovin, ', error);
@@ -49,7 +49,7 @@ class QandA extends React.Component {
 
   componentDidMount() {
     this.fetchQuestions();
-    //this.postQuestion();
+    // this.postQuestion();
   }
   render() {
     return (

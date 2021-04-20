@@ -44,5 +44,18 @@ router.route('/')
     res.end();
   });
 
+router.route('/:question_id/answers')
+  .post((req, res, next) => {
+    ax.post(`/${req.body.question_id}/answers`, req.body)
+    .then((response) => {
+      console.log('We\'ve been created, y\'all: ', response.data === 'Created');
+      res.end();
+    })
+    .catch((error) => {
+      console.error('Answer not created. Error: ', error);
+      res.end();
+    });
+  });
+
 
 module.exports = router;
