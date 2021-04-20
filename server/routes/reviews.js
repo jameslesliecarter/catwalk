@@ -23,7 +23,7 @@ router.route('/')
     req.page = req.query.page ? `&page=${req.query.page}` : '';
     req.count = req.query.count ? `&count=${req.query.count}` : '';
     req.sort = req.query.sort || 'helpful';
-    ax.get((`${req.page} ${req.count}&sort=${req.sort}&product_id=${req.id}`))
+    ax.get((`?product_id=${req.id}${req.page}${req.count}&sort=${req.sort}`))
       .then(function (response) {
         res.send(response.data);
       })
