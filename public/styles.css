@@ -126,14 +126,18 @@ body {
 }
 
 .overview-widget {
+  text-align: left;
   margin: 40px;
   border-color: cadetblue;
   border-style: solid;
 }
 
 .overview-widget-productInfo {
-  margin: 10px;
-  max-width: 25%;
-  max-height: 25%;
-
+  min-height: 150px;
+  margin: 20px;
+  list-style: none;
+  border: 1px solid #77777769;
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  padding: 30px 50px 0px 50px;
 }
