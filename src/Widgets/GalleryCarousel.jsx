@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 
 class GalleryCarousel extends React.Component {
   constructor(props) {
@@ -23,15 +23,17 @@ class GalleryCarousel extends React.Component {
   render() {
     return (
       <section className="carousel carousel-gallery">
-        {this.state.currentImg === 0 ? <></> : <FaArrowAltCircleLeft className="arrow-left" onClick={this.prevSlide} />}
+        {this.state.currentImg === 0 ? <></> : <AiOutlineArrowLeft className="arrow-left" onClick={this.prevSlide} />}
+
         {this.props.images.map((image, index) => {
           return (
             <div className={index === this.state.currentImg ? 'slide active' : 'slide'} key={index}>
-              {index === this.state.currentImg && (<img src={image.image} alt="travel" className="image" />)}
+              {index === this.state.currentImg && (<img src={image.url} className="image" />)}
             </div>
           )
         })}
-        {this.state.currentImg === this.props.images.length - 1? <></> : <FaArrowAltCircleRight className="arrow-right" onClick={this.nextSlide} />}
+
+        {this.state.currentImg === this.props.images.length - 1? <></> : <AiOutlineArrowRight className="arrow-right" onClick={this.nextSlide} />}
       </section>
     )
   }
