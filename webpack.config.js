@@ -10,6 +10,11 @@ module.exports = {
     rules: [
       {
         test: /\.jsx$/,
+        enforce: 'pre',
+        use: ['source-map-loader']
+      },
+      {
+        test: /\.jsx$/,
         exclude: '/node_modules/',
         use: {
           loader: 'babel-loader',
@@ -21,10 +26,11 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: './public'
-  },
   watch: true,
+  watchOptions: {
+    ignored: '**/node_modules',
+    poll: 500,
+  },
   mode: 'development',
   devtool: 'source-map',
   resolve: {
