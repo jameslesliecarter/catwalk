@@ -1,7 +1,7 @@
 import React from 'react';
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
 
-class Carousel extends React.Component {
+class GalleryCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <section className="slider">
+      <section className="carousel carousel-gallery">
         {this.state.currentImg === 0 ? <></> : <FaArrowAltCircleLeft className="arrow-left" onClick={this.prevSlide} />}
         {this.props.images.map((image, index) => {
           return (
@@ -37,4 +37,4 @@ class Carousel extends React.Component {
   }
 }
 
-export default Carousel;
+export default GalleryCarousel;
