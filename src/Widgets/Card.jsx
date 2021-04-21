@@ -1,12 +1,11 @@
 import React from 'react';
-import GalleryCarousel from '../../Widgets/GalleryCarousel.jsx';
+import GalleryCarousel from './GalleryCarousel.jsx';
 
 const Card = ({details, image, imgClick}) => {
 
   return (
     <div className="card" onClick={imgClick}>
       {/* <GalleryCarousel className="card-images" images={images}/> */}
-      <img src={image}/>
 
       {details ?
       <div className="card-info">
