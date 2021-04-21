@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../Related/components/Card.jsx';
-import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
+import Arrow from './Arrow.jsx';
 
 class ListCarousel extends React.Component {
   constructor(props) {
@@ -10,13 +10,11 @@ class ListCarousel extends React.Component {
   render() {
     return (
       <section className="carousel carousel-list">
-        <FaArrowAltCircleLeft className="arrow-left" />
-        {this.props.images.map((image, index) => {
+        {this.props.related.map((product, index) => {
           return (
-            <Card image={image} key={index} images={images}/>
+            <Card key={index} details={product} />
           )
         })}
-        <FaArrowAltCircleRight />
       </section>
     )
   }
