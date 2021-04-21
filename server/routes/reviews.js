@@ -13,7 +13,7 @@ let ax = axios.create({
 
 // middleware applied to all /:product_id URIs
 router.use((req, res, next) => {
-  req.id = req.query.product_id
+  req.id = req.query.product_id;
   next();
 })
 
@@ -28,8 +28,12 @@ router.route('/')
         res.send(response.data);
       })
       .catch(function (error) {
-        console.error('\n/reviews/ ax err:\n');
-        res.send('error in /:product_id');
+        console.error('\n=================\n');
+        console.error('\n/reviews/ ax err:');
+        console.error(error);
+        console.error('\n/reviews/ ax err:');
+        console.error('\n=================\n');
+        res.end('error in /:product_id');
       });
   })
   .post((req, res) => {
