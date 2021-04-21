@@ -26,7 +26,8 @@ router.route('/')
   .get((req, res, next) => {
     ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
     .then((response) => {
-      res.send(response.data);
+      res.status(response.status);
+      res.json(response.data);
     })
     .catch((error) => {
       console.error('\n/questions/ ax error:\n', error);
@@ -36,20 +37,22 @@ router.route('/')
   .post((req, res, next) => {
     ax.post('/', req.body)
     .then((response) => {
-      console.log('Question was created: ', response.data === "Created");
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
       console.error('POST ERROR TO HEROKU: ', error)
+      res.status(response.status);
+      res.end();
     });
-    res.end();
   });
 
 router.route('/:question_id/answers')
   .get((req, res, next) => {
     ax.get(`/${req.params.question_id}/answers/?${req.page}&${req.count}`)
     .then((response) => {
-      res.send(response.data.results);
+      res.json(response.data.results);
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
@@ -58,22 +61,24 @@ router.route('/:question_id/answers')
     });
   })
   .post((req, res, next) => {
-    ax.post(`/${req.body.question_id}/answers/`, req.body)
+    ax.post(`/${req.params.question_id}/answers/`, req.body)
     .then((response) => {
-      console.log('We\'ve been created, y\'all: ', response.data === 'Created');
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
       console.error('Answer not created. Error: ', error);
+      res.status(response.status);
       res.end();
     });
   });
 
 router.route('/:question_id/report')
   .put((req, res, next) => {
-    ax.put(`/${req.body.question_id}/report`)
+    ax.put(`/${req.params.question_id}/report`)
     .then((response) => {
       console.log('We\'ve successfully reported the question ', response.status === 204);
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
@@ -84,15 +89,27 @@ router.route('/:question_id/report')
 
 router.route('/:question_id/helpful')
   .put((req, res, next) => {
-    ax.put(`/${req.body.question_id}/helpful`)
+    ax.put(`/${req.params.question_id}/helpful`)
     .then((response) => {
-      console.log('We\'ve created a helpful input: ', response.status === 204);
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
       console.error('You weren\'t very helpful, were you: ', error);
       res.end();
     });
+  });
+
+router.route('/test')
+  .get((req, res) => {
+    res.json({message: 'pass!'});
+    res.status(200);
+    res.end();
+  })
+  .post((req, res) => {
+    res.status(200);
+    res.send(req.body);
+    res.end();
   });
 
 

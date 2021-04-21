@@ -13,8 +13,9 @@ let ax = axios.create({
 
 // sku should be attached to req (it's in overview/products)
 
-router.get((req, res) => {
-  ax.get('/')
+router.route('/')
+  .get((req, res, next) => {
+    ax.get('/')
     .then((response) => {
       res.status(response.status).send(response.data);
     })
@@ -22,10 +23,9 @@ router.get((req, res) => {
       console.error('\nerror in /cart ax get:\n', error);
       res.send('error in cart ax get');
     });
-});
-
-router.post((req, res) => {
-  ax.post('/', { 'sku_id': req.body.sku_id })
+  })
+  .post((req, res, next) => {
+    ax.post('/', { 'sku_id': req.body.sku_id })
     .then((response) => {
       res.status(response.status).send(response.statusText);
     })
@@ -33,7 +33,7 @@ router.post((req, res) => {
       console.error('\nerror in /cart ax post:\n', error);
       res.send('error in cart ax post');
     });
-});
+  });
 
 
 module.exports = router;
