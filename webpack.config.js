@@ -24,6 +24,7 @@ module.exports = {
   devServer: {
     contentBase: './public'
   },
+  watch: true,
   mode: 'development',
   devtool: 'source-map',
   resolve: {

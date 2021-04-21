@@ -16,11 +16,12 @@ class QandA extends React.Component {
       product_id: ''
     }
     this.fetchQuestions = this.fetchQuestions.bind(this);
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
 
   fetchQuestions() {
-    axios.get('http://localhost:9000/qa/questions/?product_id=19089&page=1&count=5')
+    axios.get('qa/questions/?product_id=19093&page=1&count=30')
     .then((data) => {
       this.setState({
         questions: data.data.results
@@ -31,8 +32,24 @@ class QandA extends React.Component {
     });
   }
 
+  postQuestion(name, email, body, product_id) {
+    axios.post('/qa/questions', {
+      name: name,
+      email: email,
+      body: body,
+      product_id: product_id
+    })
+    .then((response) => {
+      console.log('hey it works')
+    })
+    .catch((response) => {
+      console.log('Not so moovin, ', error);
+    });
+  }
+
   componentDidMount() {
     this.fetchQuestions();
+    // this.postQuestion();
   }
   render() {
     return (

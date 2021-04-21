@@ -18,23 +18,15 @@ app.use((req, res, next) => {
   next();
 });
 
-  // EVERY REQ METHODs
-app.get('/', (req, res) => {
-  res.end('cannot GET to root');
-});
+  // REQ methods to root
+app.get('/', (req, res) => { res.end('cannot GET to root'); });
+app.post('/', (req, res) => { res.end('cannot POST to root'); });
+app.put('/', (req, res) => { res.end('cannot PUT to root'); });
 
-app.post('/', (req, res) => {
-  res.end('cannot POST to root');
-});
-
-app.put('/', (req, res) => {
-  res.end('cannot PUT to root');
-});
-
-// Product REQs ============================================================ //
-const products = require('./routes/products.js');
-app.use('/products', products);
-
-// QnA REQs ================================================================ //
-const questions = require('./routes/questions.js');
-app.use('/qa/questions', questions);
+// routes =================================================================== //
+app.use('/interactions', require('./routes/interactions.js'));
+app.use('/products', require('./routes/products.js'));
+app.use('/reviews', require('./routes/reviews.js'));
+app.use('/qa/questions', require('./routes/questions.js'));
+app.use('/qa/answers', require('./routes/answers.js'));
+app.use('/cart', require('./routes/cart.js'));
