@@ -26,7 +26,10 @@
     ]
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "setupFiles": [
+      "<rootDir>/src/Tests/enzyme.setup.js"
+    ]
   },
   "dependencies": {
     "@babel/core": "^7.13.15",
