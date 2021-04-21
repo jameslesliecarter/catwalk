@@ -13,15 +13,16 @@ class QandA extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      product_id: ''
-    }
+      product_id: '19093',
+      count: 2
+    };
     this.fetchQuestions = this.fetchQuestions.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
   }
 
 
   fetchQuestions() {
-    axios.get('qa/questions/?product_id=19093&page=1&count=30')
+    axios.get(`qa/questions/?product_id=${this.state.product_id}&page=1&count=${this.state.count}`)
     .then((data) => {
       this.setState({
         questions: data.data.results

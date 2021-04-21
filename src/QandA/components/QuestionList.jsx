@@ -1,11 +1,11 @@
 import React from 'react';
 import QuestionItem from './QuestionItem.jsx';
-import Answer from './Answer.jsx';
+import AnswerList from './AnswerList.jsx';
 
-const QuestionList = (props) => {
+const QuestionList = ({questions}) => {
   return (
     <div>
-      {props.questions.map((question, i) => {
+      {questions.map((question, i) => {
         return (
         <div key={i}>
           <div className="question-container container">
@@ -13,7 +13,7 @@ const QuestionList = (props) => {
           </div>
           <div className="answer-container container">
             {Object.keys(question.answers).map((k,j) => {
-              return <Answer answer={question.answers[k]} key={j} />
+              return <AnswerList answer={question.answers[k]} key={j} />
             })}
           </div>
         </div>
