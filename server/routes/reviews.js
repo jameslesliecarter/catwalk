@@ -45,8 +45,6 @@ router.route('/')
       });
   })
 
-// /:product_id ENDpoint, that's why we use .route()
-// and this is where we deal with res
 router.route('/meta')
   .get((req, res) => {
     ax.get(`/meta/?product_id=${req.id}`)

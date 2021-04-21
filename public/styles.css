@@ -126,9 +126,14 @@ body {
 }
 
 .overview-widget {
-  margin: 40px
+  margin: 40px;
+  border-color: cadetblue;
+  border-style: solid;
 }
 
 .overview-widget-productInfo {
-  text-align: right;
+  margin: 10px;
+  max-width: 25%;
+  max-height: 25%;
+
 }
