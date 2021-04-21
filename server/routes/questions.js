@@ -95,5 +95,12 @@ router.route('/:question_id/helpful')
     });
   });
 
+router.route('/test')
+  .get((req, res) => {
+    res.json({message: 'pass!'});
+    res.status(200);
+    res.end();
+  });
+
 
 module.exports = router;
