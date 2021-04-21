@@ -26,7 +26,8 @@ router.route('/')
   .get((req, res, next) => {
     ax.get(`/?product_id=${req.product_id}${req.page}${req.count}`)
     .then((response) => {
-      res.send(response.data);
+      res.status(response.status);
+      res.json(response.data);
     })
     .catch((error) => {
       console.error('\n/questions/ ax error:\n', error);
@@ -49,7 +50,7 @@ router.route('/:question_id/answers')
   .get((req, res, next) => {
     ax.get(`/${req.params.question_id}/answers/?${req.page}&${req.count}`)
     .then((response) => {
-      res.send(response.data.results);
+      res.json(response.data.results);
       res.end();
     })
     .catch((error) => {
