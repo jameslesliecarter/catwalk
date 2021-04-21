@@ -4,8 +4,8 @@ const cors = require('cors');
 // SETUP =================================================================== //
 // setup Expressjs server instance
 let app = express();
-let port = 9000;
-app.listen(port, () => { console.log(`server listening on port ${port}`); });
+// let port = 9000;
+// app.listen(port, () => { console.log(`server listening on port ${port}`); });
 
 // EVERY REQ
 app.use(express.static('./public'));
@@ -30,3 +30,5 @@ app.use('/reviews', require('./routes/reviews.js'));
 app.use('/qa/questions', require('./routes/questions.js'));
 app.use('/qa/answers', require('./routes/answers.js'));
 app.use('/cart', require('./routes/cart.js'));
+
+module.exports = app;

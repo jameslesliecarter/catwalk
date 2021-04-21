@@ -7,5 +7,4 @@ const AddQuestion = (props) => {
     </div>
   )
 };
-
 export default AddQuestion;

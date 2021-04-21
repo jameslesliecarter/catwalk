@@ -1,9 +1,13 @@
+import { mount, render, shallow } from 'enzyme';
 import React from 'react';
-import Questions from '../QandA/components/Questions.jsx';
+import QandA from '../QandA/QandA.jsx';
 
-describe('Questiions', () => {
-  it('Should render two labels per question', () =>{
-    const foo = true;
-    expect(foo).toBe(true);
+
+describe('App', () => {
+  it('Should render to the page', () =>{
+    const component = mount(
+      <QandA />
+    );
+    expect(component.state().questions).toHaveLength(0);
   });
 });
