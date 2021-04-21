@@ -15,6 +15,7 @@ router.route('/:answer_id/helpful')
   .put((req, res, next) => {
     ax.put(`/${req.params.answer_id}/helpful`)
     .then((response) => {
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
@@ -27,6 +28,7 @@ router.route('/:answer_id/report')
   .put((req, res, next) => {
     ax.put(`/${req.params.answer_id}/report`)
     .then((response) => {
+      res.status(response.status);
       res.end();
     })
     .catch((error) => {
