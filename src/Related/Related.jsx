@@ -1,7 +1,8 @@
 import React from "react";
 import ListCarousel from '../Widgets/ListCarousel.jsx';
 import axios from 'axios';
-import {images} from '../SampleImages.js';
+import Arrow from '../Widgets/Arrow.jsx';
+import {RiArrowRightSLine, RiArrowLeftSLine} from 'react-icons/ri';
 
 class Related extends React.Component {
   constructor(props) {
@@ -9,29 +10,37 @@ class Related extends React.Component {
     this.state = {
       relatedProducts: []
     }
-    // this.getRelatedProducts = this.getRelatedProducts.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentDidUpdate(prevProps) {
     if (this.props.related !== prevProps.related) {
       let promises = [];
-      console.log('props: ', this.props.related);
 
       this.props.related.forEach(id => {
         promises.push(axios.get(`http://localhost:9000/products/${id}`).then(response => response.data));
       });
+
       await Promise.all(promises)
       .then(results => this.setState({
         relatedProducts: results
       }));
     }
- }
+  }
+
+  handleClick(e) {
+    console.log(e);
+  }
 
   render() {
     return (
       <div className="related">
         <h2 className="related-text">RELATED PRODUCTS</h2>
-        {/* <ListCarousel related={this.props.related}/> */}
+        {/* <RiArrowRightSLine />
+        <RiArrowLeftSLine /> */}
+        <Arrow direction='left' handleClick={this.handleClick} glyph={<RiArrowLeftSLine />} />
+        <ListCarousel related={this.state.relatedProducts} />
+        <Arrow direction='right' handleClick={this.handleClick} glyph={<RiArrowRightSLine />} />
       </div>
     );
   }
