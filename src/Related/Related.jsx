@@ -17,25 +17,38 @@ class Related extends React.Component {
     if (this.props.related !== prevProps.related) {
       // let promises = [];
 
-      // this.props.related.forEach(id => {
-      //   axios
-      //   .get(`http://localhost:9000/products/${id}`)
+      this.props.related.forEach(id => {
+        axios
+        .get(`http://localhost:9000/products/${id}`)
+        .then(response => response.data)
+        .then(details => {
+          axios.get(`http://localhost:9000/products/${id}/styles`)
+          .then(response => response.data)
+          .then(styles => {
+            details.style = styles.results;
+            this.setState(prevState => ({
+              relatedProducts: prevState.relatedProducts.concat([details])
+            }))
+          })
+        })
+      });
+
+      // await Promise.all(promises).then(results => this.setState({
+      //   relatedProducts: results
+      // }));
+
+      // .then(details => {
+      //   axios.get(`http://localhost:9000/products/${id}/styles`)
       //   .then(response => response.data)
-      //   .then(details => {
-      //     axios.get(`http://localhost:9000/products/${id}/styles`)
-      //     .then(response => response.data)
-      //     .then(styles => promises.push({details, styles}))
-      //   })
-      // });
+      //   .then(styles => promises.push({details, styles}))
+      // })
 
-      // await Promise.all(promises).then(results => console.log(results));
-
-      Promise.all([
-        this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}`)),
-        this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}/styles`))
-      ]).then((responseA, responseB) => this.setState({
-          relatedProducts: {responseA, responseB}
-      }))
+      // Promise.all([
+      //   this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}`)),
+      //   this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}/styles`))
+      // ]).then((responseA, responseB) => this.setState({
+      //     relatedProducts: {responseA, responseB}
+      // }))
     }
   }
 
