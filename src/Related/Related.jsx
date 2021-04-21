@@ -14,18 +14,18 @@ class Related extends React.Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if (this.props.related !== prevProps.related) {
-      let promises = [];
+    // if (this.props.related !== prevProps.related) {
+    //   let promises = [];
 
-      this.props.related.forEach(id => {
-        promises.push(axios.get(`http://localhost:9000/products/${id}`).then(response => response.data));
-      });
+    //   this.props.related.forEach(id => {
+    //     promises.push(axios.get(`http://localhost:9000/products/${id}`).then(response => response.data));
+    //   });
 
-      await Promise.all(promises)
-      .then(results => this.setState({
-        relatedProducts: results
-      }));
-    }
+    //   await Promise.all(promises)
+    //   .then(results => this.setState({
+    //     relatedProducts: results
+    //   }));
+    // }
   }
 
   handleClick(e) {
@@ -39,7 +39,7 @@ class Related extends React.Component {
         {/* <RiArrowRightSLine />
         <RiArrowLeftSLine /> */}
         <Arrow direction='left' handleClick={this.handleClick} glyph={<RiArrowLeftSLine />} />
-        <ListCarousel related={this.state.relatedProducts} />
+        {/* <ListCarousel related={this.state.relatedProducts} /> */}
         <Arrow direction='right' handleClick={this.handleClick} glyph={<RiArrowRightSLine />} />
       </div>
     );
