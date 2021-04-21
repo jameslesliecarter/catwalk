@@ -15,16 +15,27 @@ class Related extends React.Component {
 
   async componentDidUpdate(prevProps) {
     if (this.props.related !== prevProps.related) {
-      let promises = [];
+      // let promises = [];
 
-      this.props.related.forEach(id => {
-        promises.push(axios.get(`http://localhost:9000/products/${id}`).then(response => response.data));
-      });
+      // this.props.related.forEach(id => {
+      //   axios
+      //   .get(`http://localhost:9000/products/${id}`)
+      //   .then(response => response.data)
+      //   .then(details => {
+      //     axios.get(`http://localhost:9000/products/${id}/styles`)
+      //     .then(response => response.data)
+      //     .then(styles => promises.push({details, styles}))
+      //   })
+      // });
 
-      await Promise.all(promises)
-      .then(results => this.setState({
-        relatedProducts: results
-      }));
+      // await Promise.all(promises).then(results => console.log(results));
+
+      Promise.all([
+        this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}`)),
+        this.props.related.forEach(id => axios.get(`http://localhost:9000/products/${id}/styles`))
+      ]).then((responseA, responseB) => this.setState({
+          relatedProducts: {responseA, responseB}
+      }))
     }
   }
 
@@ -36,10 +47,8 @@ class Related extends React.Component {
     return (
       <div className="related">
         <h2 className="related-text">RELATED PRODUCTS</h2>
-        {/* <RiArrowRightSLine />
-        <RiArrowLeftSLine /> */}
         <Arrow direction='left' handleClick={this.handleClick} glyph={<RiArrowLeftSLine />} />
-        <ListCarousel related={this.state.relatedProducts} />
+        {/* <ListCarousel related={this.state.relatedProducts} /> */}
         <Arrow direction='right' handleClick={this.handleClick} glyph={<RiArrowRightSLine />} />
       </div>
     );
