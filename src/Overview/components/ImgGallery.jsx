@@ -1,5 +1,5 @@
 import React from 'react';
-// import GalleryCarousel from '../../Widgets/GalleryCarousel.jsx';
+import GalleryCarousel from '../../Widgets/GalleryCarousel.jsx';
 import ListCarousel from '../../Widgets/ListCarousel.jsx';
 
 class ImgGallery extends React.Component {
@@ -20,7 +20,10 @@ class ImgGallery extends React.Component {
   render() {
     // console.log('this is the styles photos arr ',this.props.styles)
     return (
-   <ListCarousel images={this.props.styles} imgClick={this.imgClick} />
+      <div>
+        <ListCarousel images={this.props.styles} imgClick={this.imgClick} />
+        <GalleryCarousel images={this.props.styles} />
+      </div>
     )
   }
 }
