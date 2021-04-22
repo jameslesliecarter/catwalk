@@ -12,10 +12,10 @@ class AnswerItem extends React.Component {
       updatedHelpfulness: false,
       updatedReport: false
     }
-    this.reportButton = !this.state.updatedReport ? <div onClick={this.updateReport} className="report-btn">Report btn</div> : <div className="report-btn"><em>Reported</em></div>;
     this.updateHelpful = this.updateHelpful.bind(this);
     this.updateReport = this.updateReport.bind(this);
     this.byLine = this.props.answer.answerer_name === 'Seller' ? <b>Seller</b> : <span>{this.props.answer.answerer_name}</span>;
+    this.render = this.render.bind(this);
   }
 
 
@@ -39,11 +39,32 @@ class AnswerItem extends React.Component {
         console.error('Answer Report Button Error: ', error);
       });
       this.setState({
-        updatedReport : true
+        reported : true
       });
     }
   }
 
+  reportView() {
+    const {reported} = this.state;
+
+    if (!reported) {
+      return (
+        <div onClick={this.updateReport} className="report-btn">
+          Report btn
+        </div>
+      )
+    } else {
+      return (
+        <div className="report-btn"><em>Reported</em></div>
+      )
+    }
+  }
+
+  // componentDidUpdate(prevState) {
+  //   if (prevState.reported !== this.state.reported) {
+  //     this.render();
+  //   }
+  // }
 
   render() {
     return (
@@ -59,10 +80,7 @@ class AnswerItem extends React.Component {
             <div onClick={this.updateHelpful} className="helpful-btn">
               Helpful? &#40;{this.state.helpfulness}&#41;
             </div>
-            {/* <div onClick={updateReport} className="report-btn">
-              Report btn
-            </div> */}
-            {this.reportButton}
+            {this.reportView()}
           </div>
         </div>
       <div className="photo-details">
