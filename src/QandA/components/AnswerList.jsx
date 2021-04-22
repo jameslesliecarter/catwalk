@@ -17,6 +17,7 @@ class AnswerList extends React.Component {
     this.fetchAnswers = this.fetchAnswers.bind(this);
     this.toggleAnswers = this.toggleAnswers.bind(this);
     this.render = this.render.bind(this);
+    this.renderMoreAnswersButton = this.renderMoreAnswersButton.bind(this);
   }
 
   fetchAnswers() {
@@ -29,10 +30,6 @@ class AnswerList extends React.Component {
     .catch((err) => {
       console.log('ANSWER FETCH ERROR: ', err);
     });
-  }
-
-  componentDidMount() {
-    this.fetchAnswers();
   }
 
   toggleAnswers() {
@@ -48,6 +45,24 @@ class AnswerList extends React.Component {
         buttonText: 'More Answers'
       });
     }
+  }
+
+  renderMoreAnswersButton() {
+    if (this.state.answers.length && this.state.answers.length > 2) {
+      return (
+        <div onClick={this.toggleAnswers} className="more-answers-btn">
+          {this.state.buttonText}
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
+
+  componentDidMount() {
+    this.fetchAnswers();
   }
 
   render() {
@@ -74,9 +89,10 @@ class AnswerList extends React.Component {
             })}
           </div>
         </div>
-        <div onClick={this.toggleAnswers} className="more-answers-btn">
+        {this.renderMoreAnswersButton()}
+        {/* <div onClick={this.toggleAnswers} className="more-answers-btn">
           {this.state.buttonText}
-        </div>
+        </div> */}
       </div>
     )
   }
