@@ -24,11 +24,10 @@ class GalleryCarousel extends React.Component {
     return (
       <section className="carousel carousel-gallery">
         {this.state.currentImg === 0 ? <></> : <AiOutlineArrowLeft className="arrow-left" onClick={this.prevSlide} />}
-
         {this.props.images.map((image, index) => {
           return (
             <div className={index === this.state.currentImg ? 'slide active' : 'slide'} key={index}>
-              {index === this.state.currentImg && (<img src={image.url} className="image" />)}
+              {index === this.state.currentImg && (<img src={image[this.props.size]} className="image" />)}
             </div>
           )
         })}
