@@ -13,7 +13,7 @@ class QandA extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      product_id: '19093',
+      product_id: '19095',
       count: 2
     };
     this.fetchQuestions = this.fetchQuestions.bind(this);
@@ -50,7 +50,6 @@ class QandA extends React.Component {
 
   componentDidMount() {
     this.fetchQuestions();
-    // this.postQuestion();
   }
   render() {
     return (

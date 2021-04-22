@@ -85,6 +85,10 @@ body {
   display: flex;
   flex-flow: column nowrap;
 }
+.question-and-answer-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
 .question-item {
   display: flex;
   flex-flow: row nowrap;
