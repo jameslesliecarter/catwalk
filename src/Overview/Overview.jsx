@@ -2,6 +2,7 @@ import React from "react";
 import ProductInfo from './components/ProductInfo.jsx';
 import axios from 'axios';
 import ImgGallery from './components/ImgGallery.jsx';
+import StyleSelector from './components/StyleSelector.jsx';
 
 
 class Overview extends React.Component {
@@ -425,6 +426,7 @@ class Overview extends React.Component {
      <div className='overview-widget'>
        <ImgGallery style={this.props.styles} styles={this.state.styles[0].photos}/>
        <ProductInfo product={this.props.product}/>
+      <StyleSelector />
     </div>
     )
   }

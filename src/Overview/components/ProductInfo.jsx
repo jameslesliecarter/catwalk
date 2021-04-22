@@ -12,7 +12,7 @@ const ProductInfo = ({product}) => {
        <div className='stars-reviews'><StarRating/> <p className='review'>See all reviews</p></div>
       </div>
       <p>{product.category}</p>
-      <h4>{product.name}</h4>
+      <h2>{product.name}</h2>
       <p>{product.default_price}</p>
       <p>{product.overview ? product.overview : <></>}</p>
       <div>
