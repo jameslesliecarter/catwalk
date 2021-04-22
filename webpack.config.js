@@ -10,6 +10,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx$/,
+        exclude: '/node_modules/',
         enforce: 'pre',
         use: ['source-map-loader']
       },
@@ -29,7 +30,8 @@ module.exports = {
   watch: true,
   watchOptions: {
     ignored: '**/node_modules',
-    poll: 500,
+    aggregateTimeout: 300,
+    poll: 1000
   },
   mode: 'development',
   devtool: 'source-map',
