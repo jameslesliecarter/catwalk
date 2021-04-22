@@ -154,3 +154,9 @@ body {
 .fa{
   padding-right: 10px;
 }
+
+.review {
+  font-style: italic;
+  font-size: medium;
+  font-family: monospace;
+}

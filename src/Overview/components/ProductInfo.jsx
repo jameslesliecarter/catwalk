@@ -5,10 +5,13 @@ import {FaTwitterSquare} from 'react-icons/fa'
 import {FaPinterest} from 'react-icons/fa'
 
 const ProductInfo = ({product}) => {
+
+
+
   return (
     <div className='overview-widget-productInfo'>
       <div>
-       <div className='stars-reviews'><StarRating/> <p>See all reviews</p></div>
+       <div className='stars-reviews'><StarRating/> <p className='review'>See all reviews</p></div>
       </div>
       <p>{product.category}</p>
       <h4>{product.name}</h4>
