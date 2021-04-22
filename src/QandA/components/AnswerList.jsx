@@ -12,7 +12,7 @@ class AnswerList extends React.Component {
       question_id: this.props.question.question_id,
       count: 2,
       answers: [],
-      buttonText: 'More Answers'
+      buttonText: 'See More Answers'
     }
     this.fetchAnswers = this.fetchAnswers.bind(this);
     this.toggleAnswers = this.toggleAnswers.bind(this);
@@ -36,13 +36,13 @@ class AnswerList extends React.Component {
     if (this.state.count === 2) {
       this.setState({
         count: 99,
-        buttonText: 'Fewer Answers'
+        buttonText: 'Collapse Answers'
       });
       this.render();
     } else {
       this.setState({
         count: 2,
-        buttonText: 'More Answers'
+        buttonText: 'See More Answers'
       });
     }
   }
@@ -90,9 +90,6 @@ class AnswerList extends React.Component {
           </div>
         </div>
         {this.renderMoreAnswersButton()}
-        {/* <div onClick={this.toggleAnswers} className="more-answers-btn">
-          {this.state.buttonText}
-        </div> */}
       </div>
     )
   }
