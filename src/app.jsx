@@ -34,7 +34,7 @@ class App extends React.Component {
     return (
     <>
       <Navbar />
-      <Overview/>
+      <Overview styles={this.state.styles.results}/>
       <Related related={this.state.related} />
       <QandA />
       <Reviews />

@@ -14,6 +14,7 @@ class ImgGallery extends React.Component {
   }
 
   render() {
+    console.log(this.props.style)
     return (
       <div>
         <div className="parent vertical carousel">
