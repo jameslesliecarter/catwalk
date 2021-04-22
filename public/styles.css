@@ -196,7 +196,14 @@ body {
 
 .thumbnail {
   padding: 5px 20px;
-  width: 190px;
-  height: 190px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.image {
+  padding: 5px 20px;
+  width: 700px;
+  height: 700px;
   object-fit: cover;
 }
