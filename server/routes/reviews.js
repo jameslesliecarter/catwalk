@@ -11,60 +11,76 @@ let ax = axios.create({
   headers: apiKey,
 });
 
-// middleware applied to all /:product_id URIs
+// middleware applied to ALL /reviews URIs ================================== //
 router.use((req, res, next) => {
-  req.id = req.query.product_id;
+  req.id = `product_id=${req.query.product_id}`;
   next();
 })
 
-// root ENDpoint route
+// / PATHs ================================================================== //
 router.route('/')
   .get((req, res) => {
-    req.page = req.query.page ? `&page=${req.query.page}` : '';
-    req.count = req.query.count ? `&count=${req.query.count}` : '';
-    req.sort = req.query.sort || 'helpful';
-    ax.get((`/?product_id=${req.id}${req.page}${req.count}&sort=${req.sort}`))
+    req.page = req.query.page ? `page=${req.query.page}` : '';
+    req.count = req.query.count ? `count=${req.query.count}` : '';
+    req.sort = `sort=${req.query.sort}` || 'sort=helpful';
+    ax.get((`/?${req.id}&${req.sort}&${req.page}&${req.count}`))
       .then(function (response) {
+        res.status(response.status);
         res.send(response.data);
       })
       .catch(function (error) {
-        console.error('\n=================\n');
-        console.error('\n/reviews/ ax err:');
-        console.error(error);
-        console.error('\n/reviews/ ax err:');
-        console.error('\n=================\n');
+        console.log(error, '/reviews/ get - ax err:', error.isAxiosError);
         res.end('error in /:product_id');
       });
   })
   .post((req, res) => {
     ax.post('/', req.body)
       .then(function (response) {
-        console.log('Did we get this response?', response.data)
-        // res.send(response.data);
-        res.end()
+        res.status(response.status).end();
       })
       .catch(function(error) {
-        console.log('line 43 ax err', error.isAxiosError)
-        res.end();
+        console.error(error, '/reviews/ POST - ax err:', error.isAxiosError);
+        res.status(response.status).end();
+      });
+  });
+
+// /meta PATHs ============================================================== //
+router.use('/meta', (req, res, next) => {
+    ax.get(`/meta/?${req.id}`)
+      .then((response) => {
+        req.metadata = response.data;
+        next();
+      })
+      .catch(function (error) {
+        console.error(error, '/reviews/meta GET - ax err:', error.isAxiosError);
+        res.send('error in /reviews/meta');
       });
   })
 
-router.route('/meta')
-  .get((req, res) => {
-    ax.get(`/meta/?product_id=${req.id}`)
-      .then(function (response) {
-        res.send(response.data);
-      })
-      .catch(function (error) {
-        console.error('\n/reviews/meta/?product_id ax err:\n', error);
-        res.send('error in /reviews/?product_id');
-      });
-})
+router.get('/meta', (req, res) => {
+    res.json(req.metadata);
+    res.end();
+  })
 
+router.route('/meta/avg')
+  .get((req, res) => {
+    const {ratings} = req.metadata;
+    let sum = 0;
+    let cnt = 0;
+    for (let key in ratings) {
+      let val = Number(ratings[key]);
+      sum += val;
+      cnt++;
+    }
+    let avg = ((sum / cnt).toString());
+    res.send(avg);
+  });
+
+// /:review_id PATHs ======================================================== //
 router.param('review_id', (req, res, next) => {
  req.review_id = req.params.review_id;
- next()
-})
+ next();
+});
 
 router.route('/:review_id/helpful')
   .put((req, res) => {
@@ -79,17 +95,17 @@ router.route('/:review_id/helpful')
     });
   });
 
-  router.route('/:review_id/report')
+router.route('/:review_id/report')
   .put((req, res) => {
     ax.put(`/${req.review_id}/helpful`)
       .then(function (response) {
         res.status(response.status);
         res.end();
       })
-  .catch(function(error) {
-    console.error('\n/reviews/:review_id/report ax err:\n');
-    res.send('error in /reviews/:review_id/report');
+      .catch(function(error) {
+        console.error('\n/reviews/:review_id/report ax err:\n');
+        res.send('error in /reviews/:review_id/report');
+      });
     });
-  });
 
 module.exports = router;
