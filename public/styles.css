@@ -77,13 +77,22 @@ body {
 .helpful-btn,
 .add-answer-btn,
 .report-btn,
-.add-question-btn
-.more-questions-btn
+.add-question-btn,
+.more-questions-btn,
+.more-answers-btn,
+.more-answers-btn {
+  margin: 5px;
+  padding: 0 2px 0 2px;
+  border: 1px solid black;
+  max-width: 100px;
+  text-align: center;
+}
 .user-info {
   margin: 5px;
   padding: 0 2px 0 2px;
   border: 1px solid black;
 }
+
 .container {
   margin: 5px;
 }

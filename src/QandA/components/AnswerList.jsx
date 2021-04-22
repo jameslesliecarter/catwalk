@@ -11,13 +11,16 @@ class AnswerList extends React.Component {
     this.state = {
       question_id: this.props.question.question_id,
       count: 2,
-      answers: []
+      answers: [],
+      buttonText: 'More Answers'
     }
     this.fetchAnswers = this.fetchAnswers.bind(this);
+    this.toggleAnswers = this.toggleAnswers.bind(this);
+    this.render = this.render.bind(this);
   }
 
   fetchAnswers() {
-    axios.get(`/qa/questions/${this.state.question_id}/answers/?count=${this.state.count}`)
+    axios.get(`/qa/questions/${this.state.question_id}/answers/?count=99`)
     .then((data) => {
       this.setState({
         answers: data.data
@@ -32,19 +35,47 @@ class AnswerList extends React.Component {
     this.fetchAnswers();
   }
 
+  toggleAnswers() {
+    if (this.state.count === 2) {
+      this.setState({
+        count: 99,
+        buttonText: 'Fewer Answers'
+      });
+      this.render();
+    } else {
+      this.setState({
+        count: 2,
+        buttonText: 'More Answers'
+      });
+    }
+  }
+
   render() {
     return (
-      <div className="answer-list">
-        <h5>A: </h5>
-        <div className='answer-items'>
-          {_.sortBy(this.state.answers, (answer) => {
-            return -answer.helpfulness;
-          })
-          .map((answer, i) => {
-            return (
-              <AnswerItem key={i} answer={answer} />
-            )
-          })}
+      <div>
+        <div className="answer-list">
+          <h5>A: </h5>
+          <div className='answer-items'>
+            {_.sortBy(_.sortBy(this.state.answers, (answer) => {
+              return -answer.helpfulness;
+            }), (answer) => {
+              return answer.answerer_name !== 'Seller';
+            })
+            .map((answer, i) => {
+              if (i < this.state.count) {
+                return (
+                  <AnswerItem key={i} answer={answer} />
+                  )
+              } else {
+                return (
+                  <div key={i} ></div>
+                )
+              }
+            })}
+          </div>
+        </div>
+        <div onClick={this.toggleAnswers} className="more-answers-btn">
+          {this.state.buttonText}
         </div>
       </div>
     )
