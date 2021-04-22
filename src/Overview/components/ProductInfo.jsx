@@ -10,6 +10,12 @@ const ProductInfo = ({product}) => {
       <p>{product.category}</p>
       <h4>{product.name}</h4>
       <p>{product.default_price}</p>
+      <p>{product.overview ? product.overview : <></>}</p>
+      <form>SOCIAL MEDIA BAR
+      <a href="#" className="fa fa-facebook"></a>
+      <a href="#" className="fa fa-twitter"></a>
+      <a href="#" className="fa fa-pintrest"></a>
+      </form>
     </div>
   );
 }

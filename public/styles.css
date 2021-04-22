@@ -133,6 +133,7 @@ body {
 }
 
 .overview-widget-productInfo {
+  font-size: large;
   min-height: 150px;
   margin: 20px;
   list-style: none;
