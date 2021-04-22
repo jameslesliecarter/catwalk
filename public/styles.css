@@ -146,12 +146,12 @@ body {
   padding: 30px 50px 0px 50px;
 }
 
-.parent {
-  width: 85%;
+.img-list {
+  width: 100%;
   overflow: hidden;
   margin: auto;
-  padding: 1rem;
 }
+
 .slider-container {
  /* if you want to have a scrollbar, you can add overflow here */
   overflow-x: hidden;
@@ -205,10 +205,10 @@ body {
   object-fit: cover;
 }
 
-.image {
+.gallery-img img {
   padding: 5px 20px;
-  width: 700px;
-  height: 700px;
+  width: auto;
+  height: 40rem;
   object-fit: cover;
 }
 

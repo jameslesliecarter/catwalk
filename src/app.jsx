@@ -31,7 +31,9 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.product)
+    if (this.state.styles.results) {
+      console.log(this.state.styles.results[0]);
+    }
     return (
     <>
       <Navbar />
