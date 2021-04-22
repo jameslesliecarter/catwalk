@@ -133,6 +133,7 @@ body {
 }
 
 .overview-widget-productInfo {
+  font-size: large;
   min-height: 150px;
   margin: 20px;
   list-style: none;
@@ -182,7 +183,7 @@ body {
   right: 1rem;
 }
 .disable {
-  opacity: 0.5;
+ opacity: 0.5;
  pointer-events: none;
 }
 .child {
