@@ -142,25 +142,77 @@ body {
   padding: 30px 50px 0px 50px;
 }
 
-.parent {
+.slider-container {
+  /* if you want to have a scrollbar, you can add overflow here */
+   overflow-x: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0rem 2rem;
+   padding: 3px;
+   scroll-behavior: smooth;
+ }
+ .slider-wrapper {
+   display: flex;
+   align-items: center;
+ }
+ .btn {
+   position: absolute;
+   box-shadow: 0 0 6.1px 0.9px grey;
+   padding: 5px;
+   cursor: pointer;
+   width: 20px;
+   height: 20px;
+   background: grey;
+   text-align: center;
+   color: white;
+   border-radius: 50%;
+   z-index: 10;
+ }
+ .prev {
+   left: 1rem;
+ }
+ .next {
+   right: -1rem;
+ }
+ .disable {
+   opacity: 0.5;
+  pointer-events: none;
+ }
+ .child {
+   padding: 5px 20px;
+   background: #59eb97;
+   text-align: center;
+   width: 100%;
+   margin-right: 10px;
+   border-radius: 21px;
+ }
+
+ /* ////////// */
+
+
+/* .parent {
   width: 85%;
   overflow: hidden;
   margin: auto;
   padding: 1rem;
 }
 .slider-container {
- /* if you want to have a scrollbar, you can add overflow here */
-  overflow-x: hidden;
+  height: inherit;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0rem 2rem;
   padding: 3px;
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 .slider-wrapper {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  overflow: hidden;
+  height: 100%;
   width: 100%;
 }
 .btn {
@@ -174,22 +226,54 @@ body {
   text-align: center;
   color: white;
   border-radius: 50%;
+  z-index: 10;
 }
 .prev {
   left: 1rem;
+  z-index: 10;
 }
 .next {
   right: 1rem;
+  z-index: 10;
 }
 .disable {
   opacity: 0.5;
- pointer-events: none;
+  pointer-events: none;
 }
+
 .child {
   padding: 5px 20px;
   background: #59eb97;
   text-align: center;
-  width: 100%;
   margin-right: 10px;
   border-radius: 21px;
 }
+
+.related-list {
+  height: 25rem;
+  width: 100%;
+}
+
+.card {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 33%;
+}
+
+.card-display {
+  height: 50%;
+}
+.card-info {
+  height: 50%;
+} */
+
+/* img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+} */
+

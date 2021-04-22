@@ -38,12 +38,13 @@ class Related extends React.Component {
     return (
       <div className="related">
         <h2 className="related-text">RELATED PRODUCTS</h2>
+        <div className="parent carousel horizontal">
           <Slider>
-          {this.state.products.map(product =>
-            <Card details={product.details} images={product.images}/>
+          {this.state.products.map((product,index) =>
+            <Card details={product.details} images={product.images} key={index}/>
           )}
           </Slider>
-
+        </div>
       </div>
     );
   }

@@ -12,11 +12,16 @@ class Slider extends React.Component {
    this.checkButtons = this.checkButtons.bind(this);
   }
 
-  componentDidMount() {
-   this.checkButtons(this.refs.offsetWidth, this.refs.scrollWidth);
+  componentDidUpdate(prevProps) {
+    if (prevProps.children !== this.props.children) {
+      this.checkButtons(this.refs.offsetWidth, this.refs.scrollWidth);
+    }
   }
 
   checkButtons(offsetWidthValue, scrollWidthValue) {
+   console.log('scrollLeft ', this.refs.scrollLeft);
+   console.log('scrollWidth ', scrollWidthValue);
+   console.log('offsetWidth ', offsetWidthValue);
    this.setState({
     prevDisable: this.refs.scrollLeft <= 0 ? true : false,
     nextDisable:
@@ -49,6 +54,7 @@ class Slider extends React.Component {
      className={`btn next ${this.state.nextDisable ? "disable" : ""}`}
      disabled={this.state.nextDisable}
      onClick={() => {
+      console.log('clicked');
       this.refs.scrollLeft += offsetWidthValue / 2;
       this.checkButtons(offsetWidthValue, scrollWidthValue);
      }}
