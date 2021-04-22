@@ -125,6 +125,8 @@ body {
   max-height: 25%;
 }
 
+/* OVERVIEW========================================= */
+
 .overview-widget {
   text-align: left;
   margin: 40px;
@@ -135,6 +137,7 @@ body {
 .overview-widget-productInfo {
   font-size: large;
   min-height: 150px;
+  width: 340px;
   margin: 20px;
   list-style: none;
   border: 1px solid #77777769;
@@ -207,4 +210,13 @@ body {
   width: 700px;
   height: 700px;
   object-fit: cover;
+}
+
+.stars-reviews {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa {
+  padding-right: 10px;
 }
