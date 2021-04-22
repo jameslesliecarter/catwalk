@@ -13,7 +13,7 @@ class QandA extends React.Component {
     this.state = {
       questions: [],
       product_id: '19093',
-      count: 4,
+      count: 99,
       searchTerm: '',
       displayed: 4
     };
@@ -48,7 +48,7 @@ class QandA extends React.Component {
             <Search update={this.updateSearch} />
           </div>
           <div className="questions-and-answers">
-            <QuestionList count={this.state.displayed} questions={this.state.questions} />
+            <QuestionList count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
           <div className="more-questions">
             <MoreQuestions />
