@@ -11,20 +11,21 @@ let ax = axios.create({
   headers: apiKey
 });
 
-router.post((req, res) => {
-  ax.post('/', {
-    'element': req.body.element,
-    'widget': req.body.widget,
-    'time': req.body.time
-  })
-    .then(function (response) {
-      res.status(response.status).send(response.statusText);
+router.route('/')
+  .post((req, res, next) => {
+    ax.post('/', {
+      'element': req.body.element,
+      'widget': req.body.widget,
+      'time': req.body.time
     })
-    .catch(function (error) {
-      let errtxt = '\n[ERROR] in /cart ax post [ERROR]\n'
-      console.error(errtxt, error, errtxt);
-      res.status(response.status).send(response.statusText);
-    });
-});
+      .then(function (response) {
+        res.status(response.status).send(response.statusText);
+      })
+      .catch(function (error) {
+        let errtxt = '\n[ERROR] in /cart ax post [ERROR]\n'
+        console.error(errtxt, error, errtxt);
+        res.status(response.status).send(response.statusText);
+      });
+  });
 
 module.exports = router;
