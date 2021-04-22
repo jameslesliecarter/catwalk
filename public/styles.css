@@ -78,8 +78,10 @@ body {
 .add-answer-btn,
 .report-btn,
 .add-question-btn
-.more-questions-btn {
-  margin: 0 5px 0 5px;
+.more-questions-btn
+.user-info {
+  margin: 5px;
+  padding: 0 2px 0 2px;
   border: 1px solid black;
 }
 .container {
