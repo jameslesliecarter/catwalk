@@ -165,12 +165,12 @@ body {
 }
 .btn {
   position: absolute;
-  box-shadow: 0 0 6.1px 0.9px grey;
-  padding: 5px;
+  box-shadow: 0 0 6.1px 0.9px white;
+  padding: 1px;
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background: grey;
+  background: black;
   text-align: center;
   color: white;
   border-radius: 50%;
@@ -192,4 +192,11 @@ body {
   width: 100%;
   margin-right: 10px;
   border-radius: 21px;
+}
+
+.thumbnail {
+  padding: 5px 20px;
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
 }
