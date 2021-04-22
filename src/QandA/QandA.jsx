@@ -12,7 +12,6 @@ class QandA extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      product_id: '19093',
       count: 99,
       searchTerm: '',
       displayed: 4
@@ -25,7 +24,7 @@ class QandA extends React.Component {
 
 
   fetchQuestions() {
-    axios.get(`qa/questions/?product_id=${this.state.product_id}&page=1&count=${this.state.count}`)
+    axios.get(`qa/questions/?product_id=${this.props.product.id}&page=1&count=${this.state.count}`)
     .then((data) => {
       this.setState({
         questions: _.sortBy(data.data.results, (question) => {
@@ -81,9 +80,12 @@ class QandA extends React.Component {
     });
   }
 
-  componentDidMount() {
-    this.fetchQuestions();
+  componentDidUpdate(prevProps) {
+    if (prevProps.product !== this.props.product) {
+      this.fetchQuestions();
+    }
   }
+
   render() {
     return (
       <div className="q-and-a-widget">

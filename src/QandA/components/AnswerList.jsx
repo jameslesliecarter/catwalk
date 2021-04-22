@@ -33,12 +33,15 @@ class AnswerList extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.answers.map((answer, i) => {
-          return (
-            <AnswerItem key={i} answer={answer} />
-          )
-        })}
+      <div className="answer-list">
+        <h5>A: </h5>
+        <div className='answer-items'>
+          {this.state.answers.map((answer, i) => {
+            return (
+              <AnswerItem key={i} answer={answer} />
+            )
+          })}
+        </div>
       </div>
     )
   }

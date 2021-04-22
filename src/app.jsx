@@ -36,7 +36,7 @@ class App extends React.Component {
       <Navbar />
       <Overview/>
       <Related related={this.state.related} />
-      <QandA />
+      <QandA product={this.state.product}/>
       <Reviews />
     </>
     );

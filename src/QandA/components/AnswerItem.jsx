@@ -1,18 +1,21 @@
 import React from 'react';
-import Photos from './Photos.jsx'
+import Photos from './Photos.jsx';
+import moment from 'moment';
 
 const AnswerItem = ({answer}) => {
+
+  let byLine = answer.answerer_name === 'Seller' ? <b>Seller</b> : <span>{answer.answerer_name}</span>;
 
   return (
     <div className="answer-area">
       <div className="answer-header">
         <div className="answer-text">
-          <span className="answer-icon">A: </span>{answer.body}
+          {answer.body}
         </div>
         <div className="answer-interaction interaction">
-        <div className="user-info">
-          by: {answer.answerer_name}
-        </div>
+          <div className="user-info">
+            <span className="answer-name">by: {byLine}</span>, <span className="answer-date">{moment(answer.date).format('MMMM do YYYY')}</span>
+          </div>
           <div className="helpful-btn">
             Helpful btn
           </div>
@@ -22,7 +25,6 @@ const AnswerItem = ({answer}) => {
         </div>
       </div>
       <div className="photo-details">
-        Photo details go here if they exist
         <Photos photos={answer.photos}/>
       </div>
     </div>
