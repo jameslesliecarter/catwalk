@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Arrow = ({ direction, clickFunction, glyph }) => {
-  console.log(glyph);
+const Arrow = ({ direction, arrowClick, glyph }) => {
   return (
   <div
     className={ `slide-arrow ${direction}` }
-    onClick={ clickFunction }>
+    onClick={ arrowClick }>
     { glyph }
   </div>
   )
