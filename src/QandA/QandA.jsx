@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
+import _ from 'underscore';
 import Search from './components/Search.jsx';
 import QuestionList from './components/QuestionList.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
 import AddQuestion from './components/AddQuestion.jsx';
-
-import sampleData from '../../SampleData.js';
 
 
 class QandA extends React.Component {
@@ -13,11 +12,15 @@ class QandA extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      product_id: '19095',
-      count: 2
+      product_id: '19093',
+      count: 4,
+      searchTerm: '',
+      displayed: 4
     };
     this.fetchQuestions = this.fetchQuestions.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
+    this.renderView = this.renderView.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
   }
 
 
@@ -25,11 +28,41 @@ class QandA extends React.Component {
     axios.get(`qa/questions/?product_id=${this.state.product_id}&page=1&count=${this.state.count}`)
     .then((data) => {
       this.setState({
-        questions: data.data.results
+        questions: _.sortBy(data.data.results, (question) => {
+          return -question.question_helpfulness;
+        })
       });
     })
     .catch((err) => {
       console.log('QA ERROR: ', err);
+    });
+  }
+
+  renderView() {
+    const {questions} = this.state;
+
+    if (questions.length > 0) {
+      return (
+        <div>
+          <div>
+            <Search update={this.updateSearch} />
+          </div>
+          <div className="questions-and-answers">
+            <QuestionList count={this.state.displayed} questions={this.state.questions} />
+          </div>
+          <div className="more-questions">
+            <MoreQuestions />
+          </div>
+        </div>
+      );
+    } else {
+      return <div className="no-questions">No Questions Yet</div>;
+    }
+  }
+
+  updateSearch(term) {
+    this.setState({
+      searchTerm: term
     });
   }
 
@@ -54,15 +87,8 @@ class QandA extends React.Component {
   render() {
     return (
       <div className="q-and-a-widget">
-        <div>
-          <Search />
-        </div>
-        <div className="questions-and-answers">
-          <QuestionList questions={this.state.questions} />
-        </div>
-        <div className="more-questions">
-          <MoreQuestions />
-        </div>
+       <h3>Questions &amp; Answers</h3>
+        {this.renderView()}
         <div className="add-question">
           <AddQuestion />
         </div>

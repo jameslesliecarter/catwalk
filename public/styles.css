@@ -109,6 +109,10 @@ body {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
+.no-questions {
+  color: gray;
+  text-emphasis-style: sesame;
+}
 .search-bar {
   width: auto;
   display: flex;
