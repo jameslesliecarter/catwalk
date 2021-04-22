@@ -1,6 +1,7 @@
 import React from 'react';
 import AnswerItem from './AnswerItem.jsx';
 import axios from 'axios';
+import _ from 'underscore';
 
 
 
@@ -36,7 +37,10 @@ class AnswerList extends React.Component {
       <div className="answer-list">
         <h5>A: </h5>
         <div className='answer-items'>
-          {this.state.answers.map((answer, i) => {
+          {_.sortBy(this.state.answers, (answer) => {
+            return -answer.helpfulness;
+          })
+          .map((answer, i) => {
             return (
               <AnswerItem key={i} answer={answer} />
             )
