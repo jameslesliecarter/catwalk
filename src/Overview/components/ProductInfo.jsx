@@ -6,8 +6,6 @@ import {FaPinterest} from 'react-icons/fa'
 
 const ProductInfo = ({product}) => {
 
-
-
   return (
     <div className='overview-widget-productInfo'>
       <div>
