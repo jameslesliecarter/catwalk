@@ -7,7 +7,7 @@ const Card = ({details, images, cardClick}) => {
   return (
     <div className="card">
       <div className="card-display" onMouseEnter={() => setIsHovering(!isHovering)} onMouseLeave={() => setIsHovering(!isHovering)}>
-      {isHovering ? <GalleryCarousel className="card-images" images={images} size={'thumbnail_url'}/> :
+      {isHovering ? <GalleryCarousel images={images} size={'thumbnail_url'}/> :
       <img src={images[0].thumbnail_url}/>}
 
       </div>

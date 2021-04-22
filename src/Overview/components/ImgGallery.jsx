@@ -16,7 +16,7 @@ class ImgGallery extends React.Component {
   render() {
     return (
       <div>
-        <div className="parent vertical carousel">
+        <div className="carousel-list carousel-vertical">
           <Slider>
             {this.props.styles.map((image, index) => {
               return (
