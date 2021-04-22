@@ -9,10 +9,10 @@ const QuestionItem = ({question}) => {
           <span className="question-icon">Q: </span>{question.  question_body}
         </div>
         <div className="question-interaction interaction">
-          <div className="helpful-btn btn">
+          <div className="helpful-btn">
             Helpful btn
           </div>
-          <div className="add-answer-btn btn">
+          <div className="add-answer-btn">
             Add Answer btn
           </div>
         </div>

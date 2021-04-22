@@ -13,10 +13,10 @@ const AnswerItem = ({answer}) => {
         <div className="user-info">
           by: {answer.answerer_name}
         </div>
-          <div className="helpful-btn btn">
+          <div className="helpful-btn">
             Helpful btn
           </div>
-          <div className="report-btn btn">
+          <div className="report-btn">
             Report btn
           </div>
         </div>
