@@ -133,23 +133,27 @@ class QuestionItem extends React.Component {
             </div>
             <ReactModal onRequestClose={this.closeModal} className="add-answer-modal" isOpen={this.state.show} >
                 <div className="add-answer-form">
+                  <h3>Submit your Answer</h3>
+                  <h4>{this.props.product}: {this.props.question.question_body}</h4>
                   <form>
                     <label>
                       Nickname:
                       <br></br>
-                      <input maxLength="60" type="text" placeholder="Nickname" onChange={this.updateName}></input>
+                      <input maxLength="60" type="text" placeholder="Example: jack543" onChange={this.updateName}></input>
+                      <br></br>
                     </label>
-                    <br></br>
+                    <p>For privacy reasons, do not use your full name or email address</p>
                     <label>
                       Email:
                       <br></br>
-                      <input maxLength="60" type="email" placeholder="Email" onChange={this.updateEmail}></input>
+                      <input maxLength="60" type="email" placeholder="jack@email.com" onChange={this.updateEmail}></input>
+                      <p>For authentications reasons, you will not be emailed.</p>
                     </label>
                     <br></br>
                     <label>
                       Answer:
                       <br></br>
-                      <textarea placeholder="Answer" onChange={this.updateAnswer}></textarea>
+                      <textarea maxLength="1000" placeholder="Answer" onChange={this.updateAnswer}></textarea>
                     </label>
                     <br></br>
                     <button type="submit" onClick={this.handleSubmit}>Submit Answer!</button>

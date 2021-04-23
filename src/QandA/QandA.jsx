@@ -31,7 +31,8 @@ class QandA extends React.Component {
       this.setState({
         questions: _.sortBy(data.data.results, (question) => {
           return -question.question_helpfulness;
-        })
+        }),
+        product: this.props.product.name
       });
     })
     .catch((err) => {
@@ -49,7 +50,7 @@ class QandA extends React.Component {
             <Search update={this.updateSearch} />
           </div>
           <div className="questions-and-answers">
-            <QuestionList count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
+            <QuestionList product={this.state.product} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
           {this.renderButton()}
         </div>
