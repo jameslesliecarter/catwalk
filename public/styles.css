@@ -74,14 +74,33 @@ body {
   flex-flow: column wrap;
   border: 1px solid red;
 }
-.btn {
-  margin: 0 5px 0 5px;
+.helpful-btn,
+.add-answer-btn,
+.report-btn,
+.add-question-btn,
+.more-questions-btn,
+.more-answers-btn,
+.more-answers-btn {
+  margin: 5px;
+  padding: 0 2px 0 2px;
+  border: 1px solid black;
+  max-width: 100px;
+  text-align: center;
+}
+.user-info {
+  margin: 5px;
+  padding: 0 2px 0 2px;
   border: 1px solid black;
 }
+
 .container {
   margin: 5px;
 }
 .questions-and-answers {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.question-and-answer-container {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -95,11 +114,19 @@ body {
   flex-flow: column nowrap;
   align-items: flex-start;
 }
+.answer-list {
+  display: flex;
+  flex-flow: row nowrap;
+}
 .interaction {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+.no-questions {
+  color: gray;
+  text-emphasis-style: sesame;
 }
 .search-bar {
   width: auto;
@@ -125,6 +152,8 @@ body {
   max-height: 25%;
 }
 
+/* OVERVIEW========================================= */
+
 .overview-widget {
   text-align: left;
   margin: 40px;
@@ -133,7 +162,9 @@ body {
 }
 
 .overview-widget-productInfo {
+  font-size: large;
   min-height: 150px;
+  width: 340px;
   margin: 20px;
   list-style: none;
   border: 1px solid #77777769;
@@ -165,12 +196,12 @@ body {
 }
 .btn {
   position: absolute;
-  box-shadow: 0 0 6.1px 0.9px grey;
-  padding: 5px;
+  box-shadow: 0 0 6.1px 0.9px white;
+  padding: 1px;
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background: grey;
+  background: black;
   text-align: center;
   color: white;
   border-radius: 50%;
@@ -182,7 +213,7 @@ body {
   right: 1rem;
 }
 .disable {
-  opacity: 0.5;
+ opacity: 0.5;
  pointer-events: none;
 }
 .child {
@@ -192,4 +223,27 @@ body {
   width: 100%;
   margin-right: 10px;
   border-radius: 21px;
+}
+
+.thumbnail {
+  padding: 5px 20px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.image {
+  padding: 5px 20px;
+  width: 700px;
+  height: 700px;
+  object-fit: cover;
+}
+
+.stars-reviews {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa {
+  padding-right: 10px;
 }
