@@ -130,7 +130,14 @@ body {
   max-height: 50vh;
   overflow: scroll;
 }
-
+.add-answer-modal {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 15%;
+  right: 15%;
+  background-color: #EDEBE8;
+}
 .interaction {
   display: flex;
   flex-direction: row;
