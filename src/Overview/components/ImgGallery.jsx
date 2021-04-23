@@ -14,20 +14,23 @@ class ImgGallery extends React.Component {
   }
 
   render() {
+    console.log(this.props.style)
     return (
       <div>
-        <div className="carousel-list carousel-vertical">
+        <div className="img-list carousel-list carousel-vertical">
           <Slider>
             {this.props.styles.map((image, index) => {
               return (
-                  <div key={index} className='thumbnail'>
-                    <img src={image.thumbnail_url} onClick={this.imgClick} />
+                  <div key={index} >
+                    <img src={image.thumbnail_url} onClick={this.imgClick} className='thumbnail'/>
                   </div>
               )
             })}
           </Slider>
         </div>
-        <GalleryCarousel images={this.props.styles} />
+        <div className="gallery-img">
+          <GalleryCarousel images={this.props.styles} />
+        </div>
       </div>
     )
   }

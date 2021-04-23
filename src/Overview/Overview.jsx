@@ -8,7 +8,6 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {},
       styles: [
         {
             "style_id": 103491,
@@ -424,8 +423,8 @@ class Overview extends React.Component {
   render() {
     return (
      <div className='overview-widget'>
-       <ImgGallery styles={this.state.styles[0].photos}/>
-       <ProductInfo product={this.state.product}/>
+       <ImgGallery style={this.props.styles} styles={this.state.styles[0].photos}/>
+       <ProductInfo product={this.props.product}/>
     </div>
     )
   }
