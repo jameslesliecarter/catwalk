@@ -8,6 +8,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      style: [],
       styles: [
         {
             "style_id": 103491,
@@ -408,19 +409,17 @@ class Overview extends React.Component {
     ]
     }
   }
-  // async componentDidMount() {
-  //   const [firstRes, secondRes, thirdRes] = await Promise.all([
-  //     axios.get('http://localhost:9000/products/19093'),
-  //     axios.get('http://localhost:9000/products/19093/styles')
-  //   ]);
 
-  //   this.setState({
-  //     product: firstRes.data,
-  //     styles: secondRes.data.results,
-  //   });
-  // }
+  componentDidUpdate (prevProps) {
+    if (prevProps.styles !== this.props.styles) {
+      this.setState({
+        style: this.props.styles[0]
+      })
+    }
+  }
 
   render() {
+    console.log(this.state.style);
     return (
      <div className='overview-widget'>
        <ImgGallery style={this.props.styles} styles={this.state.styles[0].photos}/>
