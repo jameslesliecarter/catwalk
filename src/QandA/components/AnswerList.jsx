@@ -65,6 +65,12 @@ class AnswerList extends React.Component {
     this.fetchAnswers();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.answered !== this.props.answered) {
+      this.fetchAnswers();
+    }
+  }
+
   render() {
     return (
       <div>
