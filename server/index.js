@@ -4,9 +4,15 @@ const cors = require('cors');
 // SETUP =================================================================== //
 // setup Expressjs server instance
 let app = express();
-// let port = 9000;
-// app.listen(port, () => { console.log(`server listening on port ${port}`); });
+// webpack conf
+//const webpack = require('webpack');
+//const wpconf = require('../webpack.config.js');
+//const compiler = webpack(wpconf);
+//app.use(require('webpack-dev-middleware')(compiler, {
+//  publicPath: wpconf.output.publicPath
+//}));
 
+// root middleware ========================================================= //
 // EVERY REQ
 app.use(express.static('./public'));
 app.use(cors());
@@ -18,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-  // REQ methods to root
+// REQ methods to root
 app.get('/', (req, res) => { res.end('cannot GET to root'); });
 app.post('/', (req, res) => { res.end('cannot POST to root'); });
 app.put('/', (req, res) => { res.end('cannot PUT to root'); });

@@ -15,6 +15,12 @@ body {
   position: relative;
 }
 
+/* img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+} */
+
 #app {
   left: 50%;
   position: absolute;
@@ -74,14 +80,33 @@ body {
   flex-flow: column wrap;
   border: 1px solid red;
 }
-.btn {
-  margin: 0 5px 0 5px;
+.helpful-btn,
+.add-answer-btn,
+.report-btn,
+.add-question-btn,
+.more-questions-btn,
+.more-answers-btn,
+.more-answers-btn {
+  margin: 5px;
+  padding: 0 2px 0 2px;
+  border: 1px solid black;
+  max-width: 100px;
+  text-align: center;
+}
+.user-info {
+  margin: 5px;
+  padding: 0 2px 0 2px;
   border: 1px solid black;
 }
+
 .container {
   margin: 5px;
 }
 .questions-and-answers {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.question-and-answer-container {
   display: flex;
   flex-flow: column nowrap;
 }
@@ -95,11 +120,19 @@ body {
   flex-flow: column nowrap;
   align-items: flex-start;
 }
+.answer-list {
+  display: flex;
+  flex-flow: row nowrap;
+}
 .interaction {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+.no-questions {
+  color: gray;
+  text-emphasis-style: sesame;
 }
 .search-bar {
   width: auto;
@@ -146,28 +179,36 @@ body {
   padding: 30px 50px 0px 50px;
 }
 
-.img-list {
+.carousel-list {
   width: 100%;
   overflow: hidden;
   margin: auto;
 }
 
-.slider-container {
- /* if you want to have a scrollbar, you can add overflow here */
+.related-list {
+  min-height: 33vh;
+}
+
+ .slider-container {
+  height: inherit;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0rem 2rem;
   padding: 3px;
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-.slider-wrapper {
+
+ .slider-wrapper {
+  height: inherit;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-}
-.btn {
+ }
+
+ .btn {
   position: absolute;
   box-shadow: 0 0 6.1px 0.9px white;
   padding: 1px;
@@ -178,27 +219,48 @@ body {
   text-align: center;
   color: white;
   border-radius: 50%;
-}
-.prev {
+  z-index: 10;
+ }
+
+ .prev {
   left: 1rem;
-}
-.next {
+ }
+
+ .next {
   right: 1rem;
+ }
+
+ .disable {
+  opacity: 0.5;
+  pointer-events: none;
+ }
+
+ /* ////////// */
+
+
+.card {
+  border: 1px solid black;
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 30%;
+  margin-right: 1.5rem;
 }
-.disable {
- opacity: 0.5;
- pointer-events: none;
-}
-.child {
-  padding: 5px 20px;
-  background: #59eb97;
-  text-align: center;
+
+.card-display img {
+  height: 20rem;
   width: 100%;
-  margin-right: 10px;
-  border-radius: 21px;
+  /* object-fit: cover;
+  object-position: bottom; */
+}
+
+.card-info {
+  text-align: left;
 }
 
 .thumbnail {
+  /* flex-shrink: 0; */
   padding: 5px 20px;
   width: 140px;
   height: 140px;
@@ -207,9 +269,8 @@ body {
 
 .gallery-img img {
   padding: 5px 20px;
-  width: auto;
   height: 40rem;
-  object-fit: cover;
+  object-position: center;
 }
 
 .stars-reviews {
