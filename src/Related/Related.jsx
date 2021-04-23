@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
+import { Outfits } from './Outfits.jsx';
 
 class Related extends React.Component {
   constructor(props) {
@@ -36,15 +37,18 @@ class Related extends React.Component {
 
   render() {
     return (
-      <div className="related">
-        <h2 className="related-text">RELATED PRODUCTS</h2>
-        <div className="related-list carousel-list carousel-horizontal">
-          <Slider>
-          {this.state.products.map((product,index) =>
-            <Card details={product.details} images={product.images} key={index}/>
-          )}
-          </Slider>
+      <div>
+        <div className="related">
+          <h2 className="related-text">RELATED PRODUCTS</h2>
+          <div className="related-list carousel-list carousel-horizontal">
+            <Slider>
+            {this.state.products.map((product,index) =>
+              <Card details={product.details} images={product.images} key={index}/>
+            )}
+            </Slider>
+          </div>
         </div>
+        <Outfits product={this.props.product} styles={this.props.styles}/>
       </div>
     );
   }
