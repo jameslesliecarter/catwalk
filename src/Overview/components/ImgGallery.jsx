@@ -8,6 +8,7 @@ class ImgGallery extends React.Component {
     this.imgClick = this.imgClick.bind(this);
   }
 
+
   imgClick(e) {
     // update state current image selected
     console.log('we clicked!')
