@@ -18,12 +18,15 @@ class DropDown extends React.Component {
     // name=
     // id= ddid = "dropdown-reviews"
     // default sort? for reviews: !relevant!
+    let ddlabel = 'ddlabel';
+    let ddlist = ['one', 'two', 'three'];
     return (
       // jsx
+
       <div>
-        <label for="dropdown">{this.props.ddlabel}:</label>
-        <select name="dropdown" id={ddid}>
-          {this.props.ddlist.map((option, i) => {
+        <label htmlFor="dropdown">{ddlabel}:</label>
+        <select name="dropdown" id={ddlabel}>
+          {ddlist.map((option, i) => {
             <option key={i} value={option}>{option}</option>
           })}
         </select>

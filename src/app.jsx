@@ -38,7 +38,7 @@ class App extends React.Component {
       <Overview styles={this.state.styles.results} product={this.state.product}/>
       <Related related={this.state.related} />
       <QandA product={this.state.product}/>
-      <Reviews />
+      <Reviews product_id={this.state.product.id} />
     </>
     );
   }

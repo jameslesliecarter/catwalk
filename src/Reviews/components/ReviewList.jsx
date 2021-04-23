@@ -1,22 +1,17 @@
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 
-const ReviewList = (props) => {
+const ReviewList = ({reviews}) => {
+  //console.log(props.reviews)
   return (
-    <div>
-      {/*props.questions.map((question, i) => {
-        return (
-        <div key={i}>
-          <div className="question-container container">
-            <QuestionItem key={i} question={question}/>
+    <div className="reviews__review-list">
+      {reviews.map((review, i) => {
+        return(
+          <div key={i} className="review-list__list-item">
+            <ReviewListItem review={review} />
           </div>
-          <div className="answer-container container">
-            {Object.keys(question.answers).map((k,j) => {
-              return <Answer answer={question.answers[k]} key={j} />
-            })}
-          </div>
-        </div>
-          )})*/}
+        );
+      })}
     </div>
   );
 };
