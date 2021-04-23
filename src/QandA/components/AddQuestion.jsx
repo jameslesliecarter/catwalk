@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddQuestion = (props) => {
   return (
-    <div className="add-question-btn btn">
+    <div className="add-question-btn">
       Add Question Modal Button Goes Here
     </div>
   )
