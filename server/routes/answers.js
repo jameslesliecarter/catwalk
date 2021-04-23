@@ -6,7 +6,7 @@ let apiKey = require('../.apiKey.js');
 
 // create axios instance
 let ax = axios.create({
-  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
+  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers',
   timeout: 1000,
   headers: apiKey
 });
