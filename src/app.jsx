@@ -35,7 +35,7 @@ class App extends React.Component {
     <>
       <Navbar />
       <Overview styles={this.state.styles.results} product={this.state.product}/>
-      <Related related={this.state.related} />
+      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} />
       <QandA product={this.state.product}/>
       <Reviews product_id={this.state.product.id} />
     </>
