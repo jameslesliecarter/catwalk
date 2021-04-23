@@ -14,8 +14,8 @@ let ax = axios.create({
 // root ENDpoint route
 router.route('/')
   .get((req, res) => {
-    req.page = req.query.page || 1;
-    req.count = req.query.count || 5;
+    req.page = req.query.page || '1';
+    req.count = req.query.count || '5';
     ax.get((`/?page=${req.page}&count=${req.count}`))
       .then(function (response) {
         res.send(response.data);

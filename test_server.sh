@@ -22,22 +22,27 @@ fi
 
 if [ "$1" = "reviews" ]; then
   # GETs
-  curl 'http://localhost:9000/reviews'
-  curl 'http://localhost:9000/reviews/'
-  curl 'http://localhost:9000/reviews/?product_id=19002'
-  curl 'http://localhost:9000/reviews/?product_id=19002&sort=newest'
-  curl 'http://localhost:9000/reviews/?product_id=19002&sort=relevant'
-  curl 'http://localhost:9000/reviews/?product_id=19002&sort=helpful'
-  curl 'http://localhost:9000/reviews/meta/?product_id=19002'
+  echo 'testing: /reviews/?product_id=19093'
+  curl 'http://localhost:9000/reviews/?product_id=19093'
+  printf '\n\n'
+  echo 'testing: /reviews/?product_id=19093&sort=newest'
+  curl 'http://localhost:9000/reviews/?product_id=19093&sort=newest'
+  printf '\n\n'
+  echo 'testing: /reviews/?product_id=19093&sort=helpful'
+  curl 'http://localhost:9000/reviews/?product_id=19093&sort=helpful'
+  printf '\n\n'
+  echo 'testing: /reviews/meta/?product_id=19093'
+  curl 'http://localhost:9000/reviews/meta/?product_id=19093'
+  printf '\n\n'
   # POSTs
-  curl \
-    -X POST \
-    -H 'Content-Type: application/json' \
-    --data '{"rating":3,"summary":"sum summary","body":"bodacious bod","recommend":true,"name":"username1","email":"name@email.com","photos":["https://files.catbox.moe/aeii4s.jpg"],"characteristics":{"14":2,"15":3}}'
-    'http://localhost:9000/reviews/?product_id=19002'
-  # PUTs
-  curl -X PUT 'http://localhost:9000/reviews/19002/helpful'
-  curl -X PUT 'http://localhost:9000/reviews/19002/report'
+  #curl \
+  #  -X POST \
+  #  -H 'Content-Type: application/json' \
+  #  --data '{"rating":3,"summary":"sum summary","body":"bodacious bod","recommend":true,"name":"username1","email":"name@email.com","photos":["https://files.catbox.moe/aeii4s.jpg"],"characteristics":{"14":2,"15":3}}'
+  #  'http://localhost:9000/reviews/?product_id=19002'
+  ## PUTs
+  #curl -X PUT 'http://localhost:9000/reviews/19002/helpful'
+  #curl -X PUT 'http://localhost:9000/reviews/19002/report'
 fi
 
 if [ "$1" = "qa" ]; then

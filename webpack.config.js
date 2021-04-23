@@ -11,6 +11,12 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: '/node_modules/',
+        enforce: 'pre',
+        use: ['source-map-loader']
+      },
+      {
+        test: /\.jsx$/,
+        exclude: '/node_modules/',
         use: {
           loader: 'babel-loader',
           options: {
@@ -21,10 +27,12 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: './public'
-  },
   watch: true,
+  watchOptions: {
+    ignored: '**/node_modules',
+    aggregateTimeout: 300,
+    poll: 1000
+  },
   mode: 'development',
   devtool: 'source-map',
   resolve: {
