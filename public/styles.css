@@ -15,6 +15,12 @@ body {
   position: relative;
 }
 
+/* img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+} */
+
 #app {
   left: 50%;
   position: absolute;
@@ -173,28 +179,36 @@ body {
   padding: 30px 50px 0px 50px;
 }
 
-.parent {
-  width: 85%;
+.carousel-list {
+  width: 100%;
   overflow: hidden;
   margin: auto;
-  padding: 1rem;
 }
-.slider-container {
- /* if you want to have a scrollbar, you can add overflow here */
+
+.related-list {
+  min-height: 33vh;
+}
+
+ .slider-container {
+  height: inherit;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0rem 2rem;
   padding: 3px;
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-.slider-wrapper {
+
+ .slider-wrapper {
+  height: inherit;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-}
-.btn {
+ }
+
+ .btn {
   position: absolute;
   box-shadow: 0 0 6.1px 0.9px white;
   padding: 1px;
@@ -205,38 +219,58 @@ body {
   text-align: center;
   color: white;
   border-radius: 50%;
-}
-.prev {
+  z-index: 10;
+ }
+
+ .prev {
   left: 1rem;
-}
-.next {
+ }
+
+ .next {
   right: 1rem;
+ }
+
+ .disable {
+  opacity: 0.5;
+  pointer-events: none;
+ }
+
+ /* ////////// */
+
+
+.card {
+  border: 1px solid black;
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 30%;
+  margin-right: 1.5rem;
 }
-.disable {
- opacity: 0.5;
- pointer-events: none;
-}
-.child {
-  padding: 5px 20px;
-  background: #59eb97;
-  text-align: center;
+
+.card-display img {
+  height: 20rem;
   width: 100%;
-  margin-right: 10px;
-  border-radius: 21px;
+  /* object-fit: cover;
+  object-position: bottom; */
+}
+
+.card-info {
+  text-align: left;
 }
 
 .thumbnail {
+  /* flex-shrink: 0; */
   padding: 5px 20px;
   width: 140px;
   height: 140px;
   object-fit: cover;
 }
 
-.image {
+.gallery-img img {
   padding: 5px 20px;
-  width: 700px;
-  height: 700px;
-  object-fit: cover;
+  height: 40rem;
+  object-position: center;
 }
 
 .stars-reviews {
