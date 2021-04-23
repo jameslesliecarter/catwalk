@@ -14,7 +14,8 @@ class QuestionItem extends React.Component {
       name: '',
       email: '',
       answerBody: '',
-    }
+      answered: 0
+    };
     this.updateHelpful = this.updateHelpful.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -22,6 +23,26 @@ class QuestionItem extends React.Component {
     this.updateEmail = this.updateEmail.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+  }
+
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  areInvalid(name, email, body) {
+    var invalidResults = [];
+    if (name === '') {
+      invalidResults.push('Name');
+    }
+    if (!this.validateEmail(email)) {
+      invalidResults.push('Email');
+    }
+    if (body === '') {
+      invalidResults.push('Answer Text');
+    }
+    return invalidResults;
   }
 
   closeModal() {
@@ -43,7 +64,6 @@ class QuestionItem extends React.Component {
   }
 
   updateEmail(e) {
-    console.log(Object.keys(e.target));
     this.setState({
       email: e.target.value
     });
@@ -51,13 +71,34 @@ class QuestionItem extends React.Component {
 
   updateAnswer(e) {
     this.setState({
-      answer: e.target.value
+      answerBody: e.target.value
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    setTimeout(() => {this.closeModal();}, 500);
+    const {name, email, answerBody} = this.state;
+    let invalids = this.areInvalid(name, email, answerBody);
+    if (invalids.length > 0) {
+      let responseMessage = 'You must enter the following: ';
+      for (var i = 0; i < invalids.length; i ++) {
+        responseMessage += invalids[i] + ' ';
+      }
+      alert(responseMessage);
+    } else {
+      axios.post(`/qa/questions/${this.props.question.question_id}/answers`,
+      {body: answerBody, name: name, email: email, product_id: this.props.product, photos: []})
+      .then((data) => {
+        this.setState({
+          answered: this.state.answered + 1
+        })
+        this.closeModal();
+      })
+      .catch((error) => {
+        console.error('Question Post Error: ', error);
+      });
+    }
+    //setTimeout(() => {this.closeModal();}, 500);
   }
 
   updateHelpful() {
@@ -96,13 +137,13 @@ class QuestionItem extends React.Component {
                     <label>
                       Nickname:
                       <br></br>
-                      <input type="text" placeholder="Nickname" onChange={this.updateName}></input>
+                      <input maxLength="60" type="text" placeholder="Nickname" onChange={this.updateName}></input>
                     </label>
                     <br></br>
                     <label>
                       Email:
                       <br></br>
-                      <input type="email" placeholder="Email" onChange={this.updateEmail}></input>
+                      <input maxLength="60" type="email" placeholder="Email" onChange={this.updateEmail}></input>
                     </label>
                     <br></br>
                     <label>
@@ -117,7 +158,7 @@ class QuestionItem extends React.Component {
               </ReactModal>
           </div>
         </div>
-        <AnswerList question={this.props.question} />
+        <AnswerList answered={this.state.answered} question={this.props.question} />
       </div>
     );
     }

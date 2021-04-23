@@ -14,7 +14,7 @@ class QandA extends React.Component {
       questions: [],
       count: 99,
       searchTerm: '',
-      displayed: 2
+      displayed: 2,
     };
     this.fetchQuestions = this.fetchQuestions.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
