@@ -179,6 +179,17 @@ body {
   padding: 30px 50px 0px 50px;
 }
 
+.style-select {
+  font-size: large;
+  min-height: 150px;
+  margin: 20px;
+  list-style: none;
+  border: 1px solid #77777769;
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  padding: 30px 50px 0px 50px;
+}
+
 .carousel-list {
   width: 100%;
   overflow: hidden;
