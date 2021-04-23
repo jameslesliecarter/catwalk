@@ -87,7 +87,7 @@ class QuestionItem extends React.Component {
       alert(responseMessage);
     } else {
       axios.post(`/qa/questions/${this.props.question.question_id}/answers`,
-      {body: answerBody, name: name, email: email, product_id: this.props.product, photos: []})
+      {body: answerBody, name: name, email: email, photos: []})
       .then((data) => {
         this.setState({
           answered: this.state.answered + 1
@@ -98,7 +98,6 @@ class QuestionItem extends React.Component {
         console.error('Question Post Error: ', error);
       });
     }
-    //setTimeout(() => {this.closeModal();}, 500);
   }
 
   updateHelpful() {

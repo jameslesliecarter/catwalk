@@ -130,7 +130,8 @@ body {
   max-height: 50vh;
   overflow: scroll;
 }
-.add-answer-modal {
+.add-answer-modal,
+.add-question-modal {
   position: absolute;
   top: 10%;
   bottom: 10%;

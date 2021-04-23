@@ -15,6 +15,7 @@ class QandA extends React.Component {
       count: 99,
       searchTerm: '',
       displayed: 2,
+      product: ''
     };
     this.fetchQuestions = this.fetchQuestions.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
@@ -32,7 +33,8 @@ class QandA extends React.Component {
         questions: _.sortBy(data.data.results, (question) => {
           return -question.question_helpfulness;
         }),
-        product: this.props.product.name
+        productName: this.props.product.name,
+        productId: this.props.product.id
       });
     })
     .catch((err) => {
@@ -50,7 +52,7 @@ class QandA extends React.Component {
             <Search update={this.updateSearch} />
           </div>
           <div className="questions-and-answers">
-            <QuestionList product={this.state.product} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
+            <QuestionList product={this.state.productName} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
           {this.renderButton()}
         </div>
@@ -115,7 +117,7 @@ class QandA extends React.Component {
        <h3>Questions &amp; Answers</h3>
         {this.renderView()}
         <div className="add-question">
-          <AddQuestion />
+          <AddQuestion fetch={this.fetchQuestions} productName={this.state.productName} productId={this.state.productId} />
         </div>
       </div>
     )
