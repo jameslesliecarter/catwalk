@@ -12,8 +12,10 @@ class Slider extends React.Component {
    this.checkButtons = this.checkButtons.bind(this);
   }
 
-  componentDidMount() {
-   this.checkButtons(this.refs.offsetWidth, this.refs.scrollWidth);
+  componentDidUpdate(prevProps) {
+    if (prevProps.children !== this.props.children) {
+      this.checkButtons(this.refs.offsetWidth, this.refs.scrollWidth);
+    }
   }
 
   checkButtons(offsetWidthValue, scrollWidthValue) {
