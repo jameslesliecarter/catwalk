@@ -17,7 +17,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar">
-        <input onChange={this.updateSearch} type="text" placeholder="Search Bar Goes Here"></input>
+        <input onChange={this.updateSearch} type="text" placeholder="Have a question? Search for answers..."></input>
       </div>
     )
   }
