@@ -12,18 +12,9 @@ class Reviews extends React.Component {
       productID: '19092',
       reviews: [],
       sortOption: 'relevant',
-      overview: {
-        avgRating: '',
-        totReviews: '',
-        recoPerc: '',
-      },
-      reviewStars: {
-        '1': '',
-        '2': '',
-        '3': '',
-        '4': '',
-        '5': '',
-      },
+      maxDisp: 2,
+      overview: {},
+      reviewStars: {},
       productChars: {},
     };
     this.changeSort = this.changeSort.bind(this);
@@ -32,7 +23,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     let pID = `product_id=${this.state.productID}`;
-    ax.get(`/reviews/?${pID}&sort=relevant&page=1&count=2`)
+    ax.get(`/reviews/?${pID}&sort=relevant&count=99`)
       .then((res) => {
         this.setState({ reviews: res.data.results });
       })
@@ -42,21 +33,20 @@ class Reviews extends React.Component {
       });
     ax.get(`/reviews/meta/?${pID}`)
       .then((res) => {
-        // ratings
         const {ratings} = res.data;
         let sum = 0;
         let tot = 0;
         let avg = 0;
         for (let key in ratings) {
-          let val = Number(ratings[key]);
+          let val = (Number(key) * Number(ratings[key]));
           sum += val;
-          tot++;
+          tot += Number(ratings[key]);
         }
         avg = (sum / tot).toFixed(1).toString();
         sum = sum.toString();
-        //console.log('compDidMnt axget avg, sum', avg, sum);
         // recommended %
-        let recosTot = res.data.recommended.true + res.data.recommended.false;
+        let recosTot = Number(res.data.recommended.true)
+        recosTot = recosTot + Number(res.data.recommended.false);
         let recoPerc = Math.round((res.data.recommended.true / recosTot) * 100);
         recoPerc = recoPerc.toString();
         // reviewStars
@@ -74,7 +64,6 @@ class Reviews extends React.Component {
         star4perc = star4perc.toString();
         let star5perc = (Math.round((res.data.ratings['5']/totalStars)*100));
         star5perc = star5perc.toString();
-        console.log(totalStars, star1perc, star2perc, star3perc, star4perc, star5perc)
         // productchars
         let productChars = {};
         if (res.data.characteristics.Fit) {
@@ -110,25 +99,12 @@ class Reviews extends React.Component {
       })
       .catch((err) => {
         console.dir(err);
-        console.error('err in componentdidmount.ax.get /meta/avg');
+        console.error('err in componentdidmount.ax.get /meta');
       });
   }
 
-  componentDidUpdate(prevProps, prevState) { // optional 3rd param - snapshot
-    //if (this.state.productID !== prevState.productID) {
-    //  let pID = `product_id=${this.state.productID}`;
-    //  ax.get(`/reviews/?${pID}&sort=relevant&page=1&count=2`)
-    //  .then((res) => {
-    //    this.setState({
-    //      reviews: this.state.reviews.concat(res.data.results)
-    //    });
-    //  })
-    //  .catch((err) => {
-    //    console.error('===============================');
-    //    console.error('err in componentdidmount.ax.get');
-    //    console.dir(err);
-    //  });
-    //}
+  componentDidUpdate(prevProps, prevState) {
+    // optional 3rd param - snapshot
   }
 
   changeSort(sortOption) {
@@ -137,22 +113,9 @@ class Reviews extends React.Component {
     });
   };
 
-  moreReviews() {
-    let sortOption = this.state.sortOption;
-    let lastIndex = this.state.reviewsList.length;
-    let page = `page=${lastIndex}`;
-    let pID = `product_id=${this.state.productID}`;
-
-    ax.get(`/reviews/?${pID}&${page}&count=2`)
-    .then((data) => {
-      this.setState({
-
-      });
-    })
-    .catch((err) => {
-      console.error('Reviews fetchReviews get err:');
-      console.dir(err);
-    });
+  moreReviews(e) {
+    e.preventDefault();
+    this.setState({ maxDisp: (this.state.maxDisp + 2) });
   }
 
   render() {
@@ -161,9 +124,9 @@ class Reviews extends React.Component {
         <h3>RATINGS & REVIEWS</h3>
         <RatingsOverview
           className="reviews__breakdown"
-          avgRating={this.state.avgRating}
+          avgRating={this.state.overview.avgRating}
         />
-        <ReviewsOverview totalReviews={this.state.totReviews} />
+        <ReviewsOverview totalReviews={this.state.overview.totReviews} />
         <Breakdown
          reviewStars={this.state.reviewStars}
          productChars={this.state.productChars}
@@ -171,6 +134,8 @@ class Reviews extends React.Component {
         <ReviewList
           className="reviews__review-list"
           reviews={this.state.reviews}
+          maxDisp={this.state.maxDisp}
+          moreReviews={this.moreReviews}
         />
       </div>
     );

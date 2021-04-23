@@ -57,53 +57,27 @@ router.use('/meta', (req, res, next) => {
       });
   })
 
-router.get('/meta', (req, res) => {
+router.route('/meta')
+  .get((req, res) => {
     res.json(req.metadata);
     res.end();
   })
 
 router.route('/meta/avg')
   .get((req, res) => {
+    console.log('got to /meta/avg');
     const {ratings} = req.metadata;
-    let sum = 0;
-    let tot = 0;
-    for (let key in ratings) {
-      let val = Number(ratings[key]);
-      sum += val;
-      tot++;
+    let totStars = 0;
+    let totRevws = 0;
+    for (let star in ratings) {
+      totStars += (Number(star) * Number(ratings[star]));
+      totRevws += Number(ratings[star]);
     }
-    req.avg = (sum / tot).toFixed(1).toString();
-    //tot = tot.toString();
-    //req.metadata = { 'tot': tot, 'avg': avg };
+    let posStars = (totRevws * 5);
+    let avgStars = ((totStars / posStars) * 5);
+    req.avg = ((Math.round(avgStars*4))/4).toFixed(2);
     res.send(req.avg);
   });
-
-// was going to make /meta/avg and /meta/tot separate paths
-//router.use('/meta/*', (req, res, next) => {
-//    const {ratings} = req.metadata;
-//    let sum = 0;
-//    let tot = 0;
-//    for (let key in ratings) {
-//      let val = Number(ratings[key]);
-//      sum += val;
-//      tot++;
-//    }
-//    let avg = (sum / tot).toFixed(1).toString();
-//    tot = tot.toString();
-//    req.tot = tot;
-//    req.avg = avg;
-//    next();
-//})
-//
-//router.route('/meta/avg')
-//  .get((req, res) => {
-//    res.send(req.avg);
-//  });
-//
-//router.route('/meta/tot')
-//  .get((req, res) => {
-//    res.send(req.tot);
-//  });
 
 // /:review_id PATHs ======================================================== //
 router.param('review_id', (req, res, next) => {
