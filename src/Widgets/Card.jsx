@@ -10,7 +10,7 @@ const Card = ({details, images, cardClick, addOutfit}) => {
         <div className="card-display">
           <button className="addOutfit-btn" onClick={addOutfit}> + </button>
         </div>
-        <div className="card-info">
+        <div className="card-info addOutfit-text">
           <h2>Add to Outfit</h2>
         </div>
       </div>
