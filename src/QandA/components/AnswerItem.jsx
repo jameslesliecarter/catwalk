@@ -15,7 +15,6 @@ class AnswerItem extends React.Component {
     this.updateHelpful = this.updateHelpful.bind(this);
     this.updateReport = this.updateReport.bind(this);
     this.byLine = this.props.answer.answerer_name === 'Seller' ? <b>Seller</b> : <span>{this.props.answer.answerer_name}</span>;
-    this.render = this.render.bind(this);
   }
 
 
@@ -59,12 +58,6 @@ class AnswerItem extends React.Component {
       )
     }
   }
-
-  // componentDidUpdate(prevState) {
-  //   if (prevState.reported !== this.state.reported) {
-  //     this.render();
-  //   }
-  // }
 
   render() {
     return (
