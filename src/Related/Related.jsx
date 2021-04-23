@@ -1,33 +1,36 @@
 import React from "react";
 import axios from 'axios';
+import Slider from '../Widgets/Slider.jsx';
+import Card from '../Widgets/Card.jsx';
 
 class Related extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   detailsAllProducts:
-    //   stylesAllProducts: (for gallery carousel)
-    //   firstImageOfEachProduct: (for list carasoul)
-    // }
+    this.state = {
+      products: []
+    }
   }
 
   async componentDidUpdate(prevProps) {
     if (this.props.related !== prevProps.related) {
-      // this.props.related.forEach(id => {
-      //   axios
-      //   .get(`http://localhost:9000/products/${id}`)
-      //   .then(response => response.data)
-      //   .then(details => {
-      //     axios.get(`http://localhost:9000/products/${id}/styles`)
-      //     .then(response => response.data)
-      //     .then(styles => {
-      //       details.style = styles.results;
-      //       this.setState(prevState => ({
-      //         relatedProducts: prevState.relatedProducts.concat([details])
-      //       }))
-      //     })
-      //   })
-      // });
+      this.props.related.forEach(id => {
+        axios
+        .get(`http://localhost:9000/products/${id}`)
+        .then(response => response.data)
+        .then(details => {
+          axios.get(`http://localhost:9000/products/${id}/styles`)
+          .then(response => response.data)
+          .then(styles => {
+            details.styles = styles.results[0].photos;
+            this.setState(prevState => ({
+              products: prevState.products.concat([{
+                details: details,
+                images: styles.results[0].photos
+              }])
+            }))
+          })
+        })
+      });
     }
   }
 
@@ -35,6 +38,13 @@ class Related extends React.Component {
     return (
       <div className="related">
         <h2 className="related-text">RELATED PRODUCTS</h2>
+        <div className="related-list carousel-list carousel-horizontal">
+          <Slider>
+          {this.state.products.map((product,index) =>
+            <Card details={product.details} images={product.images} key={index}/>
+          )}
+          </Slider>
+        </div>
       </div>
     );
   }
