@@ -14,12 +14,14 @@ class QandA extends React.Component {
       questions: [],
       count: 99,
       searchTerm: '',
-      displayed: 4
+      displayed: 2
     };
     this.fetchQuestions = this.fetchQuestions.bind(this);
     this.postQuestion = this.postQuestion.bind(this);
     this.renderView = this.renderView.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
+    this.revealQuestions = this.revealQuestions.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
 
@@ -42,16 +44,14 @@ class QandA extends React.Component {
 
     if (questions.length > 0) {
       return (
-        <div>
+        <div className="questions-and-answers-area">
           <div>
             <Search update={this.updateSearch} />
           </div>
           <div className="questions-and-answers">
             <QuestionList count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
-          <div className="more-questions">
-            <MoreQuestions />
-          </div>
+          {this.renderButton()}
         </div>
       );
     } else {
@@ -59,9 +59,31 @@ class QandA extends React.Component {
     }
   }
 
+  renderButton() {
+    const {displayed, questions} = this.state;
+
+    if (questions.length > displayed) {
+      return (
+        <div className="more-questions">
+          <MoreQuestions revealQuestions={this.revealQuestions} />
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
+
   updateSearch(term) {
     this.setState({
       searchTerm: term
+    });
+  }
+
+  revealQuestions(){
+    this.setState({
+      displayed: this.state.displayed + 2
     });
   }
 

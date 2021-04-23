@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MoreQuestions = (props) => {
+const MoreQuestions = ({revealQuestions}) => {
   return (
-    <div className="more-questions-btn">
+    <div onClick={revealQuestions} className="more-questions-btn">
       More Questions Button Here
     </div>
   )
