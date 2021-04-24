@@ -23,7 +23,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     let pID = `product_id=${this.state.productID}`;
-    ax.get(`/reviews/?${pID}&sort=relevant&count=99`)
+    ax.get(`/api/reviews/?${pID}&sort=relevant&count=99`)
       .then((res) => {
         this.setState({ reviews: res.data.results });
       })
@@ -31,7 +31,7 @@ class Reviews extends React.Component {
         console.dir(err);
         console.error('err in componentdidmount.ax.get /');
       });
-    ax.get(`/reviews/meta/?${pID}`)
+    ax.get(`/api/reviews/meta/?${pID}`)
       .then((res) => {
         const {ratings} = res.data;
         let sum = 0;
@@ -109,7 +109,7 @@ class Reviews extends React.Component {
 
   changeSort(sortOption) {
     this.setState({
-      sortOption: sortOption,
+      'sortOption': sortOption,
     });
   };
 
@@ -130,6 +130,7 @@ class Reviews extends React.Component {
         <Breakdown
          reviewStars={this.state.reviewStars}
          productChars={this.state.productChars}
+         changeSort={this.changeSort}
         />
         <ReviewList
           className="reviews__review-list"
