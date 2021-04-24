@@ -8,9 +8,8 @@ Once there, run `npm install`.
 Cool, now you have all the dependencies you'll need.
 
 To start up yer dev environs:
-you must have "tmux" installed
-Run`chmod +x serve.sh`
-Now run `npm run serve`
+run `npm run serve` in one shell window
+`npm run build` in another.
 
 Enjoy the SYMPL lifestyle.
 
