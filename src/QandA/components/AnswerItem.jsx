@@ -20,7 +20,7 @@ class AnswerItem extends React.Component {
 
   updateHelpful() {
     if(!this.state.updatedHelpful) {
-      axios.put(`/qa/answers/${this.props.answer.answer_id}/helpful`)
+      axios.put(`/api/qa/answers/${this.props.answer.answer_id}/helpful`)
       .catch((error) => {
         console.error('Helpful Button Click error: ', error);
       });
@@ -33,7 +33,7 @@ class AnswerItem extends React.Component {
 
   updateReport() {
     if (!this.state.updatedReport) {
-      axios.put(`/qa/answers/${this.props.answer.answer_id}/report`)
+      axios.put(`/api/qa/answers/${this.props.answer.answer_id}/report`)
       .catch((error) => {
         console.error('Answer Report Button Error: ', error);
       });

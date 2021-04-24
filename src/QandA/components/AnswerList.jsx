@@ -21,7 +21,7 @@ class AnswerList extends React.Component {
   }
 
   fetchAnswers() {
-    axios.get(`/qa/questions/${this.state.question_id}/answers/?count=99`)
+    axios.get(`/api/qa/questions/${this.state.question_id}/answers/?count=99`)
     .then((data) => {
       this.setState({
         answers: data.data
