@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from '../../Widgets/Dropdown.jsx'
 
-const ReviewsOverview = (props) => {
+const OverviewReviews = (props) => {
   let totalReviews = props.totalReviews;
   let changeSort = props.changeSort;
   return (
@@ -17,4 +17,4 @@ const ReviewsOverview = (props) => {
   );
 };
 
-export default ReviewsOverview;
+export default OverviewReviews;

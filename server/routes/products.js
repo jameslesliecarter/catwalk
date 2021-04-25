@@ -11,7 +11,6 @@ let ax = axios.create({
   headers: apiKey,
 });
 
-// root ENDpoint route
 router.route('/')
   .get((req, res) => {
     req.page = req.query.page || '1';
@@ -26,14 +25,11 @@ router.route('/')
       });
   });
 
-// middleware applied to all /:product_id URIs
 router.param('product_id', (req, res, next) => {
   req.id = req.params.product_id;
   next();
 })
 
-// /:product_id ENDpoint, that's why we use .route()
-// and this is where we deal with res
 router.route('/:product_id')
   .get((req, res) => {
     ax.get(`/${req.id}`)

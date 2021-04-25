@@ -1,7 +1,7 @@
 import React from "react";
 import ax from "axios";
-import RatingsOverview from './components/RatingsOverview.jsx';
-import ReviewsOverview from './components/ReviewsOverview.jsx';
+import OverviewRatings from './components/OverviewRatings.jsx';
+import OverviewReviews from './components/OverviewReviews.jsx';
 import Breakdown from './components/Breakdown.jsx';
 import ReviewList from './components/ReviewList.jsx';
 
@@ -23,7 +23,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     let pID = `product_id=${this.state.productID}`;
-    ax.get(`/api/reviews/?${pID}&sort=relevant&count=99`)
+    ax.get(`/api/reviews/?${pID}&sort=relevant&count=42`)
       .then((res) => {
         this.setState({ reviews: res.data.results });
       })
@@ -108,6 +108,16 @@ class Reviews extends React.Component {
   }
 
   changeSort(sortOption) {
+    let pID = `product_id=${this.state.productID}`;
+    // is 42 max?
+    ax.get(`/api/reviews/?${pID}&sort=${sortOption}&count=42`)
+      .then((res) => {
+        this.setState({ reviews: res.data.results });
+      })
+      .catch((err) => {
+        console.dir(err);
+        console.error('err in componentdidmount.ax.get /');
+      });
     this.setState({
       'sortOption': sortOption,
     });
@@ -122,15 +132,18 @@ class Reviews extends React.Component {
     return (
       <div className="reviews">
         <h3>RATINGS & REVIEWS</h3>
-        <RatingsOverview
+        <OverviewRatings
           className="reviews__breakdown"
+          product_id={this.state.productID}
           avgRating={this.state.overview.avgRating}
         />
-        <ReviewsOverview totalReviews={this.state.overview.totReviews} />
+        <OverviewReviews
+          totalReviews={this.state.overview.totReviews}
+          changeSort={this.changeSort}
+        />
         <Breakdown
          reviewStars={this.state.reviewStars}
          productChars={this.state.productChars}
-         changeSort={this.changeSort}
         />
         <ReviewList
           className="reviews__review-list"
