@@ -15,13 +15,14 @@ class App extends React.Component {
       related: []
     }
     this.cardClick = this.cardClick.bind(this);
+    this.getProduct = this.getProduct.bind(this);
   }
 
-  async componentDidMount() {
+  async getProduct(id = '19093') {
     const [firstRes, secondRes, thirdRes] = await Promise.all([
-      axios.get('/api/products/19093'),
-      axios.get('/api/products/19093/styles'),
-      axios.get('/api/products/19093/related')
+      axios.get(`/api/products/${id}`),
+      axios.get(`/api/products/${id}/styles`),
+      axios.get(`/api/products/${id}/related`)
     ]);
 
     this.setState({
@@ -31,8 +32,13 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.getProduct();
+  }
+
   cardClick(id) {
-    console.log(id);
+    id = id.toString();
+    this.getProduct(id);
   }
 
   render() {

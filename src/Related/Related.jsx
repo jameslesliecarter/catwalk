@@ -48,7 +48,7 @@ class Related extends React.Component {
             </Slider>
           </div>
         </div>
-        <Outfits product={this.props.product} styles={this.props.styles}/>
+        <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
       </div>
     );
   }
