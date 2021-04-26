@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
 
-export const Outfits = ({product, styles}) => {
+export const Outfits = ({product, styles, cardClick}) => {
   const [outfits, addOutfits] = useState([]);
 
   const addOutfit = () => {
@@ -16,7 +16,7 @@ export const Outfits = ({product, styles}) => {
       <Slider direction={'horizontal'}>
         <Card addOutfit={addOutfit}/>
         {outfits.map((outfit,index) =>
-          <Card details={outfit.details} images={outfit.images} key={index}/>
+          <Card details={outfit.details} images={outfit.images} key={index} cardClick={cardClick}/>
         )}
       </Slider>
     </div>

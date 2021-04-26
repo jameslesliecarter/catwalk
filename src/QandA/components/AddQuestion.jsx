@@ -85,7 +85,7 @@ class AddQuestion extends React.Component {
       }
       alert(responseMessage);
     } else {
-      axios.post('/qa/questions/',
+      axios.post('/api/qa/questions/',
       {body: questionBody, name: name, email: email, product_id: this.props.productId})
       .then((data) => {
         this.renderQuestions();

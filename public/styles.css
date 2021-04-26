@@ -375,11 +375,16 @@ body {
   height: inherit;
 }
 
-.stars-reviews {
-  display: flex;
-  justify-content: space-between;
-}
-
 .fa {
   padding-right: 10px;
+}
+
+/* WIDGETS */
+/* star rating */
+.stars {
+  /*
+  display: flex;
+  justify-content: space-between;
+  */
+  color: gold;
 }

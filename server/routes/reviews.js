@@ -46,16 +46,16 @@ router.route('/')
 
 // /meta PATHs ============================================================== //
 router.use('/meta', (req, res, next) => {
-    ax.get(`/meta/?${req.id}`)
-      .then((response) => {
-        req.metadata = response.data;
-        next();
-      })
-      .catch(function (error) {
-        console.error(error, '/reviews/meta GET - ax err:', error.isAxiosError);
-        res.send('error in /reviews/meta');
-      });
-  })
+  ax.get(`/meta/?${req.id}`)
+    .then((response) => {
+      req.metadata = response.data;
+      next();
+    })
+    .catch(function (error) {
+      console.error(error, '/reviews/meta GET - ax err:', error.isAxiosError);
+      res.send('error in /reviews/meta');
+    });
+})
 
 router.route('/meta')
   .get((req, res) => {
@@ -65,7 +65,6 @@ router.route('/meta')
 
 router.route('/meta/avg')
   .get((req, res) => {
-    console.log('got to /meta/avg');
     const {ratings} = req.metadata;
     let totStars = 0;
     let totRevws = 0;
@@ -75,7 +74,9 @@ router.route('/meta/avg')
     }
     let posStars = (totRevws * 5);
     let avgStars = ((totStars / posStars) * 5);
-    req.avg = ((Math.round(avgStars*4))/4).toFixed(2);
+    // to 1/4 star: req.avg = ((Math.round(avgStars*4))/4).toFixed(2);
+    // to 1/2 star:
+    req.avg = ((Math.round(avgStars*2))/2).toFixed(1);
     res.send(req.avg);
   });
 

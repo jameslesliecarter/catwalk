@@ -15,14 +15,15 @@ class App extends React.Component {
       related: [],
       reviewAvg: 0
     }
+    this.cardClick = this.cardClick.bind(this);
+    this.getProduct = this.getProduct.bind(this);
   }
 
-  async componentDidMount() {
-    const [firstRes, secondRes, thirdRes, fourthRes] = await Promise.all([
-      axios.get('http://localhost:9000/products/19093'),
-      axios.get('http://localhost:9000/products/19093/styles'),
-      axios.get('http://localhost:9000/products/19093/related'),
-      axios.get('http://localhost:9000/reviews/meta/avg/?product_id=19093')
+  async getProduct(id = '19093') {
+    const [firstRes, secondRes, thirdRes] = await Promise.all([
+      axios.get(`/api/products/${id}`),
+      axios.get(`/api/products/${id}/styles`),
+      axios.get(`/api/products/${id}/related`)
     ]);
 
     this.setState({
@@ -33,13 +34,22 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.getProduct();
+  }
+
+  cardClick(id) {
+    id = id.toString();
+    this.getProduct(id);
+  }
+
   render() {
     console.log(this.state.reviewAvg);
     return (
     <>
       <Navbar />
       <Overview styles={this.state.styles.results} product={this.state.product}/>
-      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} />
+      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
       <QandA product={this.state.product}/>
       <Reviews product_id={this.state.product.id} />
     </>

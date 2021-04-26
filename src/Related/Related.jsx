@@ -16,10 +16,10 @@ class Related extends React.Component {
     if (this.props.related !== prevProps.related) {
       this.props.related.forEach(id => {
         axios
-        .get(`http://localhost:9000/products/${id}`)
+        .get(`/api/products/${id}`)
         .then(response => response.data)
         .then(details => {
-          axios.get(`http://localhost:9000/products/${id}/styles`)
+          axios.get(`/api/products/${id}/styles`)
           .then(response => response.data)
           .then(styles => {
             details.styles = styles.results[0].photos;
@@ -43,12 +43,12 @@ class Related extends React.Component {
           <div className="related-list carousel-list carousel-horizontal">
             <Slider direction={'horizontal'}>
             {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index}/>
+              <Card details={product.details} images={product.images} key={index} cardClick={this.props.cardClick}/>
             )}
             </Slider>
           </div>
         </div>
-        <Outfits product={this.props.product} styles={this.props.styles}/>
+        <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
       </div>
     );
   }
