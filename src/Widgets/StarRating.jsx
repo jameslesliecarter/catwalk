@@ -10,6 +10,8 @@ class StarRating extends React.Component {
     };
   }
 
+  // props: product_id
+
   componentDidMount() {
     ax.get(`/api/reviews/meta/avg/?product_id=${this.props.product_id}`)
       .then((res) => { this.setState({ avg: Number(res.data)}); })

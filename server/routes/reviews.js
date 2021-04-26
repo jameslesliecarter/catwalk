@@ -13,8 +13,13 @@ let ax = axios.create({
 
 // middleware applied to ALL /reviews URIs ================================== //
 router.use((req, res, next) => {
-  req.id = `product_id=${req.query.product_id}`;
-  next();
+  if (req.query.product_id === 'undefined') {
+    console.error('ERR: no product_id query param provided');
+    res.end('ERR: must provide a product_id query param');
+  } else {
+    req.id = `product_id=${req.query.product_id}`;
+    next();
+  }
 })
 
 // / PATHs ================================================================== //
@@ -22,7 +27,7 @@ router.route('/')
   .get((req, res) => {
     req.page = req.query.page ? `page=${req.query.page}` : '';
     req.count = req.query.count ? `count=${req.query.count}` : '';
-    req.sort = `sort=${req.query.sort}` || 'sort=helpful';
+    req.sort = req.query.sort ? `sort=${req.query.sort}` : 'sort=helpful';
     ax.get((`/?${req.id}&${req.sort}&${req.page}&${req.count}`))
       .then(function (response) {
         res.status(response.status);
