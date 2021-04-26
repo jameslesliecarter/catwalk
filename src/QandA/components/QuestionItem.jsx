@@ -2,6 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
+import Photos from './Photos.jsx';
 
 
 class QuestionItem extends React.Component {
@@ -14,7 +15,8 @@ class QuestionItem extends React.Component {
       name: '',
       email: '',
       answerBody: '',
-      answered: 0
+      answered: 0,
+      photoPreviews: []
     };
     this.updateHelpful = this.updateHelpful.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -22,6 +24,7 @@ class QuestionItem extends React.Component {
     this.updateName = this.updateName.bind(this);
     this.updateEmail = this.updateEmail.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
+    this.updatePhotos = this.updatePhotos.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
   }
@@ -73,6 +76,60 @@ class QuestionItem extends React.Component {
     this.setState({
       answerBody: e.target.value
     });
+  }
+
+  updatePhotos(e) {
+    let uploads = [];
+    for (var i = 0; i < e.target.files.length; i ++) {
+      uploads.push(URL.createObjectURL(e.target.files[i]));
+    }
+    this.setState({
+      photoPreviews: this.state.photoPreviews.concat(uploads)
+    });
+  }
+
+  renderPhotos() {
+    const {photoPreviews} = this.state;
+    let shortenedPhotoList = [];
+    for (var i = 0; i < 5; i ++ ) {
+      if (photoPreviews[i]) {
+        shortenedPhotoList.push(photoPreviews[i]);
+      }
+    }
+
+    if (photoPreviews.length > 0) {
+      return (
+        <div>
+          <Photos photos={shortenedPhotoList} />
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
+
+  renderPhotoInput() {
+    const {photoPreviews} = this.state;
+
+    if (photoPreviews.length < 5) {
+      return (
+        <div>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            ref="file"
+            multiple={true}
+            onChange={this.updatePhotos}
+            ></input>
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 
   handleSubmit(e) {
@@ -138,24 +195,51 @@ class QuestionItem extends React.Component {
                     <label>
                       Nickname:
                       <br></br>
-                      <input maxLength="60" type="text" placeholder="Example: jack543" onChange={this.updateName}></input>
+                      <input
+                      maxLength="60"
+                      type="text"
+                      placeholder="Example: jack543"
+                      onChange={this.updateName}></input>
                       <br></br>
                     </label>
                     <p>For privacy reasons, do not use your full name or email address</p>
                     <label>
                       Email:
                       <br></br>
-                      <input maxLength="60" type="email" placeholder="jack@email.com" onChange={this.updateEmail}></input>
+                      <input
+                      maxLength="60"
+                      type="email"
+                      placeholder="jack@email.com"
+                      onChange={this.updateEmail}></input>
                       <p>For authentications reasons, you will not be emailed.</p>
                     </label>
                     <br></br>
                     <label>
                       Answer:
                       <br></br>
-                      <textarea maxLength="1000" placeholder="Answer" onChange={this.updateAnswer}></textarea>
+                      <textarea
+                      maxLength="1000"
+                      placeholder="Answer"
+                      onChange={this.updateAnswer}></textarea>
                     </label>
                     <br></br>
-                    <button type="submit" onClick={this.handleSubmit}>Submit Answer!</button>
+                    <label>
+                      Add photos
+                      <br></br>
+                      {this.renderPhotos()}
+                      {this.renderPhotoInput()}
+                      {/* <input
+                      type="file"
+                      accept="image/png, image/jpeg"
+                      ref="file"
+                      multiple={true}
+                      onChange={this.updatePhotos}
+                      ></input> */}
+                    </label>
+                    <br></br>
+                    <button
+                    type="submit"
+                    onClick={this.handleSubmit}>Submit Answer!</button>
                   </form>
                 </div>
               </ReactModal>
