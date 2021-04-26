@@ -50,7 +50,9 @@ class QuestionItem extends React.Component {
 
   closeModal() {
     this.setState({
-      show: false
+      show: false,
+      photoPreviews: [],
+      photoFiles: []
     });
   }
 
@@ -79,12 +81,12 @@ class QuestionItem extends React.Component {
   }
 
   updatePhotos(e) {
-    let uploads = [];
+    let previews = [];
     for (var i = 0; i < e.target.files.length; i ++) {
-      uploads.push(URL.createObjectURL(e.target.files[i]));
+      previews.push(URL.createObjectURL(e.target.files[i]));
     }
     this.setState({
-      photoPreviews: this.state.photoPreviews.concat(uploads)
+      photoPreviews: this.state.photoPreviews.concat(previews),
     });
   }
 
@@ -134,7 +136,7 @@ class QuestionItem extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {name, email, answerBody} = this.state;
+    const {name, email, answerBody, photoPreviews} = this.state;
     let invalids = this.areInvalid(name, email, answerBody);
     if (invalids.length > 0) {
       let responseMessage = 'You must enter the following: ';
@@ -143,8 +145,9 @@ class QuestionItem extends React.Component {
       }
       alert(responseMessage);
     } else {
+      let data = new FormData();
       axios.post(`/api/qa/questions/${this.props.question.question_id}/answers`,
-      {body: answerBody, name: name, email: email, photos: []})
+      {body: answerBody, name: name, email: email, photos: photoPreviews})
       .then((data) => {
         this.setState({
           answered: this.state.answered + 1
@@ -159,7 +162,7 @@ class QuestionItem extends React.Component {
 
   updateHelpful() {
     if(!this.state.updatedHelpfulness) {
-      axios.put(`/qa/questions/${this.props.question.question_id}/helpful`)
+      axios.put(`/api/qa/questions/${this.props.question.question_id}/helpful`)
       .catch((error) => {
         console.error('Question not marked as helpful. Error: ', error);
       })
