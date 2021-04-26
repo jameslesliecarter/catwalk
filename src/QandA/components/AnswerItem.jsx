@@ -2,6 +2,7 @@ import React from 'react';
 import Photos from './Photos.jsx';
 import moment from 'moment';
 import axios from 'axios';
+import _ from 'underscore';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -77,7 +78,7 @@ class AnswerItem extends React.Component {
           </div>
         </div>
       <div className="photo-details">
-        <Photos photos={this.props.answer.photos}/>
+        <Photos photos={_.pluck(this.props.answer.photos, 'url')}/>
       </div>
     </div>
   )
