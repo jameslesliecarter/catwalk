@@ -14,6 +14,7 @@ class App extends React.Component {
       styles: {},
       related: []
     }
+    this.cardClick = this.cardClick.bind(this);
   }
 
   async componentDidMount() {
@@ -30,12 +31,16 @@ class App extends React.Component {
     });
   }
 
+  cardClick(id) {
+    console.log(id);
+  }
+
   render() {
     return (
     <>
       <Navbar />
       <Overview styles={this.state.styles.results} product={this.state.product}/>
-      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} />
+      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
       <QandA product={this.state.product}/>
       <Reviews product_id={this.state.product.id} />
     </>
