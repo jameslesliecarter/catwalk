@@ -23,11 +23,11 @@ class StarRating extends React.Component {
     var jsxArr =[];
     for (var i = 1; i <= 5; i++) {
       if (i <= this.state.avg) {
-        jsxArr.push(<FaStar key={i} />);
+        jsxArr.push(<FaStar className="stars" key={i} />);
       } else if (this.state.avg === (i - 0.5)) {
-        jsxArr.push(<FaStarHalfAlt key={(i-0.5)} />);
+        jsxArr.push(<FaStarHalfAlt className="stars" key={(i-0.5)} />);
       } else {
-        jsxArr.push(<FaRegStar key={i} />);
+        jsxArr.push(<FaRegStar className="stars" key={i} />);
       }
     }
     return(<div>{jsxArr}</div>);

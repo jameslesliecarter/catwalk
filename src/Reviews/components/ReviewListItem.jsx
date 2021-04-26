@@ -41,11 +41,19 @@ class ReviewListItem extends React.Component {
     } = this.props.review;
     //console.dir(photos);
     date = new Date(Date.parse(date)).toLocaleString('en-US',{dateStyle:'long'});
+    // add no or report after Helpful? Yes? ???
     return (
       <div id={review_id}>
-        <span className="list-item__star-rating">*****({rating})</span>
-        <span className="list-item__reviewer-name">{reviewer_name}</span>
-        <span className="list-item__date">{date}</span>
+        <span className="list-item__star-rating">
+          ***** ({rating}) &nbsp;
+        </span>
+        <span className="list-item__reviewer-name">
+          {reviewer_name} &nbsp;
+        </span>
+        <span className="list-item__date">
+          {date} &nbsp;
+        </span>
+        <br />
         <h4>{summary}</h4>
         <p>{body}</p>
         { (response) ?
@@ -55,8 +63,9 @@ class ReviewListItem extends React.Component {
           </div>
           : null
         }
+        <br />
         <p>Helpful?</p>
-        <u onClick={() =>{this.helpfulReview(review_id)}}>Yes</u> ({helpfulness}) | <u>no or report?</u>
+        <u onClick={() =>{this.helpfulReview(review_id)}}>Yes</u> ({helpfulness})
         <hr />
       </div>
     );
