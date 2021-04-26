@@ -17,7 +17,7 @@ const Card = ({details, images, cardClick, addOutfit}) => {
     )
   } else {
     return (
-      <div className="card">
+      <div className="card" onClick={cardClick.bind(this, details.id)}>
         <div className="card-display" onMouseEnter={() => setIsHovering(!isHovering)} onMouseLeave={() => setIsHovering(!isHovering)}>
         {isHovering ? <GalleryCarousel images={images} size={'thumbnail_url'}/> :
         <img src={images[0].thumbnail_url}/>}
