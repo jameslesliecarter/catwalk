@@ -16,10 +16,10 @@ class Related extends React.Component {
     if (this.props.related !== prevProps.related) {
       this.props.related.forEach(id => {
         axios
-        .get(`http://localhost:9000/products/${id}`)
+        .get(`/api/products/${id}`)
         .then(response => response.data)
         .then(details => {
-          axios.get(`http://localhost:9000/products/${id}/styles`)
+          axios.get(`/api/products/${id}/styles`)
           .then(response => response.data)
           .then(styles => {
             details.styles = styles.results[0].photos;

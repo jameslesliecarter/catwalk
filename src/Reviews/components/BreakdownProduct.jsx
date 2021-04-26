@@ -5,7 +5,7 @@ const BreakdownProduct = ({productChars}) => {
   return (
     <div className="breakdown__breakdown-product">
       {Object.keys(productChars).map((char, i)=>(
-          <p key={i}>{char} = {productChars[char]}</p>
+          <p key={i}>{char} = {Number(productChars[char]).toFixed(1)}</p>
       ))}
     </div>
   );

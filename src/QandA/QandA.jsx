@@ -27,7 +27,7 @@ class QandA extends React.Component {
 
 
   fetchQuestions() {
-    axios.get(`qa/questions/?product_id=${this.props.product.id}&page=1&count=${this.state.count}`)
+    axios.get(`/api/qa/questions/?product_id=${this.props.product.id}&page=1&count=${this.state.count}`)
     .then((data) => {
       this.setState({
         questions: _.sortBy(data.data.results, (question) => {
@@ -91,7 +91,7 @@ class QandA extends React.Component {
   }
 
   postQuestion(name, email, body, product_id) {
-    axios.post('/qa/questions', {
+    axios.post('/api/qa/questions', {
       name: name,
       email: email,
       body: body,

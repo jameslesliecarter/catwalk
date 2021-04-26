@@ -18,9 +18,9 @@ class App extends React.Component {
 
   async componentDidMount() {
     const [firstRes, secondRes, thirdRes] = await Promise.all([
-      axios.get('http://localhost:9000/products/19093'),
-      axios.get('http://localhost:9000/products/19093/styles'),
-      axios.get('http://localhost:9000/products/19093/related')
+      axios.get('/api/products/19093'),
+      axios.get('/api/products/19093/styles'),
+      axios.get('/api/products/19093/related')
     ]);
 
     this.setState({

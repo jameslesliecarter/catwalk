@@ -27,15 +27,23 @@ module.exports = {
       }
     ]
   },
-  watch: true,
+  devServer: {
+    port: 8080,
+    contentBase: path.join(__dirname, '/public'),
+    watchContentBase: true,
+    proxy: {
+      '/api': 'http://localhost:9000',
+    },
+  },
+  //watch: true,
   watchOptions: {
-    ignored: '**/node_modules',
+    ignored: '/node_modules/',
     aggregateTimeout: 300,
     poll: 1000
   },
   mode: 'development',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: ['.js', '.jsx'],
+  },
 }

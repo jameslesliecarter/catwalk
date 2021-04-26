@@ -2,11 +2,7 @@ import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 
 const ReviewList = ({reviews, maxDisp, moreReviews}) => {
-  //console.log(props.reviews)
-  //console.log('reviewlist reviews: ', reviews)
-  //console.log('reviewlist maxdisp: ', maxDisp)
   reviews = reviews.slice(0, maxDisp);
-  //console.log('reviewlist reviews after chop: ', reviews)
   return (
     <div>
       <div className="reviews__review-list">

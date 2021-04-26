@@ -86,7 +86,7 @@ class QuestionItem extends React.Component {
       }
       alert(responseMessage);
     } else {
-      axios.post(`/qa/questions/${this.props.question.question_id}/answers`,
+      axios.post(`/api/qa/questions/${this.props.question.question_id}/answers`,
       {body: answerBody, name: name, email: email, photos: []})
       .then((data) => {
         this.setState({
@@ -113,7 +113,7 @@ class QuestionItem extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     ReactModal.setAppElement('body');
   }
 
