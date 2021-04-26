@@ -15,15 +15,16 @@ class ImgGallery extends React.Component {
   }
 
   render() {
+    console.log(this.props.style);
     return (
-      <div>
+      <div className='img-gallery-wrap'>
         <div className="img-list carousel-list carousel-vertical">
           { this.props.style ?
-          <Slider>
+          <Slider direction={'vertical'}>
             {this.props.style[0].photos.map((image, index) => {
               return (
                 <div key={index} >
-                  <img src={image.thumbnail_url} onClick={this.imgClick} className='thumbnail' />
+                  <img src={image.thumbnail_url} onClick={this.imgClick} className='thumbnail-gallery' />
                 </div>
               )
             })}

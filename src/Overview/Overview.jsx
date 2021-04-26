@@ -3,6 +3,7 @@ import ProductInfo from './components/ProductInfo.jsx';
 import axios from 'axios';
 import ImgGallery from './components/ImgGallery.jsx';
 import StyleSelector from './components/StyleSelector.jsx';
+import AddCart from './components/AddCart.jsx';
 
 
 class Overview extends React.Component {
@@ -12,7 +13,7 @@ class Overview extends React.Component {
       styles: this.props.styles,
       product: this.props.product
     }
-    this.handleListClick = this.handleListClick.bind(this);
+    this.handleStyleClick = this.handleStyleClick.bind(this);
   }
 
   componentDidUpdate (prevProps) {
@@ -24,7 +25,7 @@ class Overview extends React.Component {
     }
   }
 
- handleListClick () {
+ handleStyleClick (name) {
 
  }
 
@@ -33,7 +34,8 @@ class Overview extends React.Component {
      <div className='overview-widget'>
        <ImgGallery style={this.state.styles} />
        <ProductInfo product={this.state.product}/>
-       <StyleSelector styles={this.state.styles}/>
+       <StyleSelector styles={this.state.styles} handleClick={this.handleStyleClick}/>
+       <AddCart />
     </div>
     )
  }

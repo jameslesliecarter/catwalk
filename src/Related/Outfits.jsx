@@ -13,7 +13,7 @@ export const Outfits = ({product, styles}) => {
   <div className="outfits">
     <h2 className="outfits-text">YOUR OUTFITS</h2>
     <div className="outfits-list carousel-list carousel-horizontal">
-      <Slider>
+      <Slider direction={'horizontal'}>
         <Card addOutfit={addOutfit}/>
         {outfits.map((outfit,index) =>
           <Card details={outfit.details} images={outfit.images} key={index}/>

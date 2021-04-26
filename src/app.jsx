@@ -12,25 +12,29 @@ class App extends React.Component {
     this.state = {
       product: {},
       styles: {},
-      related: []
+      related: [],
+      reviewAvg: 0
     }
   }
 
   async componentDidMount() {
-    const [firstRes, secondRes, thirdRes] = await Promise.all([
+    const [firstRes, secondRes, thirdRes, fourthRes] = await Promise.all([
       axios.get('http://localhost:9000/products/19093'),
       axios.get('http://localhost:9000/products/19093/styles'),
-      axios.get('http://localhost:9000/products/19093/related')
+      axios.get('http://localhost:9000/products/19093/related'),
+      axios.get('http://localhost:9000/reviews/meta/avg/?product_id=19093')
     ]);
 
     this.setState({
       product: firstRes.data,
       styles: secondRes.data,
-      related: thirdRes.data
+      related: thirdRes.data,
+      reviewAvg: fourthRes.data
     });
   }
 
   render() {
+    console.log(this.state.reviewAvg);
     return (
     <>
       <Navbar />

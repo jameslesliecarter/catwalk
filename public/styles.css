@@ -130,6 +130,7 @@ body {
   max-height: 50vh;
   overflow: scroll;
 }
+
 .add-answer-modal,
 .add-question-modal {
   position: absolute;
@@ -176,37 +177,68 @@ body {
 /* OVERVIEW========================================= */
 
 .overview-widget {
+  position: relative;
   text-align: left;
-  margin: 40px;
   border-color: cadetblue;
   border-style: solid;
+  height: 90vh;
 }
 
 .overview-widget-productInfo {
-  font-size: large;
+  font-size: 1.5rem;
+  position: absolute;
   min-height: 150px;
   width: 340px;
-  margin: 20px;
-  list-style: none;
-  border: 1px solid #77777769;
-  background-color: #fdfdfd;
-  border-radius: 4px;
-  padding: 30px 50px 0px 50px;
+  top: 14rem;
+  right: 8rem;
 }
 
 .style-select {
+  position: absolute;
+  right: 1px;
+  bottom: 10rem;
+  left: 60rem;
   font-size: 2rem;
   display: flex;
-  border: 1px solid #77777769;
-  background-color: #fdfdfd;
   border-radius: 4px;
   padding: 30px 50px 0px 50px;
+  width: 50%
+}
+
+.add-cart {
+  position: absolute;
+  border-style: solid;
+  width: 100%;
+  height: 15%;
+  bottom: 0;
+}
+
+.row-select {
+  display: inline-block;
+}
+
+.style-img {
+  padding: 5px 20px;
+  width: 12rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .carousel-list {
   width: 100%;
   overflow: hidden;
   margin: auto;
+}
+
+.carousel-vertical {
+ display: flex;
+ height: 20rem;
+}
+
+.img-gallery-wrap {
+  position: relative;
+  height: 40rem;
 }
 
 .related-list {
@@ -224,7 +256,15 @@ body {
   scroll-behavior: smooth;
 }
 
- .slider-wrapper {
+ .slider-wrapper-horizontal {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+ }
+
+
+ .slider-wrapper-vertical {
   height: inherit;
   display: flex;
   align-items: center;
@@ -314,10 +354,25 @@ body {
   object-fit: cover;
 }
 
+
+.thumbnail-gallery {
+  /* flex-shrink: 0; */
+  padding: 10px;
+  width: 15rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
 .gallery-img img {
   padding: 5px 20px;
-  height: 40rem;
-  object-position: center;
+  height: 30rem;
+  object-position: left;
+}
+
+.gallery-img {
+  position: absolute;
+  top: 15rem;
+  height: inherit;
 }
 
 .stars-reviews {

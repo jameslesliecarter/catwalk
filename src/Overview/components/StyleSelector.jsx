@@ -4,14 +4,16 @@ const StyleSelector = ({styles}) => {
 
   return (
     <div className='style-select'>
-      <h2>Style Selector</h2>
+      <div>
+      <p className='style-head'>{styles ? styles[0].name : <></> }</p>
+      </div>
       <div className="style-select-img">
         { styles ?
         <div>
           {styles.map((image, index) => {
             return (
-              <div key={index} >
-                <img src={image.photos[0].thumbnail_url} className='thumbnail' />
+              <div key={index} className='row-select'>
+                <img src={image.photos[0].thumbnail_url} className='style-img'/>
               </div>
             )
           })}
