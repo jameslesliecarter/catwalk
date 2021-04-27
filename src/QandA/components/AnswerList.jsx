@@ -9,7 +9,6 @@ class AnswerList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question_id: this.props.question.question_id,
       count: 2,
       answers: [],
       buttonText: 'See More Answers'
@@ -21,7 +20,7 @@ class AnswerList extends React.Component {
   }
 
   fetchAnswers() {
-    axios.get(`/api/qa/questions/${this.state.question_id}/answers/?count=99`)
+    axios.get(`/api/qa/questions/${this.props.question.question_id}/answers/?count=99`)
     .then((data) => {
       this.setState({
         answers: data.data
@@ -67,6 +66,9 @@ class AnswerList extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.answered !== this.props.answered) {
+      this.fetchAnswers();
+    }
+    if (prevProps.question.question_id !== this.props.question.question_id) {
       this.fetchAnswers();
     }
   }
