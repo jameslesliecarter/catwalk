@@ -4,15 +4,36 @@ import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
 import { Outfits } from './Outfits.jsx';
 import {FaRegStar} from 'react-icons/fa';
+import Comparison from './Comparison.jsx';
+import Modal from 'react-modal';
 
 class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      isOpen: false
     }
 
     this.comparison = this.comparison.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  componentDidMount() {
+    Modal.setAppElement('#app');
+  }
+
+  closeModal() {
+    this.setState({
+      isOpen: false
+    });
+  }
+
+  openModal() {
+    this.setState({
+      isOpen: true
+    });
   }
 
   async componentDidUpdate(prevProps) {
@@ -56,6 +77,10 @@ class Related extends React.Component {
           </div>
         </div>
         <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
+        <button onClick={this.openModal}>open modal</button>
+        <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
+          <Comparison />
+        </Modal>
       </div>
     );
   }
