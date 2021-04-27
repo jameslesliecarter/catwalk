@@ -20,9 +20,7 @@ const Card = ({details, images, cardClick, addOutfit, index, btnClick, glyph}) =
       <div className="card" onClick={cardClick.bind(this, details.id)}>
         <div className="card-display" onMouseEnter={() => setIsHovering(!isHovering)} onMouseLeave={() => setIsHovering(!isHovering)}>
           <button onClick={btnClick.bind(this, index)}>{glyph}</button>
-        {isHovering ? <GalleryCarousel images={images} size={'thumbnail_url'}/> :
-        <img src={images[0].thumbnail_url}/>}
-
+          <img src={images[0].thumbnail_url}/>
         </div>
         <div className="card-info">
           <p>{details.category}</p>
