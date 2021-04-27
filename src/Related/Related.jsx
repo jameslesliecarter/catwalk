@@ -13,8 +13,7 @@ class Related extends React.Component {
     this.state = {
       products: [],
       isOpen: false,
-      comparedProduct: {},
-      currentProduct: {}
+      comparedProduct: {}
     }
 
     this.comparison = this.comparison.bind(this);
@@ -32,11 +31,11 @@ class Related extends React.Component {
     });
   }
 
-  openModal(index) {
-    console.log(this.state.products[index]);
+  openModal(index, event) {
+    event.stopPropagation();
     this.setState({
       isOpen: true,
-      comparedProduct: this.state.products[index],
+      comparedProduct: this.state.products[index]
     });
   }
 
@@ -69,7 +68,6 @@ class Related extends React.Component {
   }
 
   render() {
-    console.log('current product ', this.state.currentProduct);
     return (
       <div>
         <div className="related">
@@ -84,7 +82,7 @@ class Related extends React.Component {
         </div>
         <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
         <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
-          <Comparison currentProduct={this.state.currentProduct} comparedProduct={this.state.comparedProduct.details} />
+          <Comparison currentProduct={this.props.product} comparedProduct={this.state.comparedProduct.details} />
         </Modal>
       </div>
     );
