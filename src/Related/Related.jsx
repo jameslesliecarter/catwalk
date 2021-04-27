@@ -67,6 +67,7 @@ class Related extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.product !== prevProps.product) {
+      this.setState({products: []});
       this.getRelatedProducts(this.props.product.id);
     }
   }
@@ -79,7 +80,7 @@ class Related extends React.Component {
           <div className="related-list carousel-list carousel-horizontal">
             <Slider direction={'horizontal'}>
             {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
+              <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
             )}
             </Slider>
           </div>
