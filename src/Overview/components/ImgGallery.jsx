@@ -7,7 +7,7 @@ class ImgGallery extends React.Component {
     super(props);
     this.state = {
       currentStyle: this.props.current,
-      currentImg: this.props.current
+      currentImg: []
     }
   }
 
@@ -20,6 +20,9 @@ class ImgGallery extends React.Component {
     }
   }
 
+  // retrieve index of clicked on img in list carousel
+  // pass index to gallery carousel as prop
+    // set state of curretn img in gallery carousel to index or 0
 
   render() {
     return (

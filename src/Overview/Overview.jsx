@@ -28,7 +28,6 @@ class Overview extends React.Component {
   }
 
  handleStyleClick(id) {
-   debugger;
    for (let i = 0; i < this.state.styles.length; i++) {
      if (id == this.state.styles[i].style_id) {
        this.setState({

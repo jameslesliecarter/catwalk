@@ -196,13 +196,10 @@ body {
 
 .style-select {
   position: absolute;
-  right: 1px;
   bottom: 14rem;
   right:0;
   font-size: 2rem;
   display: flex;
-  border-radius: 4px;
-  padding: 30px 50px 0px 50px;
   width: 50%;
   font-size: 1.5rem;
 }
@@ -367,13 +364,14 @@ body {
 
 .gallery-img img {
   padding: 5px 20px;
-  height: 30rem;
-  object-position: left;
+  height: 40rem;
+  left:0;
 }
 
 .gallery-img {
   position: absolute;
   top: 15rem;
+  height: 30rem;
 }
 
 .fa {

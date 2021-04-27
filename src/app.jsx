@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       product: {},
       styles: {},
-      related: [],
+      related: []
     }
     this.cardClick = this.cardClick.bind(this);
     this.getProduct = this.getProduct.bind(this);
@@ -28,7 +28,7 @@ class App extends React.Component {
     this.setState({
       product: firstRes.data,
       styles: secondRes.data,
-      related: thirdRes.data,
+      related: thirdRes.data
     });
   }
 
