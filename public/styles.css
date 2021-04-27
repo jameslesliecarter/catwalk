@@ -189,20 +189,21 @@ body {
   position: absolute;
   min-height: 150px;
   width: 340px;
-  top: 14rem;
+  top: 18rem;
   right: 8rem;
 }
 
 .style-select {
   position: absolute;
   right: 1px;
-  bottom: 10rem;
-  left: 60rem;
+  bottom: 14rem;
+  right:0;
   font-size: 2rem;
   display: flex;
   border-radius: 4px;
   padding: 30px 50px 0px 50px;
-  width: 50%
+  width: 50%;
+  font-size: 1.5rem;
 }
 
 .add-cart {
@@ -372,7 +373,6 @@ body {
 .gallery-img {
   position: absolute;
   top: 15rem;
-  height: inherit;
 }
 
 .fa {

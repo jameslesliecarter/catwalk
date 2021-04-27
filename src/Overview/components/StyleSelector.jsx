@@ -1,19 +1,25 @@
 import React from 'react';
 
-const StyleSelector = ({styles}) => {
+const StyleSelector = (props) => {
+
+  const styleClicked = (e) => {
+    props.handleClick(e.target.id);
+    console.log('click');
+  }
 
   return (
     <div className='style-select'>
       <div>
-      <p className='style-head'>{styles ? styles[0].name : <></> }</p>
+      <p className='style-head'>{props.styles ? props.styles[0].name : <></> }</p>
       </div>
       <div className="style-select-img">
-        { styles ?
+        { props.styles ?
         <div>
-          {styles.map((image, index) => {
+          {props.styles.map((image, index) => {
             return (
               <div key={index} className='row-select'>
-                <img src={image.photos[0].thumbnail_url} className='style-img'/>
+                <img src={image.photos[0].thumbnail_url} id={image.style_id}
+                onClick={styleClicked} className='style-img'/>
               </div>
             )
           })}

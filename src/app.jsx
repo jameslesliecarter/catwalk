@@ -13,7 +13,6 @@ class App extends React.Component {
       product: {},
       styles: {},
       related: [],
-      reviewAvg: 0
     }
     this.cardClick = this.cardClick.bind(this);
     this.getProduct = this.getProduct.bind(this);
@@ -30,7 +29,6 @@ class App extends React.Component {
       product: firstRes.data,
       styles: secondRes.data,
       related: thirdRes.data,
-      reviewAvg: fourthRes.data
     });
   }
 
@@ -44,7 +42,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.reviewAvg);
     return (
     <>
       <Navbar />

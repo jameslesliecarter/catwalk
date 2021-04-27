@@ -12,6 +12,8 @@ class Related extends React.Component {
     }
   }
 
+
+
   async componentDidUpdate(prevProps) {
     if (this.props.related !== prevProps.related) {
       this.props.related.forEach(id => {
