@@ -111,6 +111,10 @@ class QandA extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.fetchQuestions();
+  }
+
   render() {
     return (
       <div className="q-and-a-widget">
