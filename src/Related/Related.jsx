@@ -71,13 +71,12 @@ class Related extends React.Component {
           <div className="related-list carousel-list carousel-horizontal">
             <Slider>
             {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.comparison} glyph={<FaRegStar />}/>
+              <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
             )}
             </Slider>
           </div>
         </div>
         <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
-        <button onClick={this.openModal}>open modal</button>
         <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
           <Comparison />
         </Modal>
