@@ -40,10 +40,8 @@ class App extends React.Component {
 
   render() {
     if (Object.keys(this.state.product).length === 0 || this.state.styles.length === 0) {
-      console.log('avoided')
       return (<></>);
     } else {
-      console.log('we are in: products, styles', this.state.product, this.state.styles);
       return (
         <>
           <Navbar />
