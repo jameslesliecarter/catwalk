@@ -21,6 +21,7 @@ class GalleryCarousel extends React.Component {
   }
 
   render() {
+    console.log(this.props.images)
     return (
       <section className="carousel carousel-gallery">
         {this.state.currentImg === 0 ? <></> : <AiOutlineArrowLeft className="arrow-left" onClick={this.prevSlide} />}

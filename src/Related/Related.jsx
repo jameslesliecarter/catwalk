@@ -15,6 +15,8 @@ class Related extends React.Component {
     this.comparison = this.comparison.bind(this);
   }
 
+
+
   async componentDidUpdate(prevProps) {
     if (this.props.related !== prevProps.related) {
       this.props.related.forEach(id => {
@@ -48,7 +50,7 @@ class Related extends React.Component {
         <div className="related">
           <h2 className="related-text">RELATED PRODUCTS</h2>
           <div className="related-list carousel-list carousel-horizontal">
-            <Slider>
+            <Slider direction={'horizontal'}>
             {this.state.products.map((product,index) =>
               <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.comparison} glyph={<FaRegStar />}/>
             )}
