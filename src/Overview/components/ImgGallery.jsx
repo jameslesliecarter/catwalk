@@ -28,19 +28,6 @@ class ImgGallery extends React.Component {
     })
   }
 
-  // BUGGY CODE W/OUT ADJUSTING GALLERY
-      // let index = e.target.id;
-    // let arr = this.state.currentImg;
-    // let newImg = arr.splice(index, 1);
-    // let newState = newImg.concat(arr);
-    // this.setState({
-    //   currentImg: newState
-    // })
-
-  // retrieve index of clicked on img in list carousel
-  // pass index to gallery carousel as prop
-    // set state of curretn img in gallery carousel to index or 0
-
   render() {
     return (
       <div className='img-gallery-wrap'>
