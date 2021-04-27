@@ -12,6 +12,14 @@ class GalleryCarousel extends React.Component {
     this.nextSlide = this.nextSlide.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentImg !== this.props.currentImg) {
+      this.setState({
+        currentImg: this.props.currentImg
+      })
+    }
+  }
+
   prevSlide() {
     this.setState({currentImg: this.state.currentImg - 1});
   }
@@ -21,14 +29,14 @@ class GalleryCarousel extends React.Component {
   }
 
   render() {
-    console.log(this.props.images)
     return (
       <section className="carousel carousel-gallery">
         {this.state.currentImg === 0 ? <></> : <AiOutlineArrowLeft className="arrow-left" onClick={this.prevSlide} />}
+
         {this.props.images.map((image, index) => {
           return (
-            <div className={index === this.state.currentImg ? 'slide slide-active' : 'slide'} key={index}>
-              {index === this.state.currentImg && (<img src={image.url} />)}
+            <div className={index === this.props.images ? 'slide slide-active' : 'slide'} key={index} >
+              {index === this.state.currentImg && (<img src={image.url}/>)}
             </div>
           )
         })}
