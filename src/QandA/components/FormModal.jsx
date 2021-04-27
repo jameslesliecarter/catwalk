@@ -81,7 +81,7 @@ class FormModal extends React.Component {
       {body: questionBody, name: name, email: email, product_id: this.props.productId})
       .then((data) => {
         this.renderQuestions();
-        this.closeModal();
+        this.close();
       })
       .catch((error) => {
         console.error('Question Post Error: ', error);
