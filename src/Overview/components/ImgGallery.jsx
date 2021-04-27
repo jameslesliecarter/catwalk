@@ -9,6 +9,7 @@ class ImgGallery extends React.Component {
       currentStyle: this.props.current,
       currentImg: []
     }
+    this.handleListClick = this.handleListClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,6 +21,17 @@ class ImgGallery extends React.Component {
     }
   }
 
+  handleListClick(e) {
+    debugger;
+    let index = e.target.id;
+    let arr = this.state.currentImg;
+    let newImg = arr.splice(index, 1);
+    let newState = newImg.concat(arr);
+    this.setState({
+      currentImg: newState
+    })
+
+  }
   // retrieve index of clicked on img in list carousel
   // pass index to gallery carousel as prop
     // set state of curretn img in gallery carousel to index or 0
@@ -33,7 +45,8 @@ class ImgGallery extends React.Component {
             {this.state.currentImg.map((image, index) => {
               return (
                 <div key={index} >
-                  <img src={image.thumbnail_url} className='thumbnail-gallery' />
+                  <img src={image.thumbnail_url} className='thumbnail-gallery'
+                  id={index} onClick={this.handleListClick} />
                 </div>
               )
             })}
