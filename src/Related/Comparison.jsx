@@ -1,12 +1,14 @@
 import React from 'react';
 
-const Comparison = ({product, related}) => {
+const Comparison = ({currentProduct, comparedProduct}) => {
+  console.log('current product ', currentProduct);
+  console.log('compared product ', comparedProduct);
   return (
    <table>
      <tr>
-       <th>checking</th>
+       <th>{currentProduct.name}</th>
        <th/>
-       <th>if works</th>
+       <th>{comparedProduct.name}</th>
      </tr>
    </table>
   )
