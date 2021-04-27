@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
+import { ImCancelCircle } from 'react-icons/im';
 
 export const Outfits = ({product, styles, cardClick}) => {
-  const [outfits, addOutfits] = useState([]);
+  const [outfits, setOutfits] = useState([]);
 
   const addOutfit = () => {
-    addOutfits(outfits.concat([{details: product, images: styles.results[0].photos}]))
+    setOutfits(outfits.concat([{details: product, images: styles.results[0].photos}]))
+  }
+
+  const removeOutfit = (index) => {
+    outfits.splice(index, 1);
+    setOutfits(outfits);
   }
 
   return (
@@ -16,7 +22,7 @@ export const Outfits = ({product, styles, cardClick}) => {
       <Slider direction={'horizontal'}>
         <Card addOutfit={addOutfit}/>
         {outfits.map((outfit,index) =>
-          <Card details={outfit.details} images={outfit.images} key={index} cardClick={cardClick}/>
+          <Card details={outfit.details} images={outfit.images} key={index} index={index} cardClick={cardClick} btnClick={removeOutfit} glyph={<ImCancelCircle />} />
         )}
       </Slider>
     </div>

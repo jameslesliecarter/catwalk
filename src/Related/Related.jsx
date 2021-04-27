@@ -3,6 +3,7 @@ import axios from 'axios';
 import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
 import { Outfits } from './Outfits.jsx';
+import {FaRegStar} from 'react-icons/fa';
 
 class Related extends React.Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class Related extends React.Component {
     this.state = {
       products: []
     }
+
+    this.comparison = this.comparison.bind(this);
   }
 
 
@@ -37,6 +40,10 @@ class Related extends React.Component {
     }
   }
 
+  comparison(id) {
+    console.log(id);
+  }
+
   render() {
     return (
       <div>
@@ -45,7 +52,7 @@ class Related extends React.Component {
           <div className="related-list carousel-list carousel-horizontal">
             <Slider direction={'horizontal'}>
             {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index} cardClick={this.props.cardClick}/>
+              <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.comparison} glyph={<FaRegStar />}/>
             )}
             </Slider>
           </div>

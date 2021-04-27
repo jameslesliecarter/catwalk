@@ -68,7 +68,6 @@ router.route('/:question_id/answers')
     })
     .catch((error) => {
       console.error('Answer not created. Error: ', error);
-      res.status(response.status);
       res.end();
     });
   });

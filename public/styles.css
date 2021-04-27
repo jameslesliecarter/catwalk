@@ -139,6 +139,7 @@ body {
   left: 15%;
   right: 15%;
   background-color: #EDEBE8;
+  overflow: scroll;
 }
 .interaction {
   display: flex;
