@@ -7,8 +7,10 @@ class ReviewListItem extends React.Component {
     this.state = {
       helpfulness: this.props.review.helpfulness,
       updatedHelpfulness: false,
+      reported: false,
     };
     this.helpfulReview = this.helpfulReview.bind(this);
+    this.reportReview = this.reportReview.bind(this);
   }
 
   helpfulReview(reviewID) {
@@ -28,8 +30,10 @@ class ReviewListItem extends React.Component {
   }
 
   reportReview(reviewID) {
+    if (this.state.reported) { return; }
     ax.put(`/api/reviews/${reviewID}/report`)
       .then((res) => { console.log('put report'); })
+      .then((res) => { this.setState({ reported: true, }); })
       .catch((err) => {
         console.dir(err);
         console.error('ax err: /api/:review_id/report');
@@ -75,7 +79,13 @@ class ReviewListItem extends React.Component {
         }
         <br />
         <p>Helpful?</p>
-        <u onClick={() =>{this.helpfulReview(review_id)}}>Yes</u> ({this.state.helpfulness})
+        <u onClick={() => {this.helpfulReview(review_id)}}>
+          Yes
+        </u> ({this.state.helpfulness})
+        &nbsp;|&nbsp;
+        <u onClick={() => {this.reportReview(review_id)}}>
+          Report
+        </u>
         <hr />
       </div>
     );

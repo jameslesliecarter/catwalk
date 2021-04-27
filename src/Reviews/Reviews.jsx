@@ -22,8 +22,12 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
+    //if (!this.props.product.product_id) { return; }
+    console.log('reviews componentdidmount', this.props)
+    this.setState({ productID: this.props.product.product_id, });
     let pID = `product_id=${this.state.productID}`;
-    ax.get(`/api/reviews/?${pID}&sort=relevant&count=42`)
+    let sort = `sort=${this.state.sortOption}`;
+    ax.get(`/api/reviews/?${pID}&${sort}&count=42`)
       .then((res) => {
         this.setState({ reviews: res.data.results });
       })
@@ -109,18 +113,20 @@ class Reviews extends React.Component {
 
   changeSort(sortOption) {
     let pID = `product_id=${this.state.productID}`;
+    console.log(pID)
     // is 42 max?
     ax.get(`/api/reviews/?${pID}&sort=${sortOption}&count=42`)
       .then((res) => {
-        this.setState({ reviews: res.data.results });
+        this.setState({
+          'reviews': res.data.results,
+          'sortOption': sortOption,
+          'maxDisp': 2,
+        });
       })
       .catch((err) => {
         console.dir(err);
-        console.error('err in componentdidmount.ax.get /');
+        console.error('err in changeSort.ax.get /');
       });
-    this.setState({
-      'sortOption': sortOption,
-    });
   };
 
   moreReviews(e) {
@@ -129,30 +135,33 @@ class Reviews extends React.Component {
   }
 
   render() {
-    return (
-      <div className="reviews">
-        <h3>RATINGS & REVIEWS</h3>
-        <OverviewRatings
-          className="reviews__breakdown"
-          product_id={this.state.productID}
-          avgRating={this.state.overview.avgRating}
-        />
-        <OverviewReviews
-          totalReviews={this.state.overview.totReviews}
-          changeSort={this.changeSort}
-        />
-        <Breakdown
-         reviewStars={this.state.reviewStars}
-         productChars={this.state.productChars}
-        />
-        <ReviewList
-          className="reviews__review-list"
-          reviews={this.state.reviews}
-          maxDisp={this.state.maxDisp}
-          moreReviews={this.moreReviews}
-        />
-      </div>
-    );
+    if (this.props.product === undefined) { return (<></>); }
+    else {
+      return (
+        <div className="reviews">
+          <h3>RATINGS & REVIEWS</h3>
+          <OverviewRatings
+            className="reviews__breakdown"
+            product_id={this.state.productID}
+            avgRating={this.state.overview.avgRating}
+          />
+          <OverviewReviews
+            totalReviews={this.state.overview.totReviews}
+            changeSort={this.changeSort}
+          />
+          <Breakdown
+          reviewStars={this.state.reviewStars}
+          productChars={this.state.productChars}
+          />
+          <ReviewList
+            className="reviews__review-list"
+            reviews={this.state.reviews}
+            maxDisp={this.state.maxDisp}
+            moreReviews={this.moreReviews}
+          />
+        </div>
+      );
+    }
   }
 }
 
