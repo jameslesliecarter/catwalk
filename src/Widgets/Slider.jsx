@@ -36,7 +36,7 @@ class Slider extends React.Component {
      this.refs = el;
     }}
     >
-    <div className="slider-wrapper">{this.props.children}</div>
+    <div className={`slider-wrapper-${this.props.direction}`}>{this.props.children}</div>
     <div
      className={`btn prev ${this.state.prevDisable ? "disable" : ""}`}
      disabled={this.state.prevDisable}
