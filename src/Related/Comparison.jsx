@@ -19,9 +19,9 @@ const Comparison = ({currentProduct, comparedProduct}) => {
        <th/>
        <th>{comparedProduct.name}</th>
      </tr>
-     {allUniqFeatures.map(feature => {
+     {allUniqFeatures.map((feature, index) => {
        return (
-         <tr>
+         <tr key={index}>
            <th>{feature.current ? <GiCheckMark /> : <></>}</th>
            <th>{feature.feature + ': ' + feature.value}</th>
            <th>{feature.compared ? <GiCheckMark /> : <></>}</th>

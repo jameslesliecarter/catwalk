@@ -11,8 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       product: {},
-      styles: {},
-      related: []
+      styles: [],
     }
     this.cardClick = this.cardClick.bind(this);
     this.getProduct = this.getProduct.bind(this);
@@ -21,14 +20,12 @@ class App extends React.Component {
   async getProduct(id = '19093') {
     const [firstRes, secondRes, thirdRes] = await Promise.all([
       axios.get(`/api/products/${id}`),
-      axios.get(`/api/products/${id}/styles`),
-      axios.get(`/api/products/${id}/related`)
+      axios.get(`/api/products/${id}/styles`)
     ]);
 
     this.setState({
       product: firstRes.data,
-      styles: secondRes.data,
-      related: thirdRes.data
+      styles: secondRes.data
     });
   }
 
@@ -42,15 +39,21 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-    <>
-      <Navbar />
-      <Overview styles={this.state.styles.results} product={this.state.product}/>
-      <Related related={this.state.related} product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
-      <QandA product={this.state.product}/>
-      <Reviews product_id={this.state.product.id} />
-    </>
-    );
+    if (Object.keys(this.state.product).length === 0 || this.state.styles.length === 0) {
+      console.log('avoided')
+      return (<></>);
+    } else {
+      console.log('we are in: products, styles', this.state.product, this.state.styles);
+      return (
+        <>
+          <Navbar />
+          <Overview styles={this.state.styles.results} product={this.state.product}/>
+          <Related product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
+          <QandA product={this.state.product}/>
+          <Reviews product_id={this.state.product.id} />
+        </>
+        );
+    }
   }
 }
 
