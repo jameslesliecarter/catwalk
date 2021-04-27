@@ -17,6 +17,14 @@ class Overview extends React.Component {
     this.handleStyleClick = this.handleStyleClick.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      styles: this.props.styles,
+      product: this.props.product,
+      currentStyle: this.props.styles[0]
+    })
+  }
+
   componentDidUpdate (prevProps) {
     if (prevProps !== this.props) {
       this.setState({
