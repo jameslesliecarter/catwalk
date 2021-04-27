@@ -231,13 +231,6 @@ class QuestionItem extends React.Component {
                       <br></br>
                       {this.renderPhotos()}
                       {this.renderPhotoInput()}
-                      {/* <input
-                      type="file"
-                      accept="image/png, image/jpeg"
-                      ref="file"
-                      multiple={true}
-                      onChange={this.updatePhotos}
-                      ></input> */}
                     </label>
                     <br></br>
                     <button
