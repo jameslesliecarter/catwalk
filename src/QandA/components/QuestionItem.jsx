@@ -185,11 +185,11 @@ class QuestionItem extends React.Component {
             <span className="question-icon">Q: </span>{this.props.question.question_body}
           </div>
           <div className="question-interaction interaction">
-            <div onClick={this.updateHelpful} className="helpful-btn">
+            <button onClick={this.updateHelpful} className="btn helpful-btn">
               Helpful? Yes &#40;{this.state.helpfulness}&#41;
-            </div>
-            <div onClick={this.openModal} className="add-answer-btn">Add Answer
-            </div>
+            </button>
+            <button onClick={this.openModal} className="btn add-answer-btn">Add Answer
+            </button>
             <ReactModal onRequestClose={this.closeModal} className="add-answer-modal" isOpen={this.state.show} >
                 <div className="add-answer-form">
                   <h3>Submit your Answer</h3>
@@ -197,18 +197,18 @@ class QuestionItem extends React.Component {
                   <form>
                     <label>
                       Nickname:
-                      <br></br>
+                      <br />
                       <input
                       maxLength="60"
                       type="text"
                       placeholder="Example: jack543"
                       onChange={this.updateName}></input>
-                      <br></br>
+                      <br />
                     </label>
                     <p>For privacy reasons, do not use your full name or email address</p>
                     <label>
                       Email:
-                      <br></br>
+                      <br />
                       <input
                       maxLength="60"
                       type="email"
@@ -216,26 +216,26 @@ class QuestionItem extends React.Component {
                       onChange={this.updateEmail}></input>
                       <p>For authentications reasons, you will not be emailed.</p>
                     </label>
-                    <br></br>
+                    <br />
                     <label>
                       Answer:
-                      <br></br>
+                      <br />
                       <textarea
                       maxLength="1000"
                       placeholder="Answer"
                       onChange={this.updateAnswer}></textarea>
                     </label>
-                    <br></br>
+                    <br />
                     <label>
                       Add photos
-                      <br></br>
+                      <br />
                       {this.renderPhotos()}
                       {this.renderPhotoInput()}
                     </label>
-                    <br></br>
+                    <br />
                     <button
                     type="submit"
-                    onClick={this.handleSubmit}>Submit Answer!</button>
+                    onClick={this.handleSubmit} className="btn answer-submit submit">Submit Answer!</button>
                   </form>
                 </div>
               </ReactModal>

@@ -9,7 +9,7 @@ const Card = ({details, images, cardClick, addOutfit, index, btnClick, glyph}) =
     return (
       <div className="card" id="addOutfit-card">
         <div className="card-display">
-          <button className="addOutfit-btn" onClick={addOutfit}> + </button>
+          <button className="btn addOutfit-btn" onClick={addOutfit}> + </button>
         </div>
         <div className="card-info addOutfit-text">
           <h2>Add Outfit</h2>
