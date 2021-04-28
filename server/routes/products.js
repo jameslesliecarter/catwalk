@@ -49,8 +49,8 @@ router.route('/:product_id/styles')
         res.send(response.data);
       })
       .catch(function(error) {
-        console.error('\n/products/:product_id/styles ax err:\n', error);
-        res.send('error in /products/:product_id/styles');
+        console.error('\n/products/:product_id/styles ax err:');
+        res.end('error in /products/:product_id/styles');
       });
   });
 

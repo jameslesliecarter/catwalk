@@ -18,6 +18,7 @@ class DropDown extends React.Component {
 
   render() {
     // ddValue is "Default value" / initialization
+    // i need to give these vars better names...
     let ddLabel = this.props.ddLabel;
     let ddList = this.props.ddList;
     let ddVal = this.props.ddVal;

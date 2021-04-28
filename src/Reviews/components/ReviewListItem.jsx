@@ -4,22 +4,36 @@ import ax from 'axios';
 class ReviewListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      helpfulness: this.props.review.helpfulness,
+      updatedHelpfulness: false,
+      reported: false,
+    };
     this.helpfulReview = this.helpfulReview.bind(this);
+    this.reportReview = this.reportReview.bind(this);
   }
 
   helpfulReview(reviewID) {
+    if (this.state.updatedHelpfulness) { return; }
     ax.put(`/api/reviews/${reviewID}/helpful`)
       .then((res) => { console.log('put helpful'); })
+      .then((res) => {
+        this.setState({
+          updatedHelpfulness: true,
+          helpfulness: (this.state.helpfulness + 1),
+        });
+      })
       .catch((err) => {
         console.dir(err);
         console.error('ax err: /api/:review_id/helpful');
       });
-    //ax.get get the whole reviews arr again
   }
 
   reportReview(reviewID) {
+    if (this.state.reported) { return; }
     ax.put(`/api/reviews/${reviewID}/report`)
       .then((res) => { console.log('put report'); })
+      .then((res) => { this.setState({ reported: true, }); })
       .catch((err) => {
         console.dir(err);
         console.error('ax err: /api/:review_id/report');
@@ -65,7 +79,13 @@ class ReviewListItem extends React.Component {
         }
         <br />
         <p>Helpful?</p>
-        <u onClick={() =>{this.helpfulReview(review_id)}}>Yes</u> ({helpfulness})
+        <u onClick={() => {this.helpfulReview(review_id)}}>
+          Yes
+        </u> ({this.state.helpfulness})
+        &nbsp;|&nbsp;
+        <u onClick={() => {this.reportReview(review_id)}}>
+          Report
+        </u>
         <hr />
       </div>
     );
