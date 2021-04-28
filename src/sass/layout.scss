@@ -44,6 +44,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
     &-horizontal {
 
     }
@@ -52,13 +53,20 @@
      }
   }
 
-  &-prev {
-    left: 1rem;
-   }
+  &-arrow {
+    position: absolute;
+    font-size: 5rem;
+    cursor: pointer;
+    z-index: 10;
 
-   &-next {
-    right: 1rem;
-   }
+    &-prev {
+      left: -2rem;
+     }
+
+     &-next {
+      right: -2rem;
+     }
+  }
 
    &-disable {
     opacity: 0.5;

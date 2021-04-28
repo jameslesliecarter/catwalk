@@ -35,8 +35,7 @@ body {
   width: 75vw;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  overflow: hidden; }
+  flex-direction: column; }
 
 .navbar {
   height: 10rem;
@@ -143,7 +142,8 @@ body {
   padding-right: 10px; }
 
 .related-outfits-container {
-  background-color: var(--color-grey-light-1); }
+  background-color: var(--color-grey-light-1);
+  margin-top: 2rem; }
 
 .related, .outfits {
   height: 30vh; }
@@ -158,23 +158,35 @@ body {
   width: 20%;
   margin-right: 1.5rem;
   box-shadow: 0 0.5rem 0.8rem var(--shadow-dark);
-  transition: 0.3s; }
+  transition: 0.3s;
+  cursor: pointer; }
   .card:hover {
     box-shadow: 0 1rem 1rem var(--shadow-dark); }
   .card-display {
     height: 50%;
     position: relative; }
+    .card-display-btn {
+      position: absolute;
+      right: 1rem;
+      outline: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #000; }
   .card-info {
     height: 50%; }
   .card-display img {
+    margin-top: 2.2rem;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 5px 5px 0 0; }
   .card-info {
     margin-top: 2rem;
     text-align: center;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    line-height: 3rem; }
 
 .addOutfit-btn {
   position: absolute;
@@ -368,13 +380,18 @@ body {
   height: inherit;
   display: flex;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  position: relative; }
 
-.slider-prev {
-  left: 1rem; }
-
-.slider-next {
-  right: 1rem; }
+.slider-arrow {
+  position: absolute;
+  font-size: 5rem;
+  cursor: pointer;
+  z-index: 10; }
+  .slider-arrow-prev {
+    left: -2rem; }
+  .slider-arrow-next {
+    right: -2rem; }
 
 .slider-disable {
   opacity: 0.5;

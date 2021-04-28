@@ -132,6 +132,7 @@
 
 .related-outfits-container {
   background-color: var(--color-grey-light-1);
+  margin-top: 2rem;
 }
 
 .related, .outfits {
@@ -151,6 +152,7 @@
   margin-right: 1.5rem;
   box-shadow: 0 .5rem .8rem var(--shadow-dark);
   transition: 0.3s;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 1rem 1rem var(--shadow-dark);
@@ -159,6 +161,17 @@
   &-display {
     height: 50%;
     position: relative;
+
+    &-btn {
+      position: absolute;
+      right: 1rem;
+      outline: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: #000;
+    }
   }
 
   &-info {
@@ -166,9 +179,10 @@
   }
 
   &-display img {
+    margin-top: 2.2rem;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 5px 5px 0 0;
   }
 
@@ -176,6 +190,7 @@
     margin-top: 2rem;
     text-align: center;
     font-size: 1.5rem;
+    line-height: 3rem;
   }
 }
 
