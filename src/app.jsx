@@ -20,12 +20,16 @@ class App extends React.Component {
   async getProduct(id = '19093') {
     const [firstRes, secondRes, thirdRes] = await Promise.all([
       axios.get(`/api/products/${id}`),
-      axios.get(`/api/products/${id}/styles`)
+      axios.get(`/api/products/${id}/styles`),
+      axios.get(`/api/reviews/meta/avg/?product_id=${id}`)
     ]);
 
     this.setState({
-      product: firstRes.data,
-      styles: secondRes.data
+      styles: secondRes.data,
+      product: {
+        ...firstRes.data,
+        avgRating: thirdRes.data
+      }
     });
   }
 
@@ -48,7 +52,7 @@ class App extends React.Component {
           <Overview styles={this.state.styles.results} product={this.state.product}/>
           <Related product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
           <QandA product={this.state.product}/>
-          <Reviews product_id={this.state.product.id} />
+          <Reviews product={this.state.product} />
         </>
         );
     }

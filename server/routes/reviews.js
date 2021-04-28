@@ -11,10 +11,23 @@ let ax = axios.create({
   headers: apiKey,
 });
 
+// error callback func
+const errorCB = (err) => {
+  if (err.response === undefined) { console.error('  ^ERROR!'); }
+  else {
+    console.error('   ^ERROR!', err.response.status, err.response.statusText);
+  }
+}
+
 // middleware applied to ALL /reviews URIs ================================== //
 router.use((req, res, next) => {
-  req.id = `product_id=${req.query.product_id}`;
-  next();
+  if (req.query.product_id === 'undefined') {
+    console.error('  ^ERR: no product_id query param provided');
+    res.end('ERR: must provide a product_id query param');
+  } else {
+    req.id = `product_id=${req.query.product_id}`;
+    next();
+  }
 })
 
 // / PATHs ================================================================== //
@@ -22,26 +35,20 @@ router.route('/')
   .get((req, res) => {
     req.page = req.query.page ? `page=${req.query.page}` : '';
     req.count = req.query.count ? `count=${req.query.count}` : '';
-    req.sort = `sort=${req.query.sort}` || 'sort=helpful';
+    req.sort = req.query.sort ? `sort=${req.query.sort}` : 'sort=helpful';
     ax.get((`/?${req.id}&${req.sort}&${req.page}&${req.count}`))
       .then(function (response) {
         res.status(response.status);
         res.send(response.data);
       })
-      .catch(function (error) {
-        console.log(error, '/reviews/ get - ax err:', error.isAxiosError);
-        res.end('error in /:product_id');
-      });
+      .catch(function (error) { errorCB(error); res.end('ERR'); });
   })
   .post((req, res) => {
     ax.post('/', req.body)
       .then(function (response) {
         res.status(response.status).end();
       })
-      .catch(function(error) {
-        console.error(error, '/reviews/ POST - ax err:', error.isAxiosError);
-        res.status(response.status).end();
-      });
+      .catch(function (error) { errorCB(error); res.end('ERR'); });
   });
 
 // /meta PATHs ============================================================== //
@@ -51,10 +58,7 @@ router.use('/meta', (req, res, next) => {
       req.metadata = response.data;
       next();
     })
-    .catch(function (error) {
-      console.error(error, '/reviews/meta GET - ax err:', error.isAxiosError);
-      res.send('error in /reviews/meta');
-    });
+    .catch(function (error) { errorCB(error); res.end('ERR'); });
 })
 
 router.route('/meta')
@@ -66,6 +70,7 @@ router.route('/meta')
 router.route('/meta/avg')
   .get((req, res) => {
     const {ratings} = req.metadata;
+    if (Object.keys(ratings).length === 0) { res.end('0'); }
     let totStars = 0;
     let totRevws = 0;
     for (let star in ratings) {
@@ -93,10 +98,7 @@ router.route('/:review_id/helpful')
         res.status(response.status);
         res.end();
       })
-  .catch(function(error) {
-    console.error('\n/reviews/:review_id/helpful ax err:\n');
-    res.send('error in /reviews/:review_id/helpful');
-    });
+  .catch(function (error) { errorCB(error); res.end('ERR'); });
   });
 
 router.route('/:review_id/report')
@@ -106,10 +108,7 @@ router.route('/:review_id/report')
         res.status(response.status);
         res.end();
       })
-      .catch(function(error) {
-        console.error('\n/reviews/:review_id/report ax err:\n');
-        res.send('error in /reviews/:review_id/report');
-      });
+      .catch(function (error) { errorCB(error); res.end('ERR'); });
     });
 
 module.exports = router;
