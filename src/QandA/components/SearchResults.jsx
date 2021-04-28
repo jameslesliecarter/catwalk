@@ -1,6 +1,7 @@
 import React from 'react';
+import Search from '../../Widgets/Search.jsx';
 
-class Search extends React.Component {
+class SearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.updateSearch = this.updateSearch.bind(this);
@@ -16,11 +17,11 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search-bar">
-        <input onChange={this.updateSearch} type="text" placeholder="Have a question? Search for answers..."></input>
-      </div>
+      <>
+        <Search onChange={this.updateSearch} placeholder='Have a question? Search for answers...' onClick={this.updateSearch} type='text' />
+      </>
     )
   }
 }
 
-export default Search;
+export default SearchResults;
