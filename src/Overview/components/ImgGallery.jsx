@@ -7,22 +7,26 @@ class ImgGallery extends React.Component {
     super(props);
     this.state = {
       currentStyle: this.props.current,
-      currentImg: []
+      images: [],
+      currentImg: 0
     }
+    this.handleListClick = this.handleListClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.current !== this.props.current) {
       this.setState({
         currentStyle: this.props.current,
-        currentImg: this.props.current.photos
+        images: this.props.current.photos,
       })
     }
   }
 
-  // retrieve index of clicked on img in list carousel
-  // pass index to gallery carousel as prop
-    // set state of curretn img in gallery carousel to index or 0
+  handleListClick(e) {
+    this.setState({
+      currentImg: Number(e.target.id)
+    })
+  }
 
   render() {
     return (
@@ -30,10 +34,11 @@ class ImgGallery extends React.Component {
         <div className="img-list carousel-list carousel-vertical">
           { this.state.currentStyle ?
           <Slider direction={'vertical'}>
-            {this.state.currentImg.map((image, index) => {
+            {this.state.images.map((image, index) => {
               return (
                 <div key={index} >
-                  <img src={image.thumbnail_url} className='thumbnail-gallery' />
+                  <img src={image.thumbnail_url} className='thumbnail-gallery'
+                  id={index} onClick={this.handleListClick}/>
                 </div>
               )
             })}
@@ -42,7 +47,7 @@ class ImgGallery extends React.Component {
         </div>
         <div className="gallery-img">
           {this.state.currentStyle ?
-          <GalleryCarousel images={this.state.currentImg} />
+          <GalleryCarousel images={this.state.images} currentImg={this.state.currentImg} handleClick={this.handleListClick}/>
           : <></>
           }
         </div>
