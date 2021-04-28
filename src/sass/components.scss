@@ -5,12 +5,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: lightslategray;
-}
+  height: 10rem;
 
-.logo {
-  margin: .5rem 0 .5rem 2rem;
-  height: 4rem;
-  cursor: pointer;
+  &-logo {
+    height: inherit;
+    cursor: pointer;
+  }
 }
 
 .search {

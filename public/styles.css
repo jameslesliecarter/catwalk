@@ -26,7 +26,8 @@ html {
 body {
   box-sizing: border-box;
   position: relative;
-  font-family: 'Lato', sans-serif; }
+  font-family: 'Lato', sans-serif;
+  background-color: var(--color-grey-light-1); }
 
 #app {
   left: 50%;
@@ -41,12 +42,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: lightslategray; }
-
-.logo {
-  margin: .5rem 0 .5rem 2rem;
-  height: 4rem;
-  cursor: pointer; }
+  background-color: lightslategray;
+  height: 10rem; }
+  .navbar-logo {
+    height: inherit;
+    cursor: pointer; }
 
 .search {
   margin-right: 2rem;

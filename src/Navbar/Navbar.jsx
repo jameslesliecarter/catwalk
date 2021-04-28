@@ -1,13 +1,14 @@
 import React from 'react';
 import Search from '../Widgets/Search.jsx';
+import Icon from '../Widgets/Icon.jsx';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <img src="https://symplmarketing.com/wp-content/uploads/2019/02/sympl-2.png" alt="logo" className="logo"/>
-      <Search type='text' placeholder='Search' onClick={() => console.log('hi')}/>
-    </nav>
-  )
-}
+const Navbar = () => (
+  <nav className="navbar">
+    <div className="navbar-logo">
+      <Icon />
+    </div>
+    <Search type='text' placeholder='Search'/>
+  </nav>
+)
 
 export default Navbar;
