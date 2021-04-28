@@ -73,8 +73,8 @@ class RelatedProducts extends React.Component {
   render() {
     return (
       <div className="related">
-        <h2 className="related-text">RELATED PRODUCTS</h2>
         <div className="related-list carousel-list carousel-horizontal">
+          <h2 className="related-text">RELATED PRODUCTS</h2>
           <Slider direction={'horizontal'}>
           {this.state.products.map((product,index) =>
             <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>

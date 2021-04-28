@@ -128,10 +128,20 @@
   padding-right: 10px;
 }
 
-//////// RELATED PRODUCTS
+//////// RELATED PRODUCTS & OUTFITS
 
-.related-list {
-  height: 33vh;
+.related-outfits-container {
+  background-color: var(--color-grey-light-1);
+}
+
+.related, .outfits {
+  height: 30vh;
+  &-text {
+    font-size: 2rem;
+  }
+  &-list {
+    height: inherit;
+  }
 }
 
 .card {
