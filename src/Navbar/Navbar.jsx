@@ -4,9 +4,9 @@ import Icon from '../Widgets/Icon.jsx';
 
 const Navbar = () => (
   <nav className="navbar">
-    <div className="navbar-logo">
-      <Icon />
-    </div>
+
+      <Icon className='navbar-logo'/>
+
     <Search type='text' placeholder='Search'/>
   </nav>
 )
