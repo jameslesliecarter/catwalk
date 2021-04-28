@@ -8,6 +8,6 @@ describe('App', () => {
     const component = mount(
       <QandA />
     );
-    expect(component.state().questions).toHaveLength(0);
+    expect(component.state().count).toBe(99);
   });
 });
