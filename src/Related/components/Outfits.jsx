@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Slider from '../Widgets/Slider.jsx';
-import Card from '../Widgets/Card.jsx';
+import Slider from '../../Widgets/Slider.jsx';
+import Card from '../../Widgets/Card.jsx';
 import { ImCancelCircle } from 'react-icons/im';
 
 export const Outfits = ({product, styles, cardClick}) => {
