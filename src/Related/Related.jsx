@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Slider from '../Widgets/Slider.jsx';
 import Card from '../Widgets/Card.jsx';
-import { Outfits } from './Outfits.jsx';
+import {Outfits} from './Outfits.jsx';
 import {FaRegStar} from 'react-icons/fa';
 import Comparison from './Comparison.jsx';
 import Modal from 'react-modal';
