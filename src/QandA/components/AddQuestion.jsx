@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import AnswerForm from './FormModal.jsx';
+import QuestionForm from './QuestionForm.jsx';
 
 class AddQuestion extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class AddQuestion extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
 
-    this.renderQuestions = this.renderQuestions.bind(this);
   }
 
   closeModal() {
@@ -26,17 +25,13 @@ class AddQuestion extends React.Component {
     });
   }
 
-  renderQuestions() {
-    this.props.fetch();
-  }
-
   render() {
     return (
       <div>
         <div onClick={this.openModal} className="add-question-btn">
           Add Question
         </div>
-        <AnswerForm productId={this.props.productId} isOpen={this.state.show} closeModal={this.closeModal} open={this.openModal} fetch={this.props.fetch}/>
+        <QuestionForm productId={this.props.productId} isOpen={this.state.show} closeModal={this.closeModal} fetch={this.props.fetch}/>
       </div>
     )
   }

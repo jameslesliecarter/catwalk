@@ -2,7 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import axios from 'axios';
 
-class AnswerForm extends React.Component {
+class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,4 +126,4 @@ class AnswerForm extends React.Component {
   }
 }
 
-export default AnswerForm;
+export default QuestionForm;
