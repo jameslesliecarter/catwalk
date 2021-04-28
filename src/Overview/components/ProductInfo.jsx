@@ -9,7 +9,10 @@ const ProductInfo = ({product}) => {
   return (
     <div className='overview-widget-productInfo'>
       <div>
-       <div className='stars-reviews'><StarRating/> <p className='review'>See all reviews</p></div>
+       <div className='stars-reviews'>
+         <StarRating product={product} />
+         <p className='review'>See all reviews</p>
+      </div>
       </div>
       <p>{product.category}</p>
       <h2>{product.name}</h2>

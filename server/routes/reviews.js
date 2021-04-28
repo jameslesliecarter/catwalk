@@ -13,7 +13,10 @@ let ax = axios.create({
 
 // error callback func
 const errorCB = (err) => {
-  console.error('   ^ERROR!', err.response.status, err.response.statusText);
+  if (err.response === undefined) { console.error('  ^ERROR!'); }
+  else {
+    console.error('   ^ERROR!', err.response.status, err.response.statusText);
+  }
 }
 
 // middleware applied to ALL /reviews URIs ================================== //
@@ -67,6 +70,7 @@ router.route('/meta')
 router.route('/meta/avg')
   .get((req, res) => {
     const {ratings} = req.metadata;
+    if (Object.keys(ratings).length === 0) { res.end('0'); }
     let totStars = 0;
     let totRevws = 0;
     for (let star in ratings) {
