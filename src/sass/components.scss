@@ -1,47 +1,187 @@
 ////////// NAVBAR
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: lightslategray;
   height: 10rem;
+  border-bottom: 2rem solid var(--color-grey-dark-1);
 
-  &-logo {
-    height: 8rem;
-    width: 8rem;
+  &-main {
+    position: relative;
+    top: 100%;
+    transform: translateY(-100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+
+    &-logo {
+      height: inherit;
+      width: height;
+      margin-left: 1.5rem;
+      cursor: pointer;
+    }
+
+    &-search {
+      width: 30%;
+      &-btn {
+        height: 1.75rem;
+        right: .5rem;
+      }
+    }
   }
 }
 
-.search {
-  margin-right: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* OVERVIEW========================================= */
+
+.overview-widget {
   position: relative;
+  text-align: left;
+  border-color: cadetblue;
+  border-style: solid;
+  height: 90vh;
+}
 
-  &-input {
-    height: inherit;
-    outline: none;
-    font-size: 1rem;
+.overview-widget-productInfo {
+  font-size: 1.5rem;
+  position: absolute;
+  min-height: 150px;
+  width: 340px;
+  top: 18rem;
+  right: 8rem;
+}
+
+.style-select {
+  position: absolute;
+  bottom: 14rem;
+  right:0;
+  font-size: 2rem;
+  display: flex;
+  width: 50%;
+  font-size: 1.5rem;
+}
+
+.add-cart {
+  position: absolute;
+  border-style: solid;
+  width: 100%;
+  height: 15%;
+  bottom: 0;
+}
+
+.row-select {
+  display: inline-block;
+}
+
+.style-img {
+  padding: 5px 20px;
+  width: 12rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.carousel-list {
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.carousel-vertical {
+ display: flex;
+ height: 20rem;
+}
+
+.img-gallery-wrap {
+  position: relative;
+  height: 40rem;
+}
+
+.thumbnail {
+  /* flex-shrink: 0; */
+  padding: 5px 20px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+
+.thumbnail-gallery {
+  /* flex-shrink: 0; */
+  padding: 10px;
+  width: 15rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.gallery-img img {
+  padding: 5px 20px;
+  height: 40rem;
+  left:0;
+}
+
+.gallery-img {
+  position: absolute;
+  top: 15rem;
+  height: 30rem;
+}
+
+.fa {
+  padding-right: 10px;
+}
+
+//////// RELATED PRODUCTS
+
+.related-list {
+  height: 33vh;
+}
+
+.card {
+  border: 1px solid black;
+  height: 33vh;
+  flex-shrink: 0;
+  width: 20%;
+  margin-right: 1.5rem;
+
+  &-display {
+    height: 50%;
+    position: relative;
   }
 
-  &-btn {
-    height: 1.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    outline: none;
-    right: .5rem;
-    position: absolute;
-    border: none
+  &-info {
+    height: 50%;
   }
 
-  &-icon {
-    height: 1rem;
+  &-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
+
+  &-info {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+.addOutfit-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  text-align: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.outfits {
+  margin-top: 4rem;
 }
 
 ////////// Q&A
@@ -171,195 +311,6 @@
   margin: 10px;
   max-width: 25%;
   max-height: 25%;
-}
-
-/* OVERVIEW========================================= */
-
-.overview-widget {
-  position: relative;
-  text-align: left;
-  border-color: cadetblue;
-  border-style: solid;
-  height: 90vh;
-}
-
-.overview-widget-productInfo {
-  font-size: 1.5rem;
-  position: absolute;
-  min-height: 150px;
-  width: 340px;
-  top: 18rem;
-  right: 8rem;
-}
-
-.style-select {
-  position: absolute;
-  bottom: 14rem;
-  right:0;
-  font-size: 2rem;
-  display: flex;
-  width: 50%;
-  font-size: 1.5rem;
-}
-
-.add-cart {
-  position: absolute;
-  border-style: solid;
-  width: 100%;
-  height: 15%;
-  bottom: 0;
-}
-
-.row-select {
-  display: inline-block;
-}
-
-.style-img {
-  padding: 5px 20px;
-  width: 12rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.carousel-list {
-  width: 100%;
-  overflow: hidden;
-  margin: auto;
-}
-
-.carousel-vertical {
- display: flex;
- height: 20rem;
-}
-
-.img-gallery-wrap {
-  position: relative;
-  height: 40rem;
-}
-
-.related-list {
-  min-height: 33vh;
-}
-
- .slider-container {
-  height: inherit;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0rem 2rem;
-  padding: 3px;
-  scroll-behavior: smooth;
-}
-
- .slider-wrapper-horizontal {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  width: 100%;
- }
-
-
- .slider-wrapper-vertical {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  width: 100%;
- }
-
- .prev {
-  left: 1rem;
- }
-
- .next {
-  right: 1rem;
- }
-
- .disable {
-  opacity: 0.5;
-  pointer-events: none;
- }
-
-.card {
-  border: 1px solid black;
-  height: 33vh;
-  flex-shrink: 0;
-  width: 20%;
-  margin-right: 1.5rem;
-}
-
-.card-display {
-  height: 50%;
-  position: relative;
-}
-
-.card-info {
-  height: 50%;
-}
-
-.card-display img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.card-info {
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.addOutfit-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10rem;
-  text-align: center;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-}
-
-.outfits {
-  margin-top: 4rem;
-}
-
-.thumbnail {
-  /* flex-shrink: 0; */
-  padding: 5px 20px;
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-}
-
-
-.thumbnail-gallery {
-  /* flex-shrink: 0; */
-  padding: 10px;
-  width: 15rem;
-  height: 8rem;
-  object-fit: cover;
-}
-
-.gallery-img img {
-  padding: 5px 20px;
-  height: 40rem;
-  left:0;
-}
-
-.gallery-img {
-  position: absolute;
-  top: 15rem;
-  height: 30rem;
-}
-
-.fa {
-  padding-right: 10px;
 }
 
 /* WIDGETS */

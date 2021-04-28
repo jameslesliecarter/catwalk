@@ -4,10 +4,10 @@ import Icon from '../Widgets/Icon.jsx';
 
 const Navbar = () => (
   <nav className="navbar">
-
-      <Icon className='navbar-logo'/>
-
-    <Search type='text' placeholder='Search'/>
+    <div className="navbar-main">
+      <Icon className='navbar-main-logo'/>
+      <Search type='text' placeholder='Search' className="navbar-main"/>
+    </div>
   </nav>
 )
 

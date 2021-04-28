@@ -1,0 +1,67 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &-input {
+    height: inherit;
+    width: 100%;
+    padding: 3px;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    border: none
+  }
+
+  &-icon {
+    height: 1rem;
+  }
+}
+
+.slider {
+  &-container {
+    height: inherit;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 2rem;
+    padding: 3px;
+    scroll-behavior: smooth;
+  }
+
+  &-wrapper {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    &-horizontal {
+
+    }
+    &-vertical {
+
+     }
+  }
+
+  &-prev {
+    left: 1rem;
+   }
+
+   &-next {
+    right: 1rem;
+   }
+
+   &-disable {
+    opacity: 0.5;
+    pointer-events: none;
+   }
+}
