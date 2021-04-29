@@ -20,6 +20,7 @@ class RelatedProducts extends React.Component {
   }
 
   getRelatedProducts(id) {
+    console.log('what is the id ? ', id);
     axios.get(`/api/products/${id}/related`)
     .then(response => response.data)
     .then(data => {
@@ -27,22 +28,38 @@ class RelatedProducts extends React.Component {
         axios
         .get(`/api/products/${id}`)
         .then(response => response.data)
+        .catch(`error getting related products for ${id}`)
         .then(details => {
           axios.get(`/api/products/${id}/styles`)
           .then(response => response.data)
+          .catch(`error getting styles for ${id}`)
           .then(styles => {
-            details.styles = styles.results[0].photos;
-            this.setState(prevState => ({
-              products: prevState.products.concat([{
-                details: details,
-                images: styles.results[0].photos
-              }])
-            }))
+            axios.get(`/api/reviews/meta/avg/?product_id=${id}`)
+            .then(response => response.data)
+            .catch(`error getting reviews for ${id}`)
+            .then(reviews => {
+              details.styles = styles.results[0].photos;
+              details.avgRating = reviews;
+              this.setState(prevState => ({
+                products: prevState.products.concat([{
+                  details: details,
+                  images: styles.results[0].photos,
+                }])
+              }))
+            })
           })
         })
       })
     })
   }
+
+  // details.styles = styles.results[0].photos;
+  //           this.setState(prevState => ({
+  //             products: prevState.products.concat([{
+  //               details: details,
+  //               images: styles.results[0].photos
+  //             }])
+  //           }))
 
   componentDidMount() {
     this.getRelatedProducts(this.props.product.id);
