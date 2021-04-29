@@ -39,7 +39,7 @@ body {
 
 .navbar {
   height: 10rem;
-  border-bottom: 2rem solid var(--color-grey-dark-1); }
+  border-bottom: 4rem solid var(--color-grey-dark-1); }
   .navbar-main {
     position: relative;
     top: 100%;
@@ -58,10 +58,13 @@ body {
       margin-right: auto;
       cursor: pointer; }
     .navbar-main-search {
-      width: 30%; }
+      height: 3rem;
+      width: 20rem;
+      margin-right: 1rem; }
       .navbar-main-search-btn {
-        height: 1.75rem;
-        right: .5rem; }
+        height: 2.75rem;
+        right: .5rem;
+        background-color: transparent; }
 
 /* OVERVIEW========================================= */
 .overview-widget {
