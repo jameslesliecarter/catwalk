@@ -18,7 +18,7 @@ class SearchResults extends React.Component {
   render() {
     return (
       <>
-        <Search onChange={this.updateSearch} placeholder='Have a question? Search for answers...' onClick={this.updateSearch} type='text' />
+        <Search onChange={this.updateSearch} placeholder='Have a question? Search for answers...' onClick={this.updateSearch} type='text' className='questions-and-answers-area' />
       </>
     )
   }

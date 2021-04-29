@@ -62,9 +62,7 @@ body {
       width: 20rem;
       margin-right: 1rem; }
       .navbar-main-search-btn {
-        height: 2.75rem;
-        right: .5rem;
-        background-color: transparent; }
+        height: 2.75rem; }
 
 /* OVERVIEW========================================= */
 .overview-widget {
@@ -354,7 +352,7 @@ body {
 .search {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative; }
   .search-input {
     height: inherit;
@@ -369,7 +367,9 @@ body {
     cursor: pointer;
     outline: none;
     position: absolute;
-    border: none; }
+    right: .5rem;
+    border: none;
+    background-color: transparent; }
   .search-icon {
     height: 1rem; }
 

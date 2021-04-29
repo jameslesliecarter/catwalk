@@ -1,7 +1,7 @@
 .search {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
 
   &-input {
@@ -19,7 +19,9 @@
     cursor: pointer;
     outline: none;
     position: absolute;
-    border: none
+    right: .5rem;
+    border: none;
+    background-color: transparent;
   }
 
   &-icon {
