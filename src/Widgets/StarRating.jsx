@@ -3,6 +3,7 @@ import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa';
 
 
  const StarRating = ({product}) => {
+   console.log('this is the product in star rating: ', product.avgRating);
   var jsxArr =[];
   for (var i = 1; i <= 5; i++) {
     if (i <= product.avgRating) {
@@ -13,7 +14,7 @@ import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa';
       jsxArr.push(<FaRegStar className="stars" key={i} />);
     }
   }
-  return(<div>{jsxArr}</div>);
+  return(<div className="stars-container">{jsxArr}</div>);
 };
 
 export default StarRating;

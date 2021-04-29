@@ -53,14 +53,6 @@ class RelatedProducts extends React.Component {
     })
   }
 
-  // details.styles = styles.results[0].photos;
-  //           this.setState(prevState => ({
-  //             products: prevState.products.concat([{
-  //               details: details,
-  //               images: styles.results[0].photos
-  //             }])
-  //           }))
-
   componentDidMount() {
     this.getRelatedProducts(this.props.product.id);
     Modal.setAppElement('#app');
