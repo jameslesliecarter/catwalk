@@ -90,7 +90,7 @@ class RelatedProducts extends React.Component {
           )}
           </Slider>
         </div>
-        <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
+        <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal} className='related-modal'>
           <Comparison currentProduct={this.props.product} comparedProduct={this.state.comparedProduct.details} />
         </Modal>
     </div>

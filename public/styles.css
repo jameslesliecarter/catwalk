@@ -152,11 +152,23 @@ body {
   height: 50vh; }
 
 .related, .outfits {
-  height: 50%; }
+  height: 50%;
+  position: relative; }
   .related-text, .outfits-text {
     font-size: 2rem; }
   .related-list, .outfits-list {
     height: 95%; }
+  .related-modal, .outfits-modal {
+    height: fit-content;
+    width: fit-content;
+    padding: 3rem;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-grey-light-1);
+    overflow: scroll; }
 
 .card {
   height: inherit;

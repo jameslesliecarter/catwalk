@@ -3,7 +3,6 @@ import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa';
 
 
  const StarRating = ({product}) => {
-   console.log('this is the product in star rating: ', product.avgRating);
   var jsxArr =[];
   for (var i = 1; i <= 5; i++) {
     if (i <= product.avgRating) {

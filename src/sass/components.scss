@@ -145,11 +145,26 @@
 
 .related, .outfits {
   height: 50%;
+  position: relative;
   &-text {
     font-size: 2rem;
   }
+
   &-list {
     height: 95%;
+  }
+
+  &-modal {
+    height: fit-content;
+    width: fit-content;
+    padding: 3rem;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-grey-light-1);
+    overflow: scroll;
   }
 }
 
