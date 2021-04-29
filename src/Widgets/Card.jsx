@@ -5,6 +5,8 @@ import StarRating from './StarRating.jsx';
 const Card = ({details, images, cardClick, addOutfit, index, btnClick, glyph}) => {
   const [isHovering, setIsHovering] = useState(false);
 
+  console.log('details: ', details);
+
   if (addOutfit) {
     return (
       <div className="card" id="addOutfit-card">
@@ -28,7 +30,7 @@ const Card = ({details, images, cardClick, addOutfit, index, btnClick, glyph}) =
           <h3>{details.name}</h3>
           <p>{details.slogan}</p>
           <p>${details.default_price}</p>
-          <StarRating product_id={details.id}/>
+          <StarRating product={details}/>
         </div>
       </div>
     )
