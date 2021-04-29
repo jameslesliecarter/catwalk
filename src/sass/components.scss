@@ -140,20 +140,21 @@
 .related-outfits-container {
   background-color: var(--color-grey-light-1);
   margin-top: 2rem;
+  height: 50vh;
 }
 
 .related, .outfits {
-  height: 30vh;
+  height: 50%;
   &-text {
-    font-size: 2rem;
+    // font-size: 2rem;
   }
   &-list {
-    height: inherit;
+    height: 100%;
   }
 }
 
 .card {
-  height: 80%;
+  height: inherit;
   flex-shrink: 0;
   width: 20%;
   margin-right: 1.5rem;
@@ -177,16 +178,11 @@
       background: transparent;
       border: none;
       font-size: 2rem;
-      color: #000;
+      color: yellow;
     }
   }
 
-  &-info {
-    height: 50%;
-  }
-
   &-display img {
-    margin-top: 2.2rem;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -194,10 +190,14 @@
   }
 
   &-info {
-    margin-top: 2rem;
+    height: 50%;
+    display: flex;
     text-align: center;
+    margin-left: .5rem;
+    flex-direction: column;
+    justify-content: space-evenly;
     font-size: 1.5rem;
-    line-height: 3rem;
+    line-height: 2rem;
   }
 }
 
@@ -219,7 +219,7 @@
 }
 
 .outfits {
-  margin-top: 4rem;
+  // margin-top: 4rem;
 }
 
 ////////// Q&A

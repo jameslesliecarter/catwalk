@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Slider from '../../Widgets/Slider.jsx';
 import Card from '../../Widgets/Card.jsx';
-import {FaRegStar} from 'react-icons/fa';
+import {FaStar} from 'react-icons/fa';
 import Comparison from './Comparison.jsx';
 import Modal from 'react-modal';
 
@@ -83,10 +83,10 @@ class RelatedProducts extends React.Component {
     return (
       <div className="related">
         <div className="related-list carousel-list carousel-horizontal">
-          <h2 className="related-text">RELATED PRODUCTS</h2>
+          {/* <h2 className="related-text">RELATED PRODUCTS</h2> */}
           <Slider direction={'horizontal'}>
           {this.state.products.map((product,index) =>
-            <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
+            <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaStar />}/>
           )}
           </Slider>
         </div>

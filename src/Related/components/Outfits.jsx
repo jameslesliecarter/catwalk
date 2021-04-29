@@ -20,7 +20,7 @@ export const Outfits = ({product, styles, cardClick}) => {
   return (
   <div className="outfits">
     <div className="outfits-list carousel-list carousel-horizontal">
-      <h2 className="outfits-text">YOUR OUTFITS</h2>
+      {/* <h2 className="outfits-text">YOUR OUTFITS</h2> */}
       <Slider direction={'horizontal'}>
         <Card addOutfit={addOutfit}/>
         {outfits.map((outfit,index) =>
