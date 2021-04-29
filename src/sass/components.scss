@@ -146,10 +146,10 @@
 .related, .outfits {
   height: 50%;
   &-text {
-    // font-size: 2rem;
+    font-size: 2rem;
   }
   &-list {
-    height: 100%;
+    height: 95%;
   }
 }
 
@@ -178,7 +178,14 @@
       background: transparent;
       border: none;
       font-size: 2rem;
+    }
+
+    .related-list &-btn {
       color: yellow;
+    }
+
+    .outfits-list &-btn {
+      color: red;
     }
   }
 
