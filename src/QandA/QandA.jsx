@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import _ from 'underscore';
-import Search from './components/Search.jsx';
+import SearchResults from './components/SearchResults.jsx';
 import QuestionList from './components/QuestionList.jsx';
 import MoreQuestions from './components/MoreQuestions.jsx';
 import AddQuestion from './components/AddQuestion.jsx';
@@ -49,7 +49,7 @@ class QandA extends React.Component {
       return (
         <div className="questions-and-answers-area">
           <div>
-            <Search update={this.updateSearch} />
+            <SearchResults update={this.updateSearch} />
           </div>
           <div className="questions-and-answers">
             <QuestionList product={this.state.productName} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />

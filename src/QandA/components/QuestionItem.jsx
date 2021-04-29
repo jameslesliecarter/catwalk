@@ -67,9 +67,9 @@ class QuestionItem extends React.Component {
             <span className="question-icon">Q: </span>{this.props.question.question_body}
           </div>
           <div className="question-interaction interaction">
-            <div onClick={this.updateHelpful} className="helpful-btn">
+            <button onClick={this.updateHelpful} className="helpful-btn">
               Helpful? Yes &#40;{this.state.helpfulness}&#41;
-            </div>
+            </button>
             <div onClick={this.openModal} className="add-answer-btn">Add Answer
             </div>
             <AnswerForm question={this.props.question} isOpen={this.state.show} closeModal={this.closeModal} answered={this.answered} />

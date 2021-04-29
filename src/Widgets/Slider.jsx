@@ -1,4 +1,5 @@
 import React from 'react';
+import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md';
 
 class Slider extends React.Component {
   constructor(props) {
@@ -30,33 +31,18 @@ class Slider extends React.Component {
   const offsetWidthValue = this.refs.offsetWidth,
         scrollWidthValue = this.refs.scrollWidth;
   return (
-   <div
-    className="slider-container"
-    ref={el => {
-     this.refs = el;
-    }}
-    >
-    <div className={`slider-wrapper-${this.props.direction}`}>{this.props.children}</div>
-    <div
-     className={`btn prev ${this.state.prevDisable ? "disable" : ""}`}
-     disabled={this.state.prevDisable}
-     onClick={() => {
-      this.refs.scrollLeft -= offsetWidthValue / 2;
-      this.checkButtons(offsetWidthValue, scrollWidthValue);
-     }}
-     >
-     {"<"}
+   <div className="slider-container" ref={ el => { this.refs = el }}>
+
+    <div className={`slider-arrow slider-arrow-prev ${this.state.prevDisable ? "slider-arrow slider-arrow-disable" : ""}`} disabled={this.state.prevDisable} onClick={() => { this.refs.scrollLeft -= offsetWidthValue / 2; this.checkButtons(offsetWidthValue, scrollWidthValue);}}>
+     {this.state.prevDisable ? null : <MdKeyboardArrowLeft />}
     </div>
-    <div
-     className={`btn next ${this.state.nextDisable ? "disable" : ""}`}
-     disabled={this.state.nextDisable}
-     onClick={() => {
-      this.refs.scrollLeft += offsetWidthValue / 2;
-      this.checkButtons(offsetWidthValue, scrollWidthValue);
-     }}
-     >
-     {">"}
+
+    <div className={`slider-wrapper slider-wrapper-${this.props.direction}`}>{this.props.children}</div>
+
+    <div className={`slider-arrow slider-arrow-next ${this.state.nextDisable ? "slider-arrow slider-arrow-disable" : ""}`} disabled={this.state.nextDisable} onClick={() => {this.refs.scrollLeft += offsetWidthValue / 2; this.checkButtons(offsetWidthValue, scrollWidthValue);}}>
+    {this.state.nextDisable ? null : <MdKeyboardArrowRight />}
     </div>
+
    </div>
   );
  }

@@ -1,27 +1,26 @@
-import React from "react";
+import React from 'react';
 import axios from 'axios';
-import Slider from '../Widgets/Slider.jsx';
-import Card from '../Widgets/Card.jsx';
-import { Outfits } from './Outfits.jsx';
+import Slider from '../../Widgets/Slider.jsx';
+import Card from '../../Widgets/Card.jsx';
 import {FaRegStar} from 'react-icons/fa';
 import Comparison from './Comparison.jsx';
 import Modal from 'react-modal';
 
-class Related extends React.Component {
+class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
       isOpen: false,
-      comparedProduct: {}
+      comparedProduct: {},
+      products: []
     }
-
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
   }
 
   getRelatedProducts(id) {
+    console.log('what is the id ? ', id);
     axios.get(`/api/products/${id}/related`)
     .then(response => response.data)
     .then(data => {
@@ -29,17 +28,25 @@ class Related extends React.Component {
         axios
         .get(`/api/products/${id}`)
         .then(response => response.data)
+        .catch(`error getting related products for ${id}`)
         .then(details => {
           axios.get(`/api/products/${id}/styles`)
           .then(response => response.data)
+          .catch(`error getting styles for ${id}`)
           .then(styles => {
-            details.styles = styles.results[0].photos;
-            this.setState(prevState => ({
-              products: prevState.products.concat([{
-                details: details,
-                images: styles.results[0].photos
-              }])
-            }))
+            axios.get(`/api/reviews/meta/avg/?product_id=${id}`)
+            .then(response => response.data)
+            .catch(`error getting reviews for ${id}`)
+            .then(reviews => {
+              details.styles = styles.results[0].photos;
+              details.avgRating = reviews;
+              this.setState(prevState => ({
+                products: prevState.products.concat([{
+                  details: details,
+                  images: styles.results[0].photos,
+                }])
+              }))
+            })
           })
         })
       })
@@ -67,30 +74,28 @@ class Related extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.product !== prevProps.product) {
+      this.setState({products: []});
       this.getRelatedProducts(this.props.product.id);
     }
   }
 
   render() {
     return (
-      <div>
-        <div className="related">
+      <div className="related">
+        <div className="related-list carousel-list carousel-horizontal">
           <h2 className="related-text">RELATED PRODUCTS</h2>
-          <div className="related-list carousel-list carousel-horizontal">
-            <Slider direction={'horizontal'}>
-            {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index} index={index}  cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
-            )}
-            </Slider>
-          </div>
+          <Slider direction={'horizontal'}>
+          {this.state.products.map((product,index) =>
+            <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
+          )}
+          </Slider>
         </div>
-        <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
         <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
           <Comparison currentProduct={this.props.product} comparedProduct={this.state.comparedProduct.details} />
         </Modal>
-      </div>
-    );
+    </div>
+    )
   }
 }
 
-export default Related;
+export default RelatedProducts;

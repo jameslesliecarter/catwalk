@@ -71,18 +71,20 @@ router.route('/meta/avg')
   .get((req, res) => {
     const {ratings} = req.metadata;
     if (Object.keys(ratings).length === 0) { res.end('0'); }
-    let totStars = 0;
-    let totRevws = 0;
-    for (let star in ratings) {
-      totStars += (Number(star) * Number(ratings[star]));
-      totRevws += Number(ratings[star]);
+    else {
+      let totStars = 0;
+      let totRevws = 0;
+      for (let star in ratings) {
+        totStars += (Number(star) * Number(ratings[star]));
+        totRevws += Number(ratings[star]);
+      }
+      let posStars = (totRevws * 5);
+      let avgStars = ((totStars / posStars) * 5);
+      // to 1/4 star: req.avg = ((Math.round(avgStars*4))/4).toFixed(2);
+      // to 1/2 star:
+      req.avg = ((Math.round(avgStars*2))/2).toFixed(1);
+      res.send(req.avg);
     }
-    let posStars = (totRevws * 5);
-    let avgStars = ((totStars / posStars) * 5);
-    // to 1/4 star: req.avg = ((Math.round(avgStars*4))/4).toFixed(2);
-    // to 1/2 star:
-    req.avg = ((Math.round(avgStars*2))/2).toFixed(1);
-    res.send(req.avg);
   });
 
 // /:review_id PATHs ======================================================== //

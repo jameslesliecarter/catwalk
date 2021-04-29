@@ -2,18 +2,19 @@ import React from 'react';
 import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa';
 
 
- const StarRating = (props) => {
+ const StarRating = ({product}) => {
+   console.log('this is the product in star rating: ', product.avgRating);
   var jsxArr =[];
   for (var i = 1; i <= 5; i++) {
-    if (i <= props.product.avgRating) {
+    if (i <= product.avgRating) {
       jsxArr.push(<FaStar className="stars" key={i} />);
-    } else if (props.product.avgRating === (i - 0.5)) {
+    } else if (product.avgRating === (i - 0.5)) {
       jsxArr.push(<FaStarHalfAlt className="stars" key={(i-0.5)} />);
     } else {
       jsxArr.push(<FaRegStar className="stars" key={i} />);
     }
   }
-  return(<div>{jsxArr}</div>);
+  return(<div className="stars-container">{jsxArr}</div>);
 };
 
 export default StarRating;
