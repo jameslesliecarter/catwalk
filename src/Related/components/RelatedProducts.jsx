@@ -1,21 +1,19 @@
-import React from "react";
+import React from 'react';
 import axios from 'axios';
-import Slider from '../Widgets/Slider.jsx';
-import Card from '../Widgets/Card.jsx';
-import { Outfits } from './Outfits.jsx';
+import Slider from '../../Widgets/Slider.jsx';
+import Card from '../../Widgets/Card.jsx';
 import {FaRegStar} from 'react-icons/fa';
 import Comparison from './Comparison.jsx';
 import Modal from 'react-modal';
 
-class Related extends React.Component {
+class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
       isOpen: false,
-      comparedProduct: {}
+      comparedProduct: {},
+      products: []
     }
-
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -74,24 +72,21 @@ class Related extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="related">
+      <div className="related">
+        <div className="related-list carousel-list carousel-horizontal">
           <h2 className="related-text">RELATED PRODUCTS</h2>
-          <div className="related-list carousel-list carousel-horizontal">
-            <Slider direction={'horizontal'}>
-            {this.state.products.map((product,index) =>
-              <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
-            )}
-            </Slider>
-          </div>
+          <Slider direction={'horizontal'}>
+          {this.state.products.map((product,index) =>
+            <Card details={product.details} images={product.images} key={index} index={index} cardClick={this.props.cardClick} btnClick={this.openModal} glyph={<FaRegStar />}/>
+          )}
+          </Slider>
         </div>
-        <Outfits product={this.props.product} styles={this.props.styles} cardClick={this.props.cardClick} />
         <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
           <Comparison currentProduct={this.props.product} comparedProduct={this.state.comparedProduct.details} />
         </Modal>
-      </div>
-    );
+    </div>
+    )
   }
 }
 
-export default Related;
+export default RelatedProducts;

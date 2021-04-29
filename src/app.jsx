@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from './Navbar/Navbar.jsx'
 import Overview from "./Overview/Overview.jsx";
-import Related from "./Related/Related.jsx";
+import RelatedOutfits from "./Related/RelatedOutfits.jsx";
 import QandA from "./QandA/QandA.jsx";
 import Reviews from "./Reviews/Reviews.jsx";
 import axios from 'axios';
@@ -50,7 +50,7 @@ class App extends React.Component {
         <>
           <Navbar />
           <Overview styles={this.state.styles.results} product={this.state.product}/>
-          <Related product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
+          <RelatedOutfits product={this.state.product} styles={this.state.styles} cardClick={this.cardClick} />
           <QandA product={this.state.product}/>
           <Reviews product={this.state.product} />
         </>

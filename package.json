@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack serve --progress",
     "serve": "nodemon",
+    "compile": "node-sass src/sass/main.scss public/styles.css -w",
     "test": "jest --watch",
     "test:coverage": "jest --coverage --colors"
   },
@@ -64,6 +65,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "jest": "^26.6.3",
+    "node-sass": "^5.0.0",
     "react-test-renderer": "^17.0.2",
     "regenerator-runtime": "^0.13.7",
     "source-map": "^0.5.7",

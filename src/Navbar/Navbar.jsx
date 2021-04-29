@@ -1,16 +1,16 @@
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
+import Search from '../Widgets/Search.jsx';
+import Icon from '../Widgets/Icon.jsx';
+import Company from '../Widgets/Company.jsx';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <img src="https://symplmarketing.com/wp-content/uploads/2019/02/sympl-2.png" alt="logo" className="logo"/>
-      <div className="search">
-        <input className="search-input" placeholder="Search products..." />
-        <button className="btn search-btn"><FaSearch className="search-icon" /></button>
-      </div>
-    </nav>
-  )
-}
+const Navbar = () => (
+  <nav className="navbar">
+    <div className="navbar-main">
+      <Icon className='navbar-main-logo' />
+      <Company className='navbar-main-name' />
+      <Search type='text' placeholder='Search' className="navbar-main"/>
+    </div>
+  </nav>
+)
 
 export default Navbar;
