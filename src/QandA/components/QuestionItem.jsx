@@ -61,22 +61,24 @@ class QuestionItem extends React.Component {
 
   render() {
     return (
-      <div className="question-and-answer-container">
-        <div className="question-item">
-          <div className="question-body">
-            <span className="question-icon">Q: </span>{this.props.question.question_body}
+      <>
+        <div className="qa-main-item-q">
+          <div className="qa-main-item-q-body">
+            <span className="qa-icon">Q: </span>{this.props.question.question_body}
           </div>
-          <div className="question-interaction interaction">
-            <button onClick={this.updateHelpful} className="helpful-btn">
-              Helpful? Yes &#40;{this.state.helpfulness}&#41;
+          <div className="qa-main-item-q-interactions">
+          Helpful?
+            <button onClick={this.updateHelpful} className="btn_">
+              Yes &#40;{this.state.helpfulness}&#41;
             </button>
-            <div onClick={this.openModal} className="add-answer-btn">Add Answer
-            </div>
+            |
+            <button onClick={this.openModal} className="btn_">Add Answer
+            </button>
             <AnswerForm question={this.props.question} isOpen={this.state.show} closeModal={this.closeModal} answered={this.answered} />
           </div>
         </div>
         <AnswerList answered={this.state.answered} question={this.props.question} />
-      </div>
+      </>
     );
     }
 };

@@ -47,18 +47,16 @@ class QandA extends React.Component {
 
     if (questions.length > 0) {
       return (
-        <div className="questions-and-answers-area">
-          <div>
-            <SearchResults update={this.updateSearch} />
-          </div>
-          <div className="questions-and-answers">
+        <>
+          <SearchResults update={this.updateSearch} />
+          <div className="qa-main">
             <QuestionList product={this.state.productName} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
           {this.renderButton()}
-        </div>
+        </>
       );
     } else {
-      return <div className="no-questions">No Questions Yet</div>;
+      return <p>No Questions Yet</p>;
     }
   }
 
@@ -67,13 +65,9 @@ class QandA extends React.Component {
 
     if (questions.length > displayed) {
       return (
-        <div className="more-questions">
+        <div className="qa-more">
           <MoreQuestions revealQuestions={this.revealQuestions} />
         </div>
-      )
-    } else {
-      return (
-        <div></div>
       )
     }
   }
@@ -117,10 +111,10 @@ class QandA extends React.Component {
 
   render() {
     return (
-      <div className="q-and-a-widget">
-       <h3>Questions &amp; Answers</h3>
+      <div className="qa">
+       <h2 className="qa-title">QUESTIONS &amp; ANSWERS</h2>
         {this.renderView()}
-        <div className="add-question">
+        <div className="qa-add">
           <AddQuestion fetch={this.fetchQuestions} productName={this.state.productName} productId={this.state.productId} />
         </div>
       </div>

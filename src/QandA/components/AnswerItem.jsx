@@ -19,7 +19,8 @@ class AnswerItem extends React.Component {
   }
 
 
-  updateHelpful() {
+  updateHelpful(e) {
+    e.preventDefault();
     if(!this.state.updatedHelpful) {
       axios.put(`/api/qa/answers/${this.props.answer.answer_id}/helpful`)
       .catch((error) => {
@@ -49,38 +50,44 @@ class AnswerItem extends React.Component {
 
     if (!reported) {
       return (
-        <div onClick={this.updateReport} className="report-btn">
-          Report btn
-        </div>
+        <button onClick={this.updateReport} className="btn_">
+          Report
+        </button>
       )
     } else {
       return (
-        <div className="report-btn"><em>Reported</em></div>
+        <button className="btn_"><em>Reported</em></button>
       )
     }
   }
 
   render() {
     return (
-      <div className="answer-area">
-        <div className="answer-header">
-          <div className="answer-text">
-            {this.props.answer.body}
-          </div>
-          <div className="answer-interaction interaction">
-            <div className="user-info">
-              <span className="answer-name">by: {this.byLine}</span>, <span className="answer-date">{moment(this.props.answer.date).add(1, 'day').format('MMMM Do YYYY')}</span>
-            </div>
-            <div onClick={this.updateHelpful} className="helpful-btn">
-              Helpful? &#40;{this.state.helpfulness}&#41;
-            </div>
-            {this.reportView()}
-          </div>
+      <>
+        <div className="qa-main-item-a-body">
+          <span className="qa-icon">A: </span>
+          {this.props.answer.body}
         </div>
-      <div className="photo-details">
-        <Photos photos={_.pluck(this.props.answer.photos, 'url')}/>
-      </div>
-    </div>
+        <div className="qa-main-item-a-interactions">
+          <div className="qa-main-item-a-interactions-user">
+            <span className="qa-main-item-a-interactions-user-name">
+              by: {this.byLine},
+            </span>
+            <span className="qa-main-item-a-interactions-user-date">
+              {' ' + moment(this.props.answer.date).add(1, 'day').format('MMMM Do YYYY')} |
+            </span>
+          </div>
+          Helpful?
+          <button onClick={this.updateHelpful} className="btn_">
+            Yes &#40;{this.state.helpfulness}&#41;
+          </button>
+          |
+          {this.reportView()}
+        </div>
+        <div className="qa-main-item-a-images">
+          <Photos photos={_.pluck(this.props.answer.photos, 'url')}/>
+        </div>
+      </>
   )
   }
 }
