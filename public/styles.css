@@ -227,8 +227,8 @@ body {
 
 .qa {
   margin: 2rem 0;
-  background-color: var(--color-grey-light-1);
-  height: 35vh; }
+  min-height: 15vh;
+  max-height: 100vh; }
   .qa-title {
     margin-top: 2rem;
     font-weight: 100;
@@ -243,12 +243,14 @@ body {
   .qa-icon {
     font-size: 1.2rem; }
   .qa-main {
+    min-height: 15vh;
     max-height: 100vh;
     overflow: scroll; }
     .qa-main-item-q {
       display: flex;
       justify-content: space-between;
-      height: 3rem; }
+      height: 3rem;
+      line-height: 2rem; }
       .qa-main-item-q-body {
         font-weight: 700;
         font-size: 1.2rem; }
@@ -261,11 +263,16 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 6rem;
-      max-height: 12rem;
-      margin-bottom: 2rem; }
+      height: max-content;
+      line-height: 2rem;
+      margin-bottom: 1rem; }
       .qa-main-item-a-interactions {
-        width: 28rem;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+      .qa-main-item-a-images {
+        width: 50%;
         display: flex;
         justify-content: space-between;
         align-items: center; }
@@ -278,18 +285,6 @@ body {
   border-bottom: 1px solid #000;
   font-size: 1rem; }
 
-.answer-header {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start; }
-
-.answer-list {
-  display: flex;
-  flex-flow: row nowrap;
-  height: auto;
-  max-height: 50vh;
-  overflow: scroll; }
-
 .add-answer-modal,
 .add-question-modal {
   position: absolute;
@@ -299,32 +294,6 @@ body {
   right: 15%;
   background-color: #EDEBE8;
   overflow: scroll; }
-
-.no-questions {
-  color: gray;
-  text-emphasis-style: sesame; }
-
-.search-bar {
-  width: auto;
-  display: flex;
-  justify-content: space-around; }
-
-.search-bar input {
-  width: 100%;
-  margin: 5px;
-  padding: 5px;
-  background-color: #d5d4d0; }
-
-.photo-list {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 90%;
-  max-height: 90%; }
-
-.photo-list img {
-  margin: 10px;
-  max-width: 25%;
-  max-height: 25%; }
 
 .search {
   display: flex;

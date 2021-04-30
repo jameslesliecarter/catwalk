@@ -248,8 +248,8 @@
 
 .qa {
   margin: 2rem 0;
-  background-color: var(--color-grey-light-1);
-  height: 35vh;
+  min-height: 15vh;
+  max-height: 100vh;
 
   &-title {
     margin-top: 2rem;
@@ -273,6 +273,7 @@
   }
 
   &-main {
+    min-height: 15vh;
     max-height: 100vh;
     overflow: scroll;
 
@@ -280,6 +281,7 @@
       display: flex;
       justify-content: space-between;
       height: 3rem;
+      line-height: 2rem;
 
       &-body {
         font-weight: 700;
@@ -298,12 +300,19 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 6rem;
-      max-height: 12rem;
-      margin-bottom: 2rem;
+      height: max-content;
+      line-height: 2rem;
+      margin-bottom: 1rem;
 
       &-interactions {
-        width: 28rem;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &-images {
+        width: 50%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -321,20 +330,6 @@
   font-size: 1rem;
 }
 
-.answer-header {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-}
-
-.answer-list {
-  display: flex;
-  flex-flow: row nowrap;
-  height: auto;
-  max-height: 50vh;
-  overflow: scroll;
-}
-
 .add-answer-modal,
 .add-question-modal {
   position: absolute;
@@ -344,35 +339,4 @@
   right: 15%;
   background-color: #EDEBE8;
   overflow: scroll;
-}
-
-.no-questions {
-  color: gray;
-  text-emphasis-style: sesame;
-}
-
-.search-bar {
-  width: auto;
-  display: flex;
-  justify-content: space-around;
-}
-
-.search-bar input {
-  width: 100%;
-  margin: 5px;
-  padding: 5px;
-  background-color: #d5d4d0;
-}
-
-.photo-list {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.photo-list img {
-  margin: 10px;
-  max-width: 25%;
-  max-height: 25%;
 }
