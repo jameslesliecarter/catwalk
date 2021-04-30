@@ -93,32 +93,32 @@ class QuestionForm extends React.Component {
   render() {
     return (
       <div>
-        <ReactModal className="add-question-modal" isOpen={this.props.isOpen} onRequestClose={this.close}>
+        <ReactModal className="qa-modal" isOpen={this.props.isOpen} onRequestClose={this.close}>
             <h2>Ask Your Question</h2>
             <h4>About the {this.props.productName}</h4>
-            <form>
-            <label>
+            <form className="qa-modal-form">
+            <label for="qa-modal-body">
                 Your Question*:
                 <br></br>
-                <textarea maxLength="1000" placeholder="Your Question" onChange={this.updateQuestion}></textarea>
+                <textarea className="qa-modal-body" maxLength="1000" placeholder="Your Question" onChange={this.updateQuestion}></textarea>
               </label>
               <br></br>
-              <label>
+              <label for="qa-modal-nickname">
                 What is your nickname*:
                 <br></br>
-                <input maxLength="60" type="text" placeholder="Example: jackson11!" onChange={this.updateName}></input>
+                <input className="qa-modal-nickname" maxLength="60" type="text" placeholder="Example: jackson11!" onChange={this.updateName}></input>
                 <br></br>
               </label>
                 <p>For privacy reasons, do not use your full name or email address</p>
-              <label>
+              <label for="qa-modal-email">
                 Your email*:
                 <br></br>
-                <input maxLength="60" type="email" placeholder="jack@email.com" onChange={this.updateEmail}></input>
+                <input className="qa-modal-email" maxLength="60" type="email" placeholder="jack@email.com" onChange={this.updateEmail}></input>
                 <p>For authentications reasons, you will not be emailed.</p>
               </label>
               <br></br>
               <br></br>
-              <button type="submit" onClick={this.handleSubmit}>Submit Question!</button>
+              <button className="qa-modal-btn" type="submit" onClick={this.handleSubmit}>Submit Question!</button>
             </form>
           </ReactModal>
         </div>
