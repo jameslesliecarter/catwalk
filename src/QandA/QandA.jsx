@@ -47,10 +47,8 @@ class QandA extends React.Component {
 
     if (questions.length > 0) {
       return (
-        <div className="questions-and-answers-area">
-          <div>
-            <SearchResults update={this.updateSearch} />
-          </div>
+        <div className="q-and-a-area">
+          <SearchResults update={this.updateSearch} />
           <div className="questions-and-answers">
             <QuestionList product={this.state.productName} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
@@ -117,7 +115,7 @@ class QandA extends React.Component {
 
   render() {
     return (
-      <div className="q-and-a-widget">
+      <div className="q-and-a">
        <h3>Questions &amp; Answers</h3>
         {this.renderView()}
         <div className="add-question">

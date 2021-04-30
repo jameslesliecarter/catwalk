@@ -19,7 +19,8 @@ class AnswerItem extends React.Component {
   }
 
 
-  updateHelpful() {
+  updateHelpful(e) {
+    e.preventDefault();
     if(!this.state.updatedHelpful) {
       axios.put(`/api/qa/answers/${this.props.answer.answer_id}/helpful`)
       .catch((error) => {
@@ -49,13 +50,13 @@ class AnswerItem extends React.Component {
 
     if (!reported) {
       return (
-        <div onClick={this.updateReport} className="report-btn">
-          Report btn
-        </div>
+        <button onClick={this.updateReport} className="btn_">
+          Report
+        </button>
       )
     } else {
       return (
-        <div className="report-btn"><em>Reported</em></div>
+        <button className="btn_"><em>Reported</em></button>
       )
     }
   }
@@ -71,9 +72,9 @@ class AnswerItem extends React.Component {
             <div className="user-info">
               <span className="answer-name">by: {this.byLine}</span>, <span className="answer-date">{moment(this.props.answer.date).add(1, 'day').format('MMMM Do YYYY')}</span>
             </div>
-            <div onClick={this.updateHelpful} className="helpful-btn">
+            <button onClick={this.updateHelpful} className="btn_">
               Helpful? &#40;{this.state.helpfulness}&#41;
-            </div>
+            </button>
             {this.reportView()}
           </div>
         </div>
