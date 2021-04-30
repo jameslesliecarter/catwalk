@@ -20,7 +20,6 @@ class RelatedProducts extends React.Component {
   }
 
   getRelatedProducts(id) {
-    console.log('what is the id ? ', id);
     axios.get(`/api/products/${id}/related`)
     .then(response => response.data)
     .then(data => {

@@ -63,25 +63,31 @@ class AnswerItem extends React.Component {
 
   render() {
     return (
-      <div className="answer-area">
-        <div className="answer-header">
-          <div className="answer-text">
-            {this.props.answer.body}
-          </div>
-          <div className="answer-interaction interaction">
-            <div className="user-info">
-              <span className="answer-name">by: {this.byLine}</span>, <span className="answer-date">{moment(this.props.answer.date).add(1, 'day').format('MMMM Do YYYY')}</span>
-            </div>
-            <button onClick={this.updateHelpful} className="btn_">
-              Helpful? &#40;{this.state.helpfulness}&#41;
-            </button>
-            {this.reportView()}
-          </div>
+      <>
+        <div className="qa-main-item-a-body">
+          <span className="qa-icon">A: </span>
+          {this.props.answer.body}
         </div>
-      <div className="photo-details">
-        <Photos photos={_.pluck(this.props.answer.photos, 'url')}/>
-      </div>
-    </div>
+        <div className="qa-main-item-a-interactions">
+          <div className="qa-main-item-a-interactions-user">
+            <span className="qa-main-item-a-interactions-user-name">
+              by: {this.byLine},
+            </span>
+            <span className="qa-main-item-a-interactions-user-date">
+              {' ' + moment(this.props.answer.date).add(1, 'day').format('MMMM Do YYYY')} |
+            </span>
+          </div>
+          Helpful?
+          <button onClick={this.updateHelpful} className="btn_">
+            Yes &#40;{this.state.helpfulness}&#41;
+          </button>
+          |
+          {this.reportView()}
+        </div>
+        <div className="qa-main-item-a-images">
+          <Photos photos={_.pluck(this.props.answer.photos, 'url')}/>
+        </div>
+      </>
   )
   }
 }

@@ -145,7 +145,7 @@ class AnswerForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <ReactModal onRequestClose={this.close} className="add-answer-modal" isOpen={this.props.isOpen} >
           <div className="add-answer-form">
             <h3>Submit your Answer</h3>
@@ -195,7 +195,7 @@ class AnswerForm extends React.Component {
             </form>
           </div>
         </ReactModal>
-      </div>
+      </>
     )
   }
 }
