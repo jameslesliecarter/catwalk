@@ -49,13 +49,13 @@ class AnswerList extends React.Component {
   renderMoreAnswersButton() {
     if (this.state.answers.length && this.state.answers.length > 2) {
       return (
-        <div onClick={this.toggleAnswers} className="more-answers-btn">
+        <button onClick={this.toggleAnswers} className="btn_">
           {this.state.buttonText}
-        </div>
+        </button>
       )
     } else {
       return (
-        <div></div>
+        <></>
       )
     }
   }
@@ -75,28 +75,21 @@ class AnswerList extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="answer-list">
-          <h5>A: </h5>
-          <div className='answer-items'>
-            {_.sortBy(_.sortBy(this.state.answers, (answer) => {
-              return -answer.helpfulness;
-            }), (answer) => {
-              return answer.answerer_name !== 'Seller';
-            })
-            .map((answer, i) => {
-              if (i < this.state.count) {
-                return (
-                  <AnswerItem key={i} answer={answer} />
-                  )
-              } else {
-                return (
-                  <div key={i} ></div>
+      <div className="qa-main-item-a">
+          {_.sortBy(_.sortBy(this.state.answers, (answer) => {
+            return -answer.helpfulness;
+          }), (answer) => {
+            return answer.answerer_name !== 'Seller';
+          })
+          .map((answer, i) => {
+            if (i < this.state.count) {
+              return (
+                <AnswerItem key={i} answer={answer} />
                 )
-              }
-            })}
-          </div>
-        </div>
+            } else {
+              return <></>
+            }
+          })}
         {this.renderMoreAnswersButton()}
       </div>
     )

@@ -8,14 +8,10 @@ const QuestionList = ({questions, count, term, product}) => {
       {questions.filter((question) => question.question_body.toLowerCase().indexOf(term.toLowerCase()) !== -1).map((question, i) => {
         if (i < count) {
           return (
-            <div key={i} className="question-container">
+            <div key={i} className="qa-main-container">
               <QuestionItem product={product} key={i} question={question}/>
             </div>
-          )} else {
-            return (
-              <div key={i}></div>
-            )
-          }
+          )}
       })}
     </>
   );

@@ -28,8 +28,8 @@ class AddQuestion extends React.Component {
   render() {
     return (
       <div>
-        <div onClick={this.openModal} className="add-question-btn">
-          Add Question
+        <div onClick={this.openModal} className="qa-add-btn">
+          ADD A QUESTION +
         </div>
         <QuestionForm productId={this.props.productId} isOpen={this.state.show} closeModal={this.closeModal} fetch={this.props.fetch}/>
       </div>
