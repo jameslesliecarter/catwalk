@@ -59,6 +59,14 @@ class QuestionItem extends React.Component {
     ReactModal.setAppElement('body');
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.question.question_id !== this.props.question.question_id) {
+      this.setState({
+        helpfulness: this.props.question.question_helpfulness
+      });
+    }
+  }
+
   render() {
     return (
       <>

@@ -250,6 +250,25 @@
   margin: 2rem 0;
   min-height: 15vh;
   max-height: 100vh;
+  min-width: 725px;
+
+  &-options {
+    display: flex;
+    justify-content: flex-start;
+
+    &-btn {
+      width: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 1rem 1rem 0;
+      padding: 1rem;
+      border: 1px solid black;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
 
   &-title {
     margin-top: 2rem;
@@ -319,6 +338,35 @@
       }
     }
   }
+
+  &-modal {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 15%;
+    right: 15%;
+    overflow: scroll;
+    background-color: var(--color-grey-light-1);
+    display: flex;
+    flex-direction: column;
+    &-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    &-btn {
+      width: 8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 1rem 1rem 0;
+      padding: 1rem;
+      border: 1px solid black;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
 }
 
 .btn_ {
@@ -330,13 +378,13 @@
   font-size: 1rem;
 }
 
-.add-answer-modal,
-.add-question-modal {
-  position: absolute;
-  top: 10%;
-  bottom: 10%;
-  left: 15%;
-  right: 15%;
-  background-color: #EDEBE8;
-  overflow: scroll;
-}
+// .add-answer-modal,
+// .add-question-modal {
+//   position: absolute;
+//   top: 10%;
+//   bottom: 10%;
+//   left: 15%;
+//   right: 15%;
+//   background-color: #EDEBE8;
+//   overflow: scroll;
+// }

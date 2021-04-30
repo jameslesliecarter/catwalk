@@ -146,8 +146,8 @@ class AnswerForm extends React.Component {
   render() {
     return (
       <>
-        <ReactModal onRequestClose={this.close} className="add-answer-modal" isOpen={this.props.isOpen} >
-          <div className="add-answer-form">
+        <ReactModal onRequestClose={this.close} className="qa-modal" isOpen={this.props.isOpen} >
+          <div className="qa-modal-form">
             <h3>Submit your Answer</h3>
             <h4>{this.props.product}: {this.props.question.question_body}</h4>
             <form>
@@ -191,7 +191,9 @@ class AnswerForm extends React.Component {
               <br></br>
               <button
               type="submit"
-              onClick={this.handleSubmit}>Submit Answer!</button>
+              onClick={this.handleSubmit}
+              className="qa-modal-btn"
+              >Submit Answer!</button>
             </form>
           </div>
         </ReactModal>

@@ -79,7 +79,7 @@ class AnswerItem extends React.Component {
           </div>
           Helpful?
           <button onClick={this.updateHelpful} className="btn_">
-            Yes &#40;{this.state.helpfulness}&#41;
+            Yes &#40;{this.props.answer.helpfulness}&#41;
           </button>
           |
           {this.reportView()}

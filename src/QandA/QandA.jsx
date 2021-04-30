@@ -52,7 +52,6 @@ class QandA extends React.Component {
           <div className="qa-main">
             <QuestionList product={this.state.productName} count={this.state.displayed} term={this.state.searchTerm} questions={this.state.questions} />
           </div>
-          {this.renderButton()}
         </>
       );
     } else {
@@ -65,7 +64,7 @@ class QandA extends React.Component {
 
     if (questions.length > displayed) {
       return (
-        <div className="qa-more">
+        <div className="qa-options-btn">
           <MoreQuestions revealQuestions={this.revealQuestions} />
         </div>
       )
@@ -114,8 +113,11 @@ class QandA extends React.Component {
       <div className="qa">
        <h2 className="qa-title">QUESTIONS &amp; ANSWERS</h2>
         {this.renderView()}
-        <div className="qa-add">
-          <AddQuestion fetch={this.fetchQuestions} productName={this.state.productName} productId={this.state.productId} />
+        <div className="qa-options">
+          {this.renderButton()}
+          <div className="qa-options-btn">
+            <AddQuestion fetch={this.fetchQuestions} productName={this.state.productName} productId={this.state.productId} />
+          </div>
         </div>
       </div>
     )
